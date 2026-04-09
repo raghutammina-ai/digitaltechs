@@ -8,6 +8,7 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 import BackToTop from '@/components/BackToTop'
 import PageLoader from '@/components/PageLoader'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
+import ChatBot from '@/components/ChatBot'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -54,6 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
         <Footer />
         <CookieBanner />
+        <ChatBot />
         <WhatsAppButton />
         <BackToTop />
       </body>
