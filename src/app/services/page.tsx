@@ -1,8 +1,12 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Brain, BarChart3, Code2, Cloud, ArrowRight, CheckCircle2 } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
+
+export const metadata: Metadata = {
+  title: 'AI & Software Services',
+  description: 'AI application development, data analytics, custom software, and cloud automation for every industry — healthcare, finance, retail, manufacturing and more.',
+}
 
 const services = [
   {
