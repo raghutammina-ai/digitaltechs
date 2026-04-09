@@ -372,7 +372,7 @@ export default function ChatBot() {
       {/* Chat window */}
       {open && (
         <div
-          className="bg-white border border-slate-200 rounded-2xl shadow-2xl w-80 sm:w-96 flex flex-col overflow-hidden animate-in slide-in-from-bottom-4"
+          className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl w-80 sm:w-96 flex flex-col overflow-hidden animate-in slide-in-from-bottom-4"
           style={{ height: '520px' }}
         >
           {/* Header */}
@@ -395,7 +395,7 @@ export default function ChatBot() {
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-slate-50">
+          <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-slate-50 dark:bg-slate-900">
             {messages.map((msg, i) => (
               <div key={i} className={`flex gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 {msg.role === 'bot' && (
@@ -406,7 +406,7 @@ export default function ChatBot() {
                 <div className="max-w-[80%] space-y-2">
                   <div className={`rounded-2xl px-4 py-2.5 text-sm whitespace-pre-line leading-relaxed ${
                     msg.role === 'bot'
-                      ? 'bg-white border border-slate-200 text-slate-700 rounded-tl-sm'
+                      ? 'bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-100 rounded-tl-sm'
                       : 'bg-blue-600 text-white rounded-tr-sm'
                   }`}>
                     {msg.text}
@@ -440,7 +440,7 @@ export default function ChatBot() {
                 <div className="w-7 h-7 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
                   <Bot size={14} className="text-white" />
                 </div>
-                <div className="bg-white border border-slate-200 rounded-2xl rounded-tl-sm px-4 py-3 flex gap-1.5 items-center">
+                <div className="bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-2xl rounded-tl-sm px-4 py-3 flex gap-1.5 items-center">
                   {[0, 1, 2].map(i => (
                     <span key={i} className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: `${i * 0.15}s` }} />
                   ))}
@@ -470,7 +470,7 @@ export default function ChatBot() {
           </div>
 
           {/* Input */}
-          <div className="p-3 border-t border-slate-200 bg-white flex-shrink-0">
+          <div className="p-3 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex-shrink-0">
             <div className="flex gap-2">
               <input
                 type="text"
@@ -478,7 +478,7 @@ export default function ChatBot() {
                 onChange={e => setInput(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && send()}
                 placeholder="Ask about services, pricing, industries…"
-                className="flex-1 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-50"
+                className="flex-1 border border-slate-200 dark:border-slate-600 rounded-xl px-3 py-2 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-50 dark:bg-slate-700 dark:placeholder-slate-400"
               />
               <button
                 onClick={() => send()}

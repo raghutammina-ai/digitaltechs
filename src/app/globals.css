@@ -2,14 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── CSS custom properties ──────────────────────────────────────────────────── */
 :root {
   --foreground-rgb: 30, 41, 59;
   --background-rgb: 248, 250, 252;
 }
 
-.dark {
-  --foreground-rgb: 226, 232, 240;
-  --background-rgb: 15, 23, 42;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 226, 232, 240;
+    --background-rgb: 15, 23, 42;
+  }
 }
 
 html {
@@ -22,29 +25,71 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Dark mode overrides */
-.dark body { background: #0f172a; }
-.dark .bg-white { background-color: #1e293b !important; }
-.dark .bg-slate-50 { background-color: #0f172a !important; }
-.dark .border-slate-200 { border-color: #334155 !important; }
-.dark .text-slate-900 { color: #f1f5f9 !important; }
-.dark .text-slate-700 { color: #cbd5e1 !important; }
-.dark .text-slate-600 { color: #94a3b8 !important; }
-.dark .text-slate-500 { color: #64748b !important; }
-.dark .bg-slate-100 { background-color: #1e293b !important; }
-.dark .bg-blue-50  { background-color: #1e3a5f !important; }
-.dark .bg-cyan-50  { background-color: #164e63 !important; }
-.dark .bg-indigo-50{ background-color: #1e1b4b !important; }
-.dark .bg-teal-50  { background-color: #134e4a !important; }
-.dark .card-glow:hover { box-shadow: 0 0 0 1px #3b82f6, 0 20px 40px -10px rgba(59,130,246,0.3); }
+/* ── Dark mode overrides (system preference) ────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  /* Backgrounds */
+  .bg-white                { background-color: #1e293b !important; }
+  .bg-slate-50             { background-color: #0f172a !important; }
+  .bg-slate-100            { background-color: #1e293b !important; }
+  .bg-slate-800            { background-color: #0f172a !important; }
 
-/* Custom scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #f1f5f9; }
-::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 3px; }
+  /* Coloured tint backgrounds → muted dark equivalents */
+  .bg-blue-50              { background-color: #172554 !important; }
+  .bg-blue-100             { background-color: #1e3a8a !important; }
+  .bg-cyan-50              { background-color: #083344 !important; }
+  .bg-indigo-50            { background-color: #1e1b4b !important; }
+  .bg-teal-50              { background-color: #042f2e !important; }
+  .bg-orange-50            { background-color: #431407 !important; }
+  .bg-purple-50            { background-color: #2e1065 !important; }
+  .bg-red-50               { background-color: #450a0a !important; }
+  .bg-green-50             { background-color: #052e16 !important; }
+  .bg-lime-50              { background-color: #1a2e05 !important; }
+  .bg-amber-50             { background-color: #451a03 !important; }
+  .bg-violet-50            { background-color: #2e1065 !important; }
+  .bg-stone-100            { background-color: #1c1917 !important; }
+  .bg-sky-50               { background-color: #082f49 !important; }
+  .bg-pink-50              { background-color: #500724 !important; }
+  .bg-emerald-50           { background-color: #022c22 !important; }
+  .bg-yellow-50            { background-color: #422006 !important; }
+
+  /* Text colours */
+  .text-slate-900          { color: #f1f5f9 !important; }
+  .text-slate-800          { color: #e2e8f0 !important; }
+  .text-slate-700          { color: #cbd5e1 !important; }
+  .text-slate-600          { color: #94a3b8 !important; }
+  .text-slate-500          { color: #64748b !important; }
+  .text-slate-400          { color: #475569 !important; }
+
+  /* Borders */
+  .border-slate-200        { border-color: #334155 !important; }
+  .border-slate-100        { border-color: #1e293b !important; }
+
+  /* Form elements */
+  input, textarea, select {
+    background-color: #1e293b;
+    color: #f1f5f9;
+    border-color: #334155;
+  }
+  input::placeholder, textarea::placeholder { color: #475569; }
+
+  /* Card glow in dark mode */
+  .card-glow:hover {
+    box-shadow: 0 0 0 1px #3b82f6, 0 20px 40px -10px rgba(59, 130, 246, 0.3);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar-track { background: #1e293b; }
+  ::-webkit-scrollbar-thumb { background: #475569; }
+  ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+}
+
+/* ── Custom scrollbar (light mode) ─────────────────────────────────────────── */
+::-webkit-scrollbar         { width: 6px; }
+::-webkit-scrollbar-track   { background: #f1f5f9; }
+::-webkit-scrollbar-thumb   { background: #94a3b8; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
 
-/* Animated hero gradient */
+/* ── Animated hero gradient ─────────────────────────────────────────────────── */
 .hero-gradient {
   background: linear-gradient(-45deg, #1e40af, #2563eb, #0891b2, #0e7490);
   background-size: 400% 400%;
@@ -53,10 +98,10 @@ body {
 
 @keyframes gradientShift {
   0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  50%       { background-position: 100% 50%; }
 }
 
-/* Grid overlay for tech feel */
+/* ── Grid overlay for tech feel ─────────────────────────────────────────────── */
 .grid-overlay {
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
@@ -64,16 +109,14 @@ body {
   background-size: 60px 60px;
 }
 
-/* Glowing card effect */
-.card-glow {
-  transition: all 0.3s ease;
-}
+/* ── Glowing card effect ─────────────────────────────────────────────────────── */
+.card-glow { transition: all 0.3s ease; }
 .card-glow:hover {
   box-shadow: 0 0 0 1px #2563eb, 0 20px 40px -10px rgba(37, 99, 235, 0.2);
   transform: translateY(-4px);
 }
 
-/* Gradient text */
+/* ── Gradient text ───────────────────────────────────────────────────────────── */
 .gradient-text {
   background: linear-gradient(135deg, #2563eb, #06b6d4);
   -webkit-background-clip: text;
@@ -81,17 +124,20 @@ body {
   background-clip: text;
 }
 
-/* Section dots pattern */
+/* ── Section dots pattern ───────────────────────────────────────────────────── */
 .dots-pattern {
   background-image: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
-/* Glow button */
-.btn-glow {
-  position: relative;
-  overflow: hidden;
+@media (prefers-color-scheme: dark) {
+  .dots-pattern {
+    background-image: radial-gradient(circle, #334155 1px, transparent 1px);
+  }
 }
+
+/* ── Glow button ────────────────────────────────────────────────────────────── */
+.btn-glow { position: relative; overflow: hidden; }
 .btn-glow::before {
   content: '';
   position: absolute;
