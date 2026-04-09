@@ -9,10 +9,16 @@ import BackToTop from '@/components/BackToTop'
 import PageLoader from '@/components/PageLoader'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 import ChatBot from '@/components/ChatBot'
+import JsonLd from '@/components/JsonLd'
 
 const inter = Inter({ subsets: ['latin'] })
 
 const siteUrl = 'https://www.digitaltechs.in'
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
 
 export const metadata: Metadata = {
   title: {
@@ -50,6 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={`${inter.className} bg-slate-50 antialiased`}>
         <GoogleAnalytics />
+        <JsonLd />
         <PageLoader />
         <Navbar />
         <main>{children}</main>
