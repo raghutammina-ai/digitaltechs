@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
+import DarkModeToggle from './DarkModeToggle'
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -51,6 +52,7 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
+            <DarkModeToggle />
             {navLinks.map((link) => (
               <Link
                 key={link.href}
