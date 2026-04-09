@@ -114,7 +114,7 @@ export default function Footer() {
           <span>© {new Date().getFullYear()} Digital Tech Prosperity. All rights reserved.</span>
           <div className="flex gap-4">
             <Link href="/privacy-policy" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-slate-300 transition-colors">Terms of Service</Link>
+            <Link href="/terms-of-service" className="hover:text-slate-300 transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

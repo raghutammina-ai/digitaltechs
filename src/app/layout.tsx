@@ -5,6 +5,8 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CookieBanner from '@/components/CookieBanner'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import BackToTop from '@/components/BackToTop'
+import PageLoader from '@/components/PageLoader'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -45,11 +47,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={`${inter.className} bg-slate-50 antialiased`}>
+        <PageLoader />
         <Navbar />
         <main>{children}</main>
         <Footer />
         <CookieBanner />
         <WhatsAppButton />
+        <BackToTop />
       </body>
     </html>
   )
