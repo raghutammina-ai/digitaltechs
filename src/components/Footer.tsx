@@ -38,7 +38,7 @@ export default function Footer() {
             />
             <p className="text-sm text-slate-400 leading-relaxed mb-6">
               Empowering Progress with Digital Tech Prosperity. Intelligent and scalable
-              digital solutions for every industry.
+              digital solutions for industries like Real Estate, Healthcare, Travel & Hospitality, Retail, and Agriculture.
             </p>
             <div className="flex gap-3">
               {[

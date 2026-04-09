@@ -157,7 +157,7 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             We build intelligent, scalable digital solutions across AI application development,
-            data analytics, custom software, and automation engineering — for every industry.
+            data analytics, custom software, and automation engineering — for industries like Real Estate, Healthcare, Travel & Hospitality, Retail, and Agriculture.
           </motion.p>
 
           <motion.div

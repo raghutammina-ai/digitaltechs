@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   openGraph: {
     title: 'Digital Tech Prosperity | AI & Software Solutions',
-    description: 'Intelligent & scalable AI solutions for every industry.',
+    description: 'Intelligent & scalable AI solutions for industries like Real Estate, Healthcare, Travel & Hospitality, Retail, and Agriculture.',
     type: 'website',
     url: siteUrl,
     siteName: 'Digital Tech Prosperity',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Digital Tech Prosperity | AI & Software Solutions',
-    description: 'Intelligent & scalable AI solutions for every industry.',
+    description: 'Intelligent & scalable AI solutions for industries like Real Estate, Healthcare, Travel & Hospitality, Retail, and Agriculture.',
   },
   robots: {
     index: true,
