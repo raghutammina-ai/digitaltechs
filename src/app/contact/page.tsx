@@ -1,8 +1,7 @@
 'use client'
 
-// Note: metadata for this page is set in layout.tsx (client components cannot export metadata)
 import { useState } from 'react'
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle2 } from 'lucide-react'
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
 
 const services = [
@@ -20,8 +19,11 @@ const contactInfo = [
   { icon: Clock,   label: 'Response Time',  value: 'Within 24 business hours' },
 ]
 
+type Status = 'idle' | 'loading' | 'success' | 'error'
+
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState<Status>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
   const [form, setForm] = useState({
     name: '', email: '', phone: '', company: '', service: '', message: '',
   })
@@ -30,10 +32,32 @@ export default function ContactPage() {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // In production, connect to your backend / email service here
-    setSubmitted(true)
+    setStatus('loading')
+    setErrorMsg('')
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        const msg = data.errors?.join(' ') ?? data.error ?? 'Something went wrong.'
+        setErrorMsg(msg)
+        setStatus('error')
+        return
+      }
+
+      setStatus('success')
+    } catch {
+      setErrorMsg('Network error. Please check your connection and try again.')
+      setStatus('error')
+    }
   }
 
   return (
@@ -103,7 +127,7 @@ export default function ContactPage() {
             {/* Form */}
             <AnimatedSection direction="left" className="lg:col-span-3">
               <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
-                {submitted ? (
+                {status === 'success' ? (
                   <div className="text-center py-16">
                     <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
                       <CheckCircle2 size={32} />
@@ -111,11 +135,19 @@ export default function ContactPage() {
                     <h3 className="text-2xl font-bold text-slate-900 mb-2">Message Sent!</h3>
                     <p className="text-slate-500">
                       Thank you for reaching out. We&apos;ll get back to you within 24 business hours.
+                      Check your inbox for a confirmation email.
                     </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-5">
+                  <form onSubmit={handleSubmit} className="space-y-5" noValidate>
                     <h2 className="text-xl font-bold text-slate-900 mb-6">Send Us a Message</h2>
+
+                    {status === 'error' && (
+                      <div className="flex items-start gap-3 bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm">
+                        <AlertCircle size={16} className="flex-shrink-0 mt-0.5" />
+                        <span>{errorMsg}</span>
+                      </div>
+                    )}
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
@@ -123,6 +155,7 @@ export default function ContactPage() {
                         <input
                           type="text" name="name" required value={form.name}
                           onChange={handleChange} placeholder="John Smith"
+                          minLength={2} maxLength={100}
                           className="w-full border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         />
                       </div>
@@ -172,17 +205,23 @@ export default function ContactPage() {
                       <label className="block text-sm font-medium text-slate-700 mb-1.5">Message *</label>
                       <textarea
                         name="message" required value={form.message} rows={5}
-                        onChange={handleChange}
+                        onChange={handleChange} minLength={10} maxLength={2000}
                         placeholder="Tell us about your project, goals, or any questions you have..."
                         className="w-full border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
                       />
+                      <p className="text-xs text-slate-400 mt-1 text-right">{form.message.length}/2000</p>
                     </div>
 
                     <button
                       type="submit"
-                      className="btn-glow w-full bg-blue-600 text-white font-semibold py-3.5 rounded-xl hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 shadow-sm"
+                      disabled={status === 'loading'}
+                      className="btn-glow w-full bg-blue-600 text-white font-semibold py-3.5 rounded-xl hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      Send Message <Send size={18} />
+                      {status === 'loading' ? (
+                        <><Loader2 size={18} className="animate-spin" /> Sending...</>
+                      ) : (
+                        <>Send Message <Send size={18} /></>
+                      )}
                     </button>
                   </form>
                 )}

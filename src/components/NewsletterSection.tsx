@@ -1,15 +1,42 @@
 'use client'
 
 import { useState } from 'react'
-import { Send, CheckCircle2 } from 'lucide-react'
+import { Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react'
+
+type Status = 'idle' | 'loading' | 'success' | 'error'
 
 export default function NewsletterSection() {
   const [email, setEmail] = useState('')
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState<Status>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (email) setSubmitted(true)
+    if (!email) return
+
+    setStatus('loading')
+    setErrorMsg('')
+
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        setErrorMsg(data.error ?? 'Subscription failed. Please try again.')
+        setStatus('error')
+        return
+      }
+
+      setStatus('success')
+    } catch {
+      setErrorMsg('Network error. Please try again.')
+      setStatus('error')
+    }
   }
 
   return (
@@ -23,30 +50,46 @@ export default function NewsletterSection() {
           Join 2,000+ professionals getting our monthly roundup of AI trends, case studies, and practical guides across every industry.
         </p>
 
-        {submitted ? (
+        {status === 'success' ? (
           <div className="flex items-center justify-center gap-3 text-green-400 text-lg font-semibold">
             <CheckCircle2 size={24} />
             You&apos;re subscribed! Welcome aboard.
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              placeholder="Enter your email address"
-              className="flex-1 bg-slate-800 border border-slate-700 text-white placeholder-slate-500 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
-            />
-            <button
-              type="submit"
-              className="btn-glow inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors text-sm whitespace-nowrap"
-            >
-              Subscribe <Send size={16} />
-            </button>
-          </form>
+          <>
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                placeholder="Enter your email address"
+                className="flex-1 bg-slate-800 border border-slate-700 text-white placeholder-slate-500 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+              />
+              <button
+                type="submit"
+                disabled={status === 'loading'}
+                className="btn-glow inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors text-sm whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {status === 'loading' ? (
+                  <Loader2 size={16} className="animate-spin" />
+                ) : (
+                  <>Subscribe <Send size={16} /></>
+                )}
+              </button>
+            </form>
+            {status === 'error' && (
+              <div className="flex items-center justify-center gap-2 mt-3 text-red-400 text-sm">
+                <AlertCircle size={14} />
+                {errorMsg}
+              </div>
+            )}
+          </>
         )}
-        <p className="text-slate-600 text-xs mt-4">No spam. Unsubscribe anytime. Read our <a href="/privacy-policy" className="text-slate-500 hover:text-slate-300 underline">Privacy Policy</a>.</p>
+        <p className="text-slate-600 text-xs mt-4">
+          No spam. Unsubscribe anytime. Read our{' '}
+          <a href="/privacy-policy" className="text-slate-500 hover:text-slate-300 underline">Privacy Policy</a>.
+        </p>
       </div>
     </section>
   )

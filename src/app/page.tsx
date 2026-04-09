@@ -9,6 +9,10 @@ import {
 import AnimatedSection from '@/components/AnimatedSection'
 import TechStack from '@/components/TechStack'
 import NewsletterSection from '@/components/NewsletterSection'
+import NeuralNetwork from '@/components/NeuralNetwork'
+import TypewriterText from '@/components/TypewriterText'
+import AnimatedCounter from '@/components/AnimatedCounter'
+import ROICalculator from '@/components/ROICalculator'
 
 const services = [
   {
@@ -39,13 +43,6 @@ const services = [
     color: 'text-teal-600',
     bg: 'bg-teal-50',
   },
-]
-
-const stats = [
-  { value: '10+', label: 'Years of Experience' },
-  { value: '200+', label: 'Projects Delivered' },
-  { value: '50+', label: 'Happy Clients' },
-  { value: '15+', label: 'Countries Served' },
 ]
 
 const industries = [
@@ -103,6 +100,9 @@ export default function HomePage() {
     <>
       {/* Hero */}
       <section className="relative min-h-screen hero-gradient grid-overlay flex items-center">
+        {/* Neural network animation */}
+        <NeuralNetwork />
+
         {/* Floating blobs */}
         <div className="absolute top-20 right-10 w-72 h-72 bg-cyan-400/20 rounded-full blur-3xl animate-pulse-slow" />
         <div className="absolute bottom-20 left-10 w-96 h-96 bg-blue-300/20 rounded-full blur-3xl animate-pulse-slow" />
@@ -120,7 +120,7 @@ export default function HomePage() {
           </motion.div>
 
           <motion.h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 max-w-4xl mx-auto"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -128,6 +128,15 @@ export default function HomePage() {
             Empowering Progress with{' '}
             <span className="text-cyan-300">Digital Tech Prosperity</span>
           </motion.h1>
+
+          <motion.div
+            className="text-2xl sm:text-3xl font-semibold mb-6 min-h-[2rem]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <TypewriterText />
+          </motion.div>
 
           <motion.p
             className="text-lg text-blue-100 max-w-2xl mx-auto mb-10"
@@ -172,9 +181,16 @@ export default function HomePage() {
       <section className="bg-slate-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, i) => (
+            {[
+              { target: 10, suffix: '+', label: 'Years of Experience' },
+              { target: 200, suffix: '+', label: 'Projects Delivered' },
+              { target: 50, suffix: '+', label: 'Happy Clients' },
+              { target: 15, suffix: '+', label: 'Countries Served' },
+            ].map((stat, i) => (
               <AnimatedSection key={stat.label} delay={i * 0.1} className="text-center">
-                <div className="text-4xl font-bold gradient-text mb-1">{stat.value}</div>
+                <div className="text-4xl font-bold gradient-text mb-1">
+                  <AnimatedCounter target={stat.target} suffix={stat.suffix} />
+                </div>
                 <div className="text-sm text-slate-500 font-medium">{stat.label}</div>
               </AnimatedSection>
             ))}
@@ -272,22 +288,50 @@ export default function HomePage() {
       </section>
 
       {/* Industries */}
-      <section className="bg-white py-20">
+      <section id="industries" className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-10">
             <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">Industries</span>
             <h2 className="text-3xl font-bold text-slate-900 mt-2">We Serve Every Industry</h2>
+            <p className="text-slate-500 mt-2">Click any industry to explore our tailored AI solutions.</p>
           </AnimatedSection>
           <AnimatedSection>
             <div className="flex flex-wrap justify-center gap-3">
-              {industries.map((ind) => (
-                <span
-                  key={ind}
-                  className="px-5 py-2.5 bg-slate-50 border border-slate-200 rounded-full text-slate-700 text-sm font-medium hover:border-blue-300 hover:text-blue-600 hover:bg-blue-50 transition-colors cursor-default"
-                >
-                  {ind}
-                </span>
-              ))}
+              {[
+                { name: 'Healthcare', slug: 'healthcare' },
+                { name: 'Finance & Banking', slug: 'finance' },
+                { name: 'Retail & E-commerce', slug: 'retail' },
+                { name: 'Manufacturing', slug: 'manufacturing' },
+                { name: 'Education', slug: 'education' },
+                { name: 'Logistics', slug: 'logistics' },
+                { name: 'Real Estate', slug: null },
+                { name: 'Government', slug: null },
+                { name: 'Pharma & Life Sciences', slug: null },
+                { name: 'Energy & Utilities', slug: null },
+                { name: 'Telecom', slug: null },
+                { name: 'Agriculture', slug: null },
+                { name: 'Legal & Compliance', slug: null },
+                { name: 'Media & Entertainment', slug: null },
+                { name: 'Insurance', slug: null },
+                { name: 'Travel & Hospitality', slug: null },
+              ].map(({ name, slug }) =>
+                slug ? (
+                  <Link
+                    key={name}
+                    href={`/industries/${slug}`}
+                    className="px-5 py-2.5 bg-blue-50 border border-blue-200 rounded-full text-blue-700 text-sm font-medium hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors"
+                  >
+                    {name} →
+                  </Link>
+                ) : (
+                  <span
+                    key={name}
+                    className="px-5 py-2.5 bg-slate-50 border border-slate-200 rounded-full text-slate-700 text-sm font-medium hover:border-blue-300 hover:text-blue-600 hover:bg-blue-50 transition-colors cursor-default"
+                  >
+                    {name}
+                  </span>
+                )
+              )}
             </div>
           </AnimatedSection>
         </div>
@@ -349,6 +393,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ROI Calculator */}
+      <ROICalculator />
 
       {/* Tech Stack */}
       <TechStack />
