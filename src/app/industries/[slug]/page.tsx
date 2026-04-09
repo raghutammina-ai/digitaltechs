@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
 import { industries, getIndustry } from '../data'
+import ComingSoonIndustry from './ComingSoonIndustry'
 
 export function generateStaticParams() {
   return industries.map(i => ({ slug: i.slug }))
@@ -12,6 +13,12 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const industry = getIndustry(params.slug)
   if (!industry) return {}
+  if (industry.comingSoon) {
+    return {
+      title: `AI for ${industry.name} — Coming Soon`,
+      description: `We're building dedicated AI solutions content for ${industry.name}. Register your interest to be notified when it launches.`,
+    }
+  }
   return {
     title: `AI for ${industry.name}`,
     description: industry.description,
@@ -21,6 +28,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 export default function IndustryPage({ params }: { params: { slug: string } }) {
   const industry = getIndustry(params.slug)
   if (!industry) notFound()
+
+  if (industry.comingSoon) {
+    return <ComingSoonIndustry industry={industry} />
+  }
 
   return (
     <>
@@ -74,7 +85,6 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
       <section className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16">
-            {/* Challenges */}
             <AnimatedSection direction="right">
               <span className="text-red-500 text-sm font-semibold uppercase tracking-wider">Challenges</span>
               <h2 className="text-3xl font-bold text-slate-900 mt-2 mb-6">Common {industry.name} Pain Points</h2>
@@ -88,7 +98,6 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
               </ul>
             </AnimatedSection>
 
-            {/* Solutions */}
             <AnimatedSection direction="left">
               <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">Our Solutions</span>
               <h2 className="text-3xl font-bold text-slate-900 mt-2 mb-6">How We Solve Them</h2>
