@@ -7,6 +7,8 @@ import {
   Users, Award, Globe, Zap, Shield, Lightbulb, Quote,
 } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
+import TechStack from '@/components/TechStack'
+import NewsletterSection from '@/components/NewsletterSection'
 
 const services = [
   {
@@ -347,6 +349,12 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Tech Stack */}
+      <TechStack />
+
+      {/* Newsletter */}
+      <NewsletterSection />
 
       {/* CTA */}
       <section className="hero-gradient py-24">

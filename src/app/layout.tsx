@@ -7,6 +7,7 @@ import CookieBanner from '@/components/CookieBanner'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import BackToTop from '@/components/BackToTop'
 import PageLoader from '@/components/PageLoader'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={`${inter.className} bg-slate-50 antialiased`}>
+        <GoogleAnalytics />
         <PageLoader />
         <Navbar />
         <main>{children}</main>
