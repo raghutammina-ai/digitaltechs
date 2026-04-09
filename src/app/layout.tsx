@@ -4,7 +4,6 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CookieBanner from '@/components/CookieBanner'
-import WhatsAppButton from '@/components/WhatsAppButton'
 import BackToTop from '@/components/BackToTop'
 import PageLoader from '@/components/PageLoader'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
@@ -54,7 +53,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-slate-50 antialiased`}>
+      <body className={`${inter.className} bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 antialiased`}>
         <GoogleAnalytics />
         <JsonLd />
         <PageLoader />
@@ -63,7 +62,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <CookieBanner />
         <ChatBot />
-        <WhatsAppButton />
         <BackToTop />
       </body>
     </html>

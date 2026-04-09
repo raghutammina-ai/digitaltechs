@@ -18,6 +18,7 @@ const quickLinks = [
   { href: '/careers', label: 'Careers' },
   { href: '/faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
+  { href: '/security', label: 'Security' },
 ]
 
 export default function Footer() {
@@ -118,6 +119,7 @@ export default function Footer() {
           <div className="flex gap-4">
             <Link href="/privacy-policy" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>
             <Link href="/terms-of-service" className="hover:text-slate-300 transition-colors">Terms of Service</Link>
+            <Link href="/security" className="hover:text-slate-300 transition-colors">Security</Link>
           </div>
         </div>
       </div>

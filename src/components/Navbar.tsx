@@ -5,7 +5,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
-import DarkModeToggle from './DarkModeToggle'
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -32,35 +31,59 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-slate-200'
+          ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-md border-b border-slate-200 dark:border-slate-700'
           : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+
+          {/* Logo — white over hero gradient, switches for scrolled + light mode */}
           <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="https://www.digitaltechs.in/assets/img/logo/black-logo.png"
-              alt="Digital Tech Prosperity"
-              width={180}
-              height={45}
-              className="h-10 w-auto"
-              priority
-            />
+            {/* Not scrolled: always white logo (gradient behind is dark) */}
+            {!scrolled && (
+              <Image
+                src="https://www.digitaltechs.in/assets/img/logo/white-logo.png"
+                alt="Digital Tech Prosperity"
+                width={180} height={45}
+                className="h-10 w-auto"
+                priority
+              />
+            )}
+            {/* Scrolled + light mode: black logo */}
+            {scrolled && (
+              <Image
+                src="https://www.digitaltechs.in/assets/img/logo/black-logo.png"
+                alt="Digital Tech Prosperity"
+                width={180} height={45}
+                className="h-10 w-auto block dark:hidden"
+                priority
+              />
+            )}
+            {/* Scrolled + dark mode: white logo */}
+            {scrolled && (
+              <Image
+                src="https://www.digitaltechs.in/assets/img/logo/white-logo.png"
+                alt="Digital Tech Prosperity"
+                width={180} height={45}
+                className="h-10 w-auto hidden dark:block"
+                priority
+              />
+            )}
           </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            <DarkModeToggle />
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={`text-sm font-medium transition-colors ${
                   pathname === link.href
-                    ? 'text-blue-600'
-                    : 'text-slate-600 hover:text-blue-600'
+                    ? 'text-blue-600 dark:text-blue-400'
+                    : scrolled
+                      ? 'text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400'
+                      : 'text-white/90 hover:text-white'
                 }`}
               >
                 {link.label}
@@ -76,7 +99,11 @@ export default function Navbar() {
 
           {/* Mobile toggle */}
           <button
-            className="md:hidden p-2 text-slate-700 rounded-lg hover:bg-slate-100"
+            className={`md:hidden p-2 rounded-lg transition-colors ${
+              scrolled
+                ? 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
+                : 'text-white hover:bg-white/10'
+            }`}
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -87,7 +114,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-slate-200 shadow-lg">
+        <div className="md:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 shadow-lg">
           <div className="px-4 py-4 space-y-1">
             {navLinks.map((link) => (
               <Link
@@ -95,8 +122,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`block px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                   pathname === link.href
-                    ? 'bg-blue-50 text-blue-600'
-                    : 'text-slate-700 hover:bg-slate-50'
+                    ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
+                    : 'text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800'
                 }`}
                 onClick={() => setIsOpen(false)}
               >
@@ -105,7 +132,7 @@ export default function Navbar() {
             ))}
             <Link
               href="/contact"
-              className="block bg-blue-600 text-white text-sm font-medium px-4 py-2.5 rounded-lg text-center mt-3"
+              className="block bg-blue-600 text-white text-sm font-medium px-4 py-2.5 rounded-lg text-center mt-3 hover:bg-blue-700 transition-colors"
               onClick={() => setIsOpen(false)}
             >
               Get in Touch
