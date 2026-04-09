@@ -1,11 +1,24 @@
 services:
   - type: web
-    name: digitaltechs
+    name: digitaltechs-test
     runtime: node
+    branch: test
     buildCommand: npm install && npm run build
     startCommand: npm start
     envVars:
       - key: NODE_VERSION
         value: 20
-      - key: PORT
-        value: 3000
+      - key: NODE_ENV
+        value: test
+
+  - type: web
+    name: digitaltechs-production
+    runtime: node
+    branch: main
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: NODE_ENV
+        value: production
