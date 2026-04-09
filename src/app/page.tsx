@@ -53,53 +53,6 @@ const industries = [
   'Legal & Compliance', 'Media & Entertainment', 'Insurance', 'Travel & Hospitality',
 ]
 
-const clientResults = [
-  {
-    industry: 'Healthcare',
-    icon: '🏥',
-    color: 'text-red-600',
-    bg: 'bg-red-50',
-    border: 'border-red-100',
-    metric: '94%',
-    metricLabel: 'Diagnostic accuracy',
-    result: 'AI diagnostics platform processing 10,000+ medical scans daily. Reduced radiologist review time by 40% while maintaining clinical-grade accuracy.',
-    tags: ['Medical Imaging AI', 'HIPAA Compliant'],
-  },
-  {
-    industry: 'Finance',
-    icon: '🏦',
-    color: 'text-blue-600',
-    bg: 'bg-blue-50',
-    border: 'border-blue-100',
-    metric: '3×',
-    metricLabel: 'Faster risk decisions',
-    result: 'Real-time trading intelligence platform handling 2M+ events/second. Portfolio managers gained live risk exposure visibility previously only available in overnight batch runs.',
-    tags: ['Real-Time Analytics', 'Trading AI'],
-  },
-  {
-    industry: 'Retail',
-    icon: '🛍️',
-    color: 'text-purple-600',
-    bg: 'bg-purple-50',
-    border: 'border-purple-100',
-    metric: '72%',
-    metricLabel: 'Support queries automated',
-    result: 'LLM-powered customer support agent deployed across e-commerce platform. Resolved 72% of tier-1 queries without human intervention, reducing support costs by £380K/year.',
-    tags: ['LLM Integration', 'Customer Support AI'],
-  },
-  {
-    industry: 'Logistics',
-    icon: '🚚',
-    color: 'text-teal-600',
-    bg: 'bg-teal-50',
-    border: 'border-teal-100',
-    metric: '45%',
-    metricLabel: 'Operational cost reduction',
-    result: 'Legacy infrastructure migrated to AWS microservices with zero downtime. Route optimisation AI reduced fuel costs by 25% in the first quarter post-launch.',
-    tags: ['Cloud Migration', 'Route Optimisation'],
-  },
-]
-
 const values = [
   { icon: Lightbulb, title: 'Innovation with Purpose', desc: 'Every solution is designed with a clear goal to drive real business impact.' },
   { icon: Zap,       title: 'Automation for Efficiency', desc: 'We eliminate manual bottlenecks and accelerate operations through smart automation.' },
@@ -343,61 +296,6 @@ export default function HomePage() {
             <p className="text-center text-slate-400 text-xs mt-4">
               6 detailed industry hubs live · 10 more launching soon
             </p>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Client Results */}
-      <section className="bg-white py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-14">
-            <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">Proven Results</span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-2 mb-4">
-              Outcomes Across Industries
-            </h2>
-            <p className="text-slate-500 max-w-xl mx-auto">
-              Measurable impact from delivered projects. Client names withheld under NDA —
-              references available on request.
-            </p>
-          </AnimatedSection>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {clientResults.map((r, i) => (
-              <AnimatedSection key={r.industry} delay={i * 0.1}>
-                <div className={`bg-slate-50 border ${r.border} rounded-2xl p-7 card-glow h-full flex flex-col`}>
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="flex items-center gap-3">
-                      <span className="text-2xl">{r.icon}</span>
-                      <span className={`text-sm font-semibold ${r.color} ${r.bg} px-3 py-1 rounded-full`}>
-                        {r.industry}
-                      </span>
-                    </div>
-                    <div className="text-right">
-                      <div className={`text-3xl font-black ${r.color}`}>{r.metric}</div>
-                      <div className="text-xs text-slate-400 font-medium">{r.metricLabel}</div>
-                    </div>
-                  </div>
-                  <p className="text-slate-600 text-sm leading-relaxed flex-1 mb-5">{r.result}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {r.tags.map(tag => (
-                      <span key={tag} className="text-xs bg-white border border-slate-200 text-slate-500 px-3 py-1 rounded-full">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-          <AnimatedSection className="text-center mt-10">
-            <p className="text-slate-500 text-sm mb-4">
-              Want to see detailed case studies or speak with a reference client?
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-6 py-3 rounded-xl hover:bg-blue-700 transition-colors"
-            >
-              Request References <ArrowRight size={18} />
-            </Link>
           </AnimatedSection>
         </div>
       </section>
