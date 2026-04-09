@@ -1,5 +1,6 @@
 'use client'
 
+// Note: metadata for this page is set in layout.tsx (client components cannot export metadata)
 import { useState } from 'react'
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle2 } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'

@@ -1,6 +1,10 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'About Us',
+  description: 'Learn about Digital Tech Prosperity — 10+ years delivering AI and digital solutions across 15+ countries. Our mission, values, and team.',
+}
 import { ArrowRight, Lightbulb, Zap, Users, Shield, Globe, Award } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
 
