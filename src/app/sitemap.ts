@@ -10,5 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteUrl}/portfolio`,               lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.8 },
     { url: `${siteUrl}/contact`,                 lastModified: new Date(), changeFrequency: 'yearly',  priority: 0.7 },
     { url: `${siteUrl}/privacy-policy`,          lastModified: new Date(), changeFrequency: 'yearly',  priority: 0.3 },
+    { url: `${siteUrl}/terms-of-service`,        lastModified: new Date(), changeFrequency: 'yearly',  priority: 0.3 },
   ]
 }
