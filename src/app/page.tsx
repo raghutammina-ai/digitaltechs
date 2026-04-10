@@ -1,8 +1,8 @@
-'use client'
-// pipeline-test: v1.0.1
+'use client';
 
-import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 import {
   Brain, BarChart3, Code2, Cloud, ArrowRight,
   CheckCircle2, Users, Zap, Shield, Lightbulb,
