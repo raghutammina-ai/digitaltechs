@@ -100,7 +100,8 @@ export default function ROICalculator() {
                 <select
                   value={industry}
                   onChange={e => { setIndustry(e.target.value); setCalculated(false) }}
-                  className="w-full bg-slate-700/80 border border-slate-600 text-white px-4 py-3 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  className="w-full bg-slate-700/80 border border-slate-600 text-white px-4 py-3 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all appearance-none cursor-pointer hover:border-slate-500"
+                  style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 14px center' }}
                 >
                   <option value="">Select industry…</option>
                   {industries.map(ind => <option key={ind} value={ind}>{ind}</option>)}
@@ -115,7 +116,8 @@ export default function ROICalculator() {
                 <select
                   value={sizeIndex}
                   onChange={e => { setSizeIndex(Number(e.target.value)); setCalculated(false) }}
-                  className="w-full bg-slate-700/80 border border-slate-600 text-white px-4 py-3 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  className="w-full bg-slate-700/80 border border-slate-600 text-white px-4 py-3 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all appearance-none cursor-pointer hover:border-slate-500"
+                  style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 14px center' }}
                 >
                   {companySizes.map((s, i) => <option key={i} value={i}>{s.label}</option>)}
                 </select>
