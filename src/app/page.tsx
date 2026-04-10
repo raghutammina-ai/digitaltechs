@@ -7,14 +7,22 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Brain,
    BarChart3,
-    Code2, Cloud, ArrowRight, CheckCircle2,
-ui-update
-  Users, Zap, Shield, Lightbulb, Lock, Cpu, Sparkles,
-  ExternalLink, Star, Phone, Quote,
-
-  Users, Zap, Shield, Lightbulb, Lock, Cpu,
- test
-} from 'lucide-react'
+    Code2,
+     Cloud,
+      ArrowRight,
+       CheckCircle2,
+  Users,
+   Zap,
+    Shield,
+     Lightbulb,
+      Lock,
+       Cpu,
+        Sparkles,
+  ExternalLink,
+  Star,
+   Phone,
+    Quote 
+} from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection'
 import TechStack from '@/components/TechStack'
 import NewsletterSection from '@/components/NewsletterSection'
