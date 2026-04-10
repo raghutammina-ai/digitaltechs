@@ -5,7 +5,9 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Brain, BarChart3, Code2, Cloud, ArrowRight, CheckCircle2,
+  Brain,
+   BarChart3,
+    Code2, Cloud, ArrowRight, CheckCircle2,
 ui-update
   Users, Zap, Shield, Lightbulb, Lock, Cpu, Sparkles,
   ExternalLink, Star, Phone, Quote,
