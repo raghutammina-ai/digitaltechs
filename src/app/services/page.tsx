@@ -5,7 +5,7 @@ import AnimatedSection from '@/components/AnimatedSection'
 
 export const metadata: Metadata = {
   title: 'AI & Software Services',
-  description: 'AI application development, data analytics, custom software, and cloud automation for every industry — healthcare, finance, retail, manufacturing and more.',
+  description: 'AI application development, data analytics, custom software, and cloud automation for industries like Real Estate, Healthcare, Travel & Hospitality, Retail, and Agriculture.',
 }
 
 const services = [

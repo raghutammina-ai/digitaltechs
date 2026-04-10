@@ -4,15 +4,20 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CookieBanner from '@/components/CookieBanner'
-import WhatsAppButton from '@/components/WhatsAppButton'
 import BackToTop from '@/components/BackToTop'
 import PageLoader from '@/components/PageLoader'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 import ChatBot from '@/components/ChatBot'
+import JsonLd from '@/components/JsonLd'
 
 const inter = Inter({ subsets: ['latin'] })
 
 const siteUrl = 'https://www.digitaltechs.in'
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
 
 export const metadata: Metadata = {
   title: {
@@ -29,7 +34,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   openGraph: {
     title: 'Digital Tech Prosperity | AI & Software Solutions',
-    description: 'Intelligent & scalable AI solutions for every industry.',
+    description: 'Intelligent & scalable AI solutions for industries like Real Estate, Healthcare, Travel & Hospitality, Retail, and Agriculture.',
     type: 'website',
     url: siteUrl,
     siteName: 'Digital Tech Prosperity',
@@ -37,7 +42,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Digital Tech Prosperity | AI & Software Solutions',
-    description: 'Intelligent & scalable AI solutions for every industry.',
+    description: 'Intelligent & scalable AI solutions for industries like Real Estate, Healthcare, Travel & Hospitality, Retail, and Agriculture.',
   },
   robots: {
     index: true,
@@ -48,15 +53,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-slate-50 antialiased`}>
+      <body className={`${inter.className} bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 antialiased`}>
         <GoogleAnalytics />
+        <JsonLd />
         <PageLoader />
         <Navbar />
         <main>{children}</main>
         <Footer />
         <CookieBanner />
         <ChatBot />
-        <WhatsAppButton />
         <BackToTop />
       </body>
     </html>

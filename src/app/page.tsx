@@ -1,10 +1,11 @@
 'use client'
+// pipeline-test: v1.0.1
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import {
   Brain, BarChart3, Code2, Cloud, ArrowRight, CheckCircle2,
-  Users, Award, Globe, Zap, Shield, Lightbulb, Quote,
+  Users, Zap, Shield, Lightbulb,
 } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
 import TechStack from '@/components/TechStack'
@@ -50,42 +51,6 @@ const industries = [
   'Manufacturing', 'Education', 'Logistics', 'Real Estate', 'Government',
   'Pharma & Life Sciences', 'Energy & Utilities', 'Telecom', 'Agriculture',
   'Legal & Compliance', 'Media & Entertainment', 'Insurance', 'Travel & Hospitality',
-]
-
-const testimonials = [
-  {
-    name: 'Sarah Mitchell',
-    role: 'CTO, HealthBridge Solutions',
-    industry: 'Healthcare',
-    text: 'Digital Tech Prosperity built our AI diagnostics platform from the ground up. Their deep understanding of both AI and healthcare compliance saved us months of back-and-forth. The system now processes 10,000+ scans a day with 94% accuracy.',
-    rating: 5,
-  },
-  {
-    name: 'Arjun Mehta',
-    role: 'Head of Data, FinEdge Capital',
-    industry: 'Finance',
-    text: 'We needed real-time trading intelligence that could handle massive data volumes. DTP delivered a rock-solid pipeline and BI dashboard in 10 weeks. Our portfolio managers now have insights they never had before.',
-    rating: 5,
-  },
-  {
-    name: 'Priya Nair',
-    role: 'VP Engineering, ShopEasy',
-    industry: 'Retail',
-    text: 'Our LLM-powered support agent handles 72% of customer queries without human intervention. DTP understood our business deeply and delivered a solution that genuinely works in production — not just in demos.',
-    rating: 5,
-  },
-  {
-    name: 'James Okafor',
-    role: 'Director of Operations, LogiTrack',
-    industry: 'Logistics',
-    text: 'The cloud migration was seamless. We moved 8 years of legacy infrastructure to AWS microservices with zero downtime. Operational costs dropped 45% in the first quarter post-launch.',
-    rating: 5,
-  },
-]
-
-const clients = [
-  'HealthBridge', 'FinEdge Capital', 'ShopEasy', 'LogiTrack',
-  'EduSpark', 'GovTech India', 'ManuCore', 'RealNest',
 ]
 
 const values = [
@@ -145,7 +110,7 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             We build intelligent, scalable digital solutions across AI application development,
-            data analytics, custom software, and automation engineering — for every industry.
+            data analytics, custom software, and automation engineering — for industries like Real Estate, Healthcare, Travel & Hospitality, Retail, and Agriculture.
           </motion.p>
 
           <motion.div
@@ -298,99 +263,40 @@ export default function HomePage() {
           <AnimatedSection>
             <div className="flex flex-wrap justify-center gap-3">
               {[
-                { name: 'Healthcare', slug: 'healthcare' },
-                { name: 'Finance & Banking', slug: 'finance' },
-                { name: 'Retail & E-commerce', slug: 'retail' },
-                { name: 'Manufacturing', slug: 'manufacturing' },
-                { name: 'Education', slug: 'education' },
-                { name: 'Logistics', slug: 'logistics' },
-                { name: 'Real Estate', slug: null },
-                { name: 'Government', slug: null },
-                { name: 'Pharma & Life Sciences', slug: null },
-                { name: 'Energy & Utilities', slug: null },
-                { name: 'Telecom', slug: null },
-                { name: 'Agriculture', slug: null },
-                { name: 'Legal & Compliance', slug: null },
-                { name: 'Media & Entertainment', slug: null },
-                { name: 'Insurance', slug: null },
-                { name: 'Travel & Hospitality', slug: null },
-              ].map(({ name, slug }) =>
-                slug ? (
-                  <Link
-                    key={name}
-                    href={`/industries/${slug}`}
-                    className="px-5 py-2.5 bg-blue-50 border border-blue-200 rounded-full text-blue-700 text-sm font-medium hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors"
-                  >
-                    {name} →
-                  </Link>
-                ) : (
-                  <span
-                    key={name}
-                    className="px-5 py-2.5 bg-slate-50 border border-slate-200 rounded-full text-slate-700 text-sm font-medium hover:border-blue-300 hover:text-blue-600 hover:bg-blue-50 transition-colors cursor-default"
-                  >
-                    {name}
-                  </span>
-                )
-              )}
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Trusted By */}
-      <section className="bg-slate-50 py-16 border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-8">
-            <p className="text-slate-400 text-sm font-medium uppercase tracking-widest">Trusted by companies across every industry</p>
-          </AnimatedSection>
-          <AnimatedSection>
-            <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
-              {clients.map((client) => (
-                <span key={client} className="text-slate-400 font-bold text-lg tracking-wide hover:text-blue-500 transition-colors cursor-default">
-                  {client}
-                </span>
+                { name: 'Healthcare', slug: 'healthcare', live: true },
+                { name: 'Finance & Banking', slug: 'finance', live: true },
+                { name: 'Retail & E-commerce', slug: 'retail', live: true },
+                { name: 'Manufacturing', slug: 'manufacturing', live: true },
+                { name: 'Education', slug: 'education', live: true },
+                { name: 'Logistics', slug: 'logistics', live: true },
+                { name: 'Real Estate', slug: 'real-estate', live: false },
+                { name: 'Government', slug: 'government', live: false },
+                { name: 'Pharma & Life Sciences', slug: 'pharma', live: false },
+                { name: 'Energy & Utilities', slug: 'energy', live: false },
+                { name: 'Telecom', slug: 'telecom', live: false },
+                { name: 'Agriculture', slug: 'agriculture', live: false },
+                { name: 'Legal & Compliance', slug: 'legal', live: false },
+                { name: 'Media & Entertainment', slug: 'media', live: false },
+                { name: 'Insurance', slug: 'insurance', live: false },
+                { name: 'Travel & Hospitality', slug: 'travel', live: false },
+              ].map(({ name, slug, live }) => (
+                <Link
+                  key={name}
+                  href={`/industries/${slug}`}
+                  className={`px-5 py-2.5 rounded-full text-sm font-medium transition-colors ${
+                    live
+                      ? 'bg-blue-50 border border-blue-200 text-blue-700 hover:bg-blue-600 hover:text-white hover:border-blue-600'
+                      : 'bg-slate-50 border border-slate-200 text-slate-600 hover:bg-slate-100 hover:border-slate-300'
+                  }`}
+                >
+                  {name} {live ? '→' : ''}
+                </Link>
               ))}
             </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="bg-white py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-14">
-            <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">Client Stories</span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-2 mb-4">
-              What Our Clients Say
-            </h2>
-            <p className="text-slate-500 max-w-xl mx-auto">
-              Real results from real businesses — across healthcare, finance, retail, logistics and beyond.
+            <p className="text-center text-slate-400 text-xs mt-4">
+              6 detailed industry hubs live · 10 more launching soon
             </p>
           </AnimatedSection>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {testimonials.map((t, i) => (
-              <AnimatedSection key={t.name} delay={i * 0.1}>
-                <div className="bg-slate-50 border border-slate-200 rounded-2xl p-7 card-glow h-full flex flex-col">
-                  <Quote size={28} className="text-blue-200 mb-3 flex-shrink-0" />
-                  <p className="text-slate-700 leading-relaxed flex-1 mb-6 italic">&ldquo;{t.text}&rdquo;</p>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="font-bold text-slate-900">{t.name}</p>
-                      <p className="text-sm text-slate-500">{t.role}</p>
-                    </div>
-                    <span className="text-xs bg-blue-50 text-blue-600 border border-blue-100 px-3 py-1 rounded-full font-medium">
-                      {t.industry}
-                    </span>
-                  </div>
-                  <div className="flex gap-1 mt-3">
-                    {Array.from({ length: t.rating }).map((_, j) => (
-                      <span key={j} className="text-yellow-400 text-sm">★</span>
-                    ))}
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
         </div>
       </section>
 

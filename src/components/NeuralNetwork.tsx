@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 interface Node {
   x: number
@@ -12,8 +12,15 @@ interface Node {
 
 export default function NeuralNetwork() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
+    setIsMobile(window.matchMedia('(max-width: 768px)').matches)
+  }, [])
+
+  useEffect(() => {
+    if (isMobile) return
+
     const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext('2d')
@@ -39,7 +46,6 @@ export default function NeuralNetwork() {
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      // Update positions
       nodes.forEach(n => {
         n.x += n.vx
         n.y += n.vy
@@ -47,7 +53,6 @@ export default function NeuralNetwork() {
         if (n.y < 0 || n.y > canvas.height) n.vy *= -1
       })
 
-      // Draw connections
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const dx = nodes[i].x - nodes[j].x
@@ -65,14 +70,12 @@ export default function NeuralNetwork() {
         }
       }
 
-      // Draw nodes
       nodes.forEach(n => {
         ctx.beginPath()
         ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2)
         ctx.fillStyle = 'rgba(186, 230, 253, 0.8)'
         ctx.fill()
 
-        // Glow effect
         ctx.beginPath()
         ctx.arc(n.x, n.y, n.radius + 2, 0, Math.PI * 2)
         ctx.fillStyle = 'rgba(56, 189, 248, 0.2)'
@@ -92,7 +95,9 @@ export default function NeuralNetwork() {
       cancelAnimationFrame(animId)
       ro.disconnect()
     }
-  }, [])
+  }, [isMobile])
+
+  if (isMobile) return null
 
   return (
     <canvas
