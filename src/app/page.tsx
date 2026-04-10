@@ -37,7 +37,7 @@ const services = [
   {
     icon: Brain,
     title: 'AI Application Development',
- ui-update
+ 
     desc: 'Custom LLMs, intelligent automation, and AI-powered apps that make your workflows faster and smarter.',
     color: 'text-blue-600',
     bg: 'bg-blue-50',
