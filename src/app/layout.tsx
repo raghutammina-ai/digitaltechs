@@ -9,6 +9,7 @@ import PageLoader from '@/components/PageLoader'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 import ChatBot from '@/components/ChatBot'
 import JsonLd from '@/components/JsonLd'
+import WhatsAppButton from '@/components/WhatsAppButton'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   openGraph: {
     title: 'Digital Tech Prosperity | AI & Software Solutions',
-    description: 'Intelligent & scalable AI solutions for every industry.',
+    description: 'Intelligent & scalable AI solutions for industries like Real Estate, Healthcare, Travel & Hospitality, Retail, and Agriculture.',
     type: 'website',
     url: siteUrl,
     siteName: 'Digital Tech Prosperity',
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Digital Tech Prosperity | AI & Software Solutions',
-    description: 'Intelligent & scalable AI solutions for every industry.',
+    description: 'Intelligent & scalable AI solutions for industries like Real Estate, Healthcare, Travel & Hospitality, Retail, and Agriculture.',
   },
   robots: {
     index: true,
@@ -62,6 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <CookieBanner />
         <ChatBot />
+        <WhatsAppButton />
         <BackToTop />
       </body>
     </html>
