@@ -1,19 +1,18 @@
-'use client'
-// pipeline-test: v1.0.1
+'use client';
 
-import Link from 'next/link'
-import { motion } from 'framer-motion'
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 import {
   Brain, BarChart3, Code2, Cloud, ArrowRight, CheckCircle2,
   Users, Zap, Shield, Lightbulb, Lock, Cpu,
 } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
-import TechStack from '@/components/TechStack'
-import NewsletterSection from '@/components/NewsletterSection'
 import NeuralNetwork from '@/components/NeuralNetwork'
 import TypewriterText from '@/components/TypewriterText'
 import AnimatedCounter from '@/components/AnimatedCounter'
 import ROICalculator from '@/components/ROICalculator'
+import TechStack from '@/components/TechStack'
+import NewsletterSection from '@/components/NewsletterSection'
 
 const services = [
   {
@@ -67,9 +66,9 @@ const services = [
 ]
 
 const values = [
-  { icon: Lightbulb, title: 'Innovation with Purpose',      desc: 'Every solution is designed with a clear goal — to drive real, measurable business impact.' },
-  { icon: Zap,       title: 'Automation for Efficiency',    desc: 'We eliminate manual bottlenecks and accelerate operations through intelligent automation.' },
-  { icon: Users,     title: 'Partnership for Growth',       desc: 'We work as an extension of your team, invested in your long-term success and scalability.' },
+  { icon: Lightbulb, title: 'Innovation with Purpose',       desc: 'Every solution is designed with a clear goal — to drive real, measurable business impact.' },
+  { icon: Zap,       title: 'Automation for Efficiency',     desc: 'We eliminate manual bottlenecks and accelerate operations through intelligent automation.' },
+  { icon: Users,     title: 'Partnership for Growth',        desc: 'We work as an extension of your team, invested in your long-term success and scalability.' },
   { icon: Shield,    title: 'Transformation with Integrity', desc: 'Security, transparency, and ethical AI are at the core of everything we build.' },
 ]
 
@@ -84,7 +83,7 @@ const processSteps = [
 export default function HomePage() {
   return (
     <>
-      {/* ── Hero ─────────────────────────────────────────────────── */}
+      {/* Hero */}
       <section className="relative min-h-screen hero-gradient grid-overlay flex items-center">
         <NeuralNetwork />
         <div className="absolute top-20 right-10 w-72 h-72 bg-cyan-400/20 rounded-full blur-3xl animate-pulse-slow" />
@@ -108,16 +107,11 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Empowering Progress with{' '}
-            <span className="text-cyan-300">Digital Tech Prosperity</span>
+            Transform Your Business with{' '}
+            <span className="text-cyan-300">AI &amp; Digital Solutions</span>
           </motion.h1>
 
-          <motion.div
-            className="text-2xl sm:text-3xl font-semibold mb-6 min-h-[2rem]"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
+          <motion.div className="text-xl sm:text-2xl font-semibold mb-5 h-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.35 }}>
             <TypewriterText />
           </motion.div>
 
@@ -167,15 +161,14 @@ export default function HomePage() {
           </motion.div>
         </div>
 
-        {/* Wave divider */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#f8fafc" />
+        <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
+          <svg viewBox="0 0 1440 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,36 C360,72 1080,0 1440,36 L1440,72 L0,72 Z" fill="#f8fafc" />
           </svg>
         </div>
       </section>
 
-      {/* ── Stats ────────────────────────────────────────────────── */}
+      {/* Stats */}
       <section className="bg-slate-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -186,17 +179,19 @@ export default function HomePage() {
               { target: 10,   suffix: '+', label: 'Years of Experience' },
             ].map((stat, i) => (
               <AnimatedSection key={stat.label} delay={i * 0.1} className="text-center">
-                <div className="text-4xl font-bold gradient-text mb-1">
-                  <AnimatedCounter target={stat.target} suffix={stat.suffix} />
+                <div className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-200 hover:shadow-md transition-all duration-300">
+                  <div className="text-4xl font-extrabold gradient-text mb-1 tabular-nums">
+                    <AnimatedCounter target={stat.target} suffix={stat.suffix} />
+                  </div>
+                  <div className="text-slate-600 text-sm font-medium">{stat.label}</div>
                 </div>
-                <div className="text-sm text-slate-500 font-medium">{stat.label}</div>
               </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Services ─────────────────────────────────────────────── */}
+      {/* Services */}
       <section className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-14">
@@ -228,19 +223,15 @@ export default function HomePage() {
               </AnimatedSection>
             ))}
           </div>
-
           <AnimatedSection className="text-center mt-10">
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all"
-            >
-              View All Services <ArrowRight size={18} />
+            <Link href="/services" className="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-7 py-3.5 rounded-xl hover:bg-blue-700 transition-colors shadow-md">
+              View All Services <ArrowRight size={17} />
             </Link>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* ── Why Choose Us ────────────────────────────────────────── */}
+      {/* Why Choose Us */}
       <section className="bg-slate-50 py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -262,8 +253,8 @@ export default function HomePage() {
                   'Recognised by leading technology alliances',
                   'Ongoing support & continuous optimisation',
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-slate-700">
-                    <CheckCircle2 size={18} className="text-blue-600 flex-shrink-0" />
+                  <li key={item} className="flex items-start gap-3 text-slate-700 text-sm">
+                    <CheckCircle2 size={17} className="text-blue-600 flex-shrink-0 mt-0.5" />
                     {item}
                   </li>
                 ))}
@@ -275,8 +266,7 @@ export default function HomePage() {
                 Learn About Us <ArrowRight size={18} />
               </Link>
             </AnimatedSection>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {values.map((v, i) => (
                 <AnimatedSection key={v.title} delay={i * 0.1}>
                   <div className="bg-white border border-slate-200 rounded-2xl p-6 card-glow hover:border-blue-200 transition-colors">
@@ -293,7 +283,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── How We Work ──────────────────────────────────────────── */}
+      {/* How We Work */}
       <section className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-14">
@@ -322,7 +312,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Industries ───────────────────────────────────────────── */}
+      {/* Industries */}
       <section id="industries" className="bg-slate-50 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-10">
@@ -335,22 +325,22 @@ export default function HomePage() {
           <AnimatedSection>
             <div className="flex flex-wrap justify-center gap-3">
               {[
-                { name: 'Healthcare',           slug: 'healthcare',    live: true },
-                { name: 'Finance & Banking',     slug: 'finance',       live: true },
-                { name: 'Retail & E-commerce',  slug: 'retail',        live: true },
-                { name: 'Manufacturing',         slug: 'manufacturing', live: true },
-                { name: 'Education',             slug: 'education',     live: true },
-                { name: 'Logistics',             slug: 'logistics',     live: true },
-                { name: 'Real Estate',           slug: 'real-estate',   live: false },
-                { name: 'Government',            slug: 'government',    live: false },
-                { name: 'Pharma & Life Sciences',slug: 'pharma',        live: false },
-                { name: 'Energy & Utilities',    slug: 'energy',        live: false },
-                { name: 'Telecom',               slug: 'telecom',       live: false },
-                { name: 'Agriculture',           slug: 'agriculture',   live: false },
-                { name: 'Legal & Compliance',    slug: 'legal',         live: false },
-                { name: 'Media & Entertainment', slug: 'media',         live: false },
-                { name: 'Insurance',             slug: 'insurance',     live: false },
-                { name: 'Travel & Hospitality',  slug: 'travel',        live: false },
+                { name: 'Healthcare',            slug: 'healthcare',    live: true },
+                { name: 'Finance & Banking',      slug: 'finance',       live: true },
+                { name: 'Retail & E-commerce',   slug: 'retail',        live: true },
+                { name: 'Manufacturing',          slug: 'manufacturing', live: true },
+                { name: 'Education',              slug: 'education',     live: true },
+                { name: 'Logistics',              slug: 'logistics',     live: true },
+                { name: 'Real Estate',            slug: 'real-estate',   live: false },
+                { name: 'Government',             slug: 'government',    live: false },
+                { name: 'Pharma & Life Sciences', slug: 'pharma',        live: false },
+                { name: 'Energy & Utilities',     slug: 'energy',        live: false },
+                { name: 'Telecom',                slug: 'telecom',       live: false },
+                { name: 'Agriculture',            slug: 'agriculture',   live: false },
+                { name: 'Legal & Compliance',     slug: 'legal',         live: false },
+                { name: 'Media & Entertainment',  slug: 'media',         live: false },
+                { name: 'Insurance',              slug: 'insurance',     live: false },
+                { name: 'Travel & Hospitality',   slug: 'travel',        live: false },
               ].map(({ name, slug, live }) => (
                 <Link
                   key={name}
@@ -372,18 +362,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── ROI Calculator ───────────────────────────────────────── */}
+      {/* ROI Calculator */}
       <ROICalculator />
 
-      {/* ── Tech Stack ───────────────────────────────────────────── */}
+      {/* Tech Stack */}
       <TechStack />
 
-      {/* ── Newsletter ───────────────────────────────────────────── */}
+      {/* Newsletter */}
       <NewsletterSection />
 
-      {/* ── CTA ──────────────────────────────────────────────────── */}
+      {/* CTA */}
       <section className="hero-gradient py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <span className="inline-flex items-center gap-2 bg-white/15 text-white/80 text-sm font-medium px-4 py-1.5 rounded-full mb-6 backdrop-blur-sm border border-white/20">
               <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
