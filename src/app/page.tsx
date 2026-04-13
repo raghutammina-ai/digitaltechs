@@ -309,39 +309,21 @@ export default function HomePage() {
           <AnimatedSection>
             <div className="flex flex-wrap justify-center gap-3">
               {[
-                { name: 'Healthcare', slug: 'healthcare', live: true },
-                { name: 'Finance & Banking', slug: 'finance', live: true },
-                { name: 'Retail & E-commerce', slug: 'retail', live: true },
-                { name: 'Manufacturing', slug: 'manufacturing', live: true },
-                { name: 'Education', slug: 'education', live: true },
-                { name: 'Logistics', slug: 'logistics', live: true },
-                { name: 'Real Estate', slug: 'real-estate', live: false },
-                { name: 'Government', slug: 'government', live: false },
-                { name: 'Pharma & Life Sciences', slug: 'pharma', live: false },
-                { name: 'Energy & Utilities', slug: 'energy', live: false },
-                { name: 'Telecom', slug: 'telecom', live: false },
-                { name: 'Agriculture', slug: 'agriculture', live: false },
-                { name: 'Legal & Compliance', slug: 'legal', live: false },
-                { name: 'Media & Entertainment', slug: 'media', live: false },
-                { name: 'Insurance', slug: 'insurance', live: false },
-                { name: 'Travel & Hospitality', slug: 'travel', live: false },
-              ].map(({ name, slug, live }) => (
+                { name: 'Healthcare', slug: 'healthcare' },
+                { name: 'Real Estate', slug: 'real-estate' },
+                { name: 'Travel & Hospitality', slug: 'travel' },
+                { name: 'Retail & E-commerce', slug: 'retail' },
+                { name: 'Agriculture', slug: 'agriculture' },
+              ].map(({ name, slug }) => (
                 <Link
                   key={name}
                   href={`/industries/${slug}`}
-                  className={`px-5 py-2.5 rounded-full text-sm font-medium transition-colors ${
-                    live
-                      ? 'bg-blue-50 border border-blue-200 text-blue-700 hover:bg-blue-600 hover:text-white hover:border-blue-600'
-                      : 'bg-slate-50 border border-slate-200 text-slate-600 hover:bg-slate-100 hover:border-slate-300'
-                  }`}
+                  className="px-5 py-2.5 rounded-full text-sm font-medium transition-colors bg-blue-50 border border-blue-200 text-blue-700 hover:bg-blue-600 hover:text-white hover:border-blue-600"
                 >
-                  {name} {live ? '→' : ''}
+                  {name} →
                 </Link>
               ))}
             </div>
-            <p className="text-center text-slate-400 text-xs mt-4">
-              6 detailed industry hubs live · 10 more launching soon
-            </p>
           </AnimatedSection>
         </div>
       </section>
