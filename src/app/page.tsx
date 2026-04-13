@@ -42,6 +42,53 @@ const processSteps = [
   { step: '05', title: 'Optimise', desc: 'Improve continuously.' },
 ];
 
+const clientResults = [
+  {
+    industry: 'Healthcare',
+    icon: '🏥',
+    metric: '40%',
+    metricLabel: 'Faster Diagnosis',
+    result: 'AI-powered diagnostic imaging platform reduced radiology report turnaround by 40%, enabling earlier intervention for 12,000+ patients annually.',
+    tags: ['Medical Imaging', 'NLP', 'EHR Integration'],
+    color: 'text-blue-600',
+    bg: 'bg-blue-50',
+    border: 'border-blue-100',
+  },
+  {
+    industry: 'Finance',
+    icon: '🏦',
+    metric: '92%',
+    metricLabel: 'Fraud Detection Accuracy',
+    result: 'Real-time fraud detection model deployed across 3 million daily transactions, achieving 92% accuracy and saving $4.2M in fraudulent losses in year one.',
+    tags: ['Fraud Detection', 'ML Pipeline', 'Real-time Scoring'],
+    color: 'text-emerald-600',
+    bg: 'bg-emerald-50',
+    border: 'border-emerald-100',
+  },
+  {
+    industry: 'Retail',
+    icon: '🛒',
+    metric: '3.1×',
+    metricLabel: 'ROI on Personalisation',
+    result: 'Recommendation engine personalised product discovery for 800K shoppers, lifting average order value by 27% and delivering 3.1× ROI within 6 months.',
+    tags: ['Recommendation Engine', 'A/B Testing', 'Behavioural Analytics'],
+    color: 'text-orange-600',
+    bg: 'bg-orange-50',
+    border: 'border-orange-100',
+  },
+  {
+    industry: 'Manufacturing',
+    icon: '🏭',
+    metric: '68%',
+    metricLabel: 'Downtime Reduction',
+    result: 'Predictive maintenance solution analysing IoT sensor data from 200+ machines cut unplanned downtime by 68% and reduced maintenance costs by $1.8M/yr.',
+    tags: ['Predictive Maintenance', 'IoT', 'Anomaly Detection'],
+    color: 'text-violet-600',
+    bg: 'bg-violet-50',
+    border: 'border-violet-100',
+  },
+];
+
 /* ---------------- PAGE ---------------- */
 
 export default function HomePage() {
@@ -124,14 +171,78 @@ export default function HomePage() {
               ))}
             </ul>
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-2 gap-4">
-            {values.map((v, i) => (
-              <div key={i} className="border p-4 rounded-xl">
-                <v.icon />
-                <h4>{v.title}</h4>
-                <p className="text-sm">{v.desc}</p>
-              </div>
+      {/* Industries */}
+      <section id="industries" className="bg-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection className="text-center mb-10">
+            <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">Industries</span>
+            <h2 className="text-3xl font-bold text-slate-900 mt-2">We Serve Every Industry</h2>
+            <p className="text-slate-500 mt-2">Click any industry to explore our tailored AI solutions.</p>
+          </AnimatedSection>
+          <AnimatedSection>
+            <div className="flex flex-wrap justify-center gap-3">
+              {[
+                { name: 'Healthcare', slug: 'healthcare' },
+                { name: 'Real Estate', slug: 'real-estate' },
+                { name: 'Travel & Hospitality', slug: 'travel' },
+                { name: 'Retail & E-commerce', slug: 'retail' },
+                { name: 'Agriculture', slug: 'agriculture' },
+              ].map(({ name, slug }) => (
+                <Link
+                  key={name}
+                  href={`/industries/${slug}`}
+                  className="px-5 py-2.5 rounded-full text-sm font-medium transition-colors bg-blue-50 border border-blue-200 text-blue-700 hover:bg-blue-600 hover:text-white hover:border-blue-600"
+                >
+                  {name} →
+                </Link>
+              ))}
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Client Results */}
+      <section className="bg-white py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection className="text-center mb-14">
+            <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">Proven Results</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-2 mb-4">
+              Outcomes Across Industries
+            </h2>
+            <p className="text-slate-500 max-w-xl mx-auto">
+              Measurable impact from delivered projects. Client names withheld under NDA —
+              references available on request.
+            </p>
+          </AnimatedSection>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {clientResults.map((r, i) => (
+              <AnimatedSection key={r.industry} delay={i * 0.1}>
+                <div className={`bg-slate-50 border ${r.border} rounded-2xl p-7 card-glow h-full flex flex-col`}>
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="flex items-center gap-3">
+                      <span className="text-2xl">{r.icon}</span>
+                      <span className={`text-sm font-semibold ${r.color} ${r.bg} px-3 py-1 rounded-full`}>
+                        {r.industry}
+                      </span>
+                    </div>
+                    <div className="text-right">
+                      <div className={`text-3xl font-black ${r.color}`}>{r.metric}</div>
+                      <div className="text-xs text-slate-400 font-medium">{r.metricLabel}</div>
+                    </div>
+                  </div>
+                  <p className="text-slate-600 text-sm leading-relaxed flex-1 mb-5">{r.result}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {r.tags.map(tag => (
+                      <span key={tag} className="text-xs bg-white border border-slate-200 text-slate-500 px-3 py-1 rounded-full">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
