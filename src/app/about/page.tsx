@@ -40,7 +40,7 @@ const values = [
 ]
 
 const milestones = [
-  { year: '2014', event: 'Founded with a mission to make AI accessible to every business' },
+  { year: '2025', event: 'Founded with a mission to make AI accessible to every business' },
   { year: '2016', event: 'First enterprise data analytics platform delivered to a Fortune 500 client' },
   { year: '2018', event: 'Expanded globally with teams across Asia, Europe, and North America' },
   { year: '2020', event: 'Launched our AI Centre of Excellence for rapid prototyping' },
@@ -49,10 +49,10 @@ const milestones = [
 ]
 
 const stats = [
-  { icon: Award,  value: '10+', label: 'Years of Expertise' },
-  { icon: Globe,  value: '15+', label: 'Countries' },
-  { icon: Users,  value: '50+', label: 'Happy Clients' },
-  { icon: Zap,    value: '200+', label: 'Projects Delivered' },
+  { icon: Award,  value: '1+',  label: 'Years of Experience' },
+  { icon: Globe,  value: '2+',  label: 'Countries'           },
+  { icon: Users,  value: '10+', label: 'Clients'             },
+  { icon: Zap,    value: '6+',  label: 'Projects'            },
 ]
 
 export default function AboutPage() {

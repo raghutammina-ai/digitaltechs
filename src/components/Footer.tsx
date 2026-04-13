@@ -139,7 +139,13 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3 text-sm text-slate-400">
                 <MapPin size={15} className="mt-0.5 text-blue-400 flex-shrink-0" />
-                <span>India &middot; Global Delivery</span>
+                <address className="not-italic leading-relaxed">
+                  Hyderabad, India<br />
+                  Flat No: #601,<br />
+                  Kaakatiya&apos;s Golden Crysta,<br />
+                  Lanco Hills Road,<br />
+                  Manikonda - 500089
+                </address>
               </li>
             </ul>
 

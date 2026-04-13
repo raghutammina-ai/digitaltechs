@@ -15,7 +15,7 @@ const services = [
 const contactInfo = [
   { icon: Mail,   label: 'Email Us',      value: 'info@digitaltechs.in'        },
   { icon: Phone,  label: 'Call Us',       value: '+91 9719245678'              },
-  { icon: MapPin, label: 'Headquarters',  value: 'Flat No: #601, Kaakatiya\'s Golden Crysta, Lanco Hills Road, Manikonda - 500089' },
+  { icon: MapPin, label: 'Hyderabad',     value: 'Flat No: #601, Kaakatiya\'s Golden Crysta, Lanco Hills Road, Manikonda - 500089' },
   { icon: Clock,  label: 'Response Time', value: 'Within 24 business hours'    },
 ]
 
