@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { X, MessageCircle } from 'lucide-react'
 
-const WHATSAPP_NUMBER = '919000000000' // Replace with actual number
+const WHATSAPP_NUMBER = '918008491999'
 const DEFAULT_MESSAGE = 'Hi Digital Tech Prosperity! I would like to know more about your AI services.'
 
 export default function WhatsAppButton() {
@@ -13,7 +13,6 @@ export default function WhatsAppButton() {
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
-      {/* Tooltip */}
       {showTooltip && (
         <div className="bg-white border border-slate-200 rounded-2xl shadow-xl p-4 max-w-xs animate-in slide-in-from-bottom-2">
           <div className="flex items-center justify-between mb-2">
@@ -39,7 +38,6 @@ export default function WhatsAppButton() {
         </div>
       )}
 
-      {/* WhatsApp button */}
       <button
         onClick={() => setShowTooltip(!showTooltip)}
         className="w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110 active:scale-95"

@@ -9,6 +9,7 @@ import PageLoader from '@/components/PageLoader'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 import ChatBot from '@/components/ChatBot'
 import JsonLd from '@/components/JsonLd'
+import WhatsAppButton from '@/components/WhatsAppButton'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -62,6 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <CookieBanner />
         <ChatBot />
+        <WhatsAppButton />
         <BackToTop />
       </body>
     </html>
