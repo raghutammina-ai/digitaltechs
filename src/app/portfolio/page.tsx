@@ -33,14 +33,6 @@ const projects = [
     color: 'bg-indigo-600',
   },
   {
-    title: 'Predictive Maintenance System',
-    category: 'AI',
-    industry: 'Manufacturing',
-    desc: 'ML-based predictive maintenance solution that reduced equipment downtime by 38% for a large factory operation.',
-    tags: ['Machine Learning', 'IoT', 'Python'],
-    color: 'bg-blue-600',
-  },
-  {
     title: 'Cloud Migration & DevOps',
     category: 'Cloud',
     industry: 'Logistics',
@@ -57,28 +49,12 @@ const projects = [
     color: 'bg-cyan-600',
   },
   {
-    title: 'LLM-Powered Customer Support',
-    category: 'AI',
-    industry: 'Retail & E-commerce',
-    desc: 'Custom GPT-based support agent integrated with CRM systems, resolving 72% of queries without human intervention.',
-    tags: ['LLM', 'RAG', 'API Integration'],
-    color: 'bg-blue-600',
-  },
-  {
     title: 'Property Management SaaS',
     category: 'Software',
     industry: 'Real Estate',
     desc: 'Multi-tenant SaaS platform for property management companies to automate listings, tenants, and maintenance.',
     tags: ['React', 'Node.js', 'Multi-tenant'],
     color: 'bg-indigo-600',
-  },
-  {
-    title: 'Government Workflow Automation',
-    category: 'Cloud',
-    industry: 'Government',
-    desc: 'Automated citizen service workflows and digitized paper-based processes, cutting processing time by 60%.',
-    tags: ['RPA', 'Cloud', 'Document AI'],
-    color: 'bg-teal-600',
   },
 ]
 
