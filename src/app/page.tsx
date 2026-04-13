@@ -19,13 +19,13 @@ import {
   Cpu,
   Phone,
 } from 'lucide-react';
-import AnimatedSection from '@/components/AnimatedSection'
-import NeuralNetwork from '@/components/NeuralNetwork'
-import TypewriterText from '@/components/TypewriterText'
-import AnimatedCounter from '@/components/AnimatedCounter'
-import ROICalculator from '@/components/ROICalculator'
-import TechStack from '@/components/TechStack'
-import NewsletterSection from '@/components/NewsletterSection'
+import AnimatedSection from '@/components/AnimatedSection';
+import NeuralNetwork from '@/components/NeuralNetwork';
+import TypewriterText from '@/components/TypewriterText';
+import AnimatedCounter from '@/components/AnimatedCounter';
+import ROICalculator from '@/components/ROICalculator';
+import TechStack from '@/components/TechStack';
+import NewsletterSection from '@/components/NewsletterSection';
 
 const services = [
   {
