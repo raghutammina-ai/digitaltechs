@@ -4,12 +4,9 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import {
   Brain, BarChart3, Code2, Cloud, Lock, Cpu,
-  ArrowRight, CheckCircle2, Zap, Shield, Users,
-  Sparkles, Globe, TrendingUp
 } from 'lucide-react'
 
 import AnimatedSection from '@/components/AnimatedSection'
-import AnimatedCounter from '@/components/AnimatedCounter'
 import NeuralNetwork from '@/components/NeuralNetwork'
 import TypewriterText from '@/components/TypewriterText'
 
@@ -24,12 +21,6 @@ const services = [
   { icon: Cpu, title: 'Testing', desc: 'Automation QA.' },
 ]
 
-const stats = [
-  { icon: Users, target: 100, suffix: '+', label: 'Clients' },
-  { icon: TrendingUp, target: 50, suffix: '+', label: 'Projects' },
-  { icon: Globe, target: 10, suffix: '+', label: 'Countries' },
-  { icon: Sparkles, target: 5, suffix: '+', label: 'Years' },
-]
 
 export default function HomePage() {
   return (
@@ -61,22 +52,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* STATS */}
-      <section className="py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          {stats.map((s, i) => (
-            <AnimatedSection key={i}>
-              <div className="text-center">
-                <s.icon className="mx-auto mb-2 text-blue-400" />
-                <h3 className="text-3xl font-bold">
-                  <AnimatedCounter target={s.target} suffix={s.suffix} />
-                </h3>
-                <p className="text-sm text-gray-400">{s.label}</p>
-              </div>
-            </AnimatedSection>
-          ))}
-        </div>
-      </section>
 
       {/* SERVICES */}
       <section className="py-16">
