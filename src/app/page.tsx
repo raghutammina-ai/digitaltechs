@@ -17,7 +17,7 @@ import {
   Lightbulb,
   Lock,
   Cpu,
-  Phone,
+  Phone
 } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
 import NeuralNetwork from '@/components/NeuralNetwork';
