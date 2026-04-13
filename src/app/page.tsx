@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+
 import {
   Brain,
   BarChart3,
@@ -18,7 +19,6 @@ import {
   Cpu,
   Phone,
 } from 'lucide-react';
-
 import AnimatedSection from '@/components/AnimatedSection'
 import NeuralNetwork from '@/components/NeuralNetwork'
 import TypewriterText from '@/components/TypewriterText'
