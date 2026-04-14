@@ -214,96 +214,118 @@ export default function AboutPage() {
 
       {/* Timeline */}
       <section className="relative bg-[#030712] py-28 overflow-hidden">
-        {/* Background glow */}
+        {/* Single subtle ambient glow */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-blue-600/8 rounded-full blur-[100px]" />
-          <div className="absolute top-1/3 right-1/4 w-[250px] h-[250px] bg-violet-600/6 rounded-full blur-[80px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-blue-500/[0.04] rounded-full blur-[140px]" />
         </div>
 
-        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-16">
-            <span className="text-xs font-semibold uppercase tracking-widest text-blue-400 mb-4 block">Journey</span>
-            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">Our Milestones</h2>
-            <p className="text-slate-400 text-lg max-w-md mx-auto leading-relaxed">
+        <div className="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* Heading */}
+          <AnimatedSection className="text-center mb-20">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-4 block">
+              Journey
+            </span>
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+              Our Milestones
+            </h2>
+            <p className="text-slate-500 text-base max-w-sm mx-auto leading-relaxed">
               Every great journey starts with a single step. Here&apos;s ours.
             </p>
           </AnimatedSection>
 
-          <div className="space-y-14">
+          <div className="space-y-16">
             {milestones.map((group, gi) => {
               const isCurrent = gi === milestones.length - 1
               return (
                 <AnimatedSection key={group.year} delay={gi * 0.1}>
-                  {/* Year badge */}
-                  <div className="flex items-center gap-4 mb-8">
+
+                  {/* Year row */}
+                  <div className="flex items-center gap-4 mb-10">
                     <span
-                      className={`text-3xl font-black tracking-tight ${
-                        isCurrent
-                          ? 'bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent'
-                          : 'text-white/30'
+                      className={`text-2xl font-black tracking-tight tabular-nums transition-colors duration-300 ${
+                        isCurrent ? 'text-white' : 'text-white/20'
                       }`}
                     >
                       {group.year}
                     </span>
                     <div
                       className={`flex-1 h-px ${
-                        isCurrent
-                          ? 'bg-gradient-to-r from-blue-500/60 to-transparent'
-                          : 'bg-white/[0.06]'
+                        isCurrent ? 'bg-white/[0.08]' : 'bg-white/[0.04]'
                       }`}
                     />
                     {isCurrent && (
-                      <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full">
+                      <span className="text-[11px] font-medium tracking-wide text-slate-400 bg-white/[0.04] border border-white/[0.08] px-2.5 py-1 rounded-full">
                         Current
                       </span>
                     )}
                   </div>
 
-                  {/* Items */}
+                  {/* Item list */}
                   <div className="relative">
                     {/* Vertical connector */}
                     <div
-                      className={`absolute left-[11px] top-2 bottom-2 w-px ${
+                      className={`absolute left-[9px] top-3 bottom-3 w-px ${
                         isCurrent
-                          ? 'bg-gradient-to-b from-blue-500 via-violet-500 to-transparent'
-                          : 'bg-gradient-to-b from-white/20 to-transparent'
+                          ? 'bg-gradient-to-b from-white/[0.15] via-white/[0.07] to-transparent'
+                          : 'bg-gradient-to-b from-white/[0.06] to-transparent'
                       }`}
                     />
 
-                    <div className="space-y-5">
+                    <div className="space-y-3">
                       {group.items.map((m, i) => (
-                        <AnimatedSection key={m.title} delay={gi * 0.1 + i * 0.07} direction="right">
-                          <div className="relative flex items-start gap-5 pl-10">
+                        <AnimatedSection key={m.title} delay={gi * 0.1 + i * 0.06} direction="right">
+                          <div className="relative flex items-start gap-5 pl-8">
+
                             {/* Node dot */}
                             <div
-                              className={`absolute left-[6px] mt-2 w-[11px] h-[11px] rounded-full border-2 border-[#030712] flex-shrink-0 transition-all duration-300 ${
+                              className={`absolute left-[5px] top-[1.1rem] w-[9px] h-[9px] rounded-full flex-shrink-0 transition-all duration-500 ${
                                 isCurrent
-                                  ? 'bg-blue-500 shadow-md shadow-blue-500/50'
-                                  : 'bg-white/30'
+                                  ? 'bg-white/70 shadow-[0_0_8px_rgba(255,255,255,0.18)]'
+                                  : 'bg-white/[0.15]'
                               }`}
                             />
 
                             {/* Card */}
                             <div
-                              className={`group flex-1 rounded-2xl p-5 border transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl ${
+                              className={`group flex-1 rounded-2xl px-5 py-4 border transition-all duration-300 ease-out cursor-default
+                                hover:-translate-y-1
+                                hover:shadow-[0_16px_48px_rgba(0,0,0,0.5)] ${
                                 isCurrent
-                                  ? 'border-white/[0.09] hover:border-blue-500/30 hover:shadow-blue-500/10'
-                                  : 'border-white/[0.06] hover:border-white/[0.12]'
+                                  ? 'border-white/[0.08] hover:border-white/[0.14]'
+                                  : 'border-white/[0.04] hover:border-white/[0.09]'
                               }`}
-                              style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(8px)' }}
+                              style={{
+                                background: isCurrent
+                                  ? 'rgba(255,255,255,0.03)'
+                                  : 'rgba(255,255,255,0.015)',
+                                backdropFilter: 'blur(8px)',
+                              }}
                             >
-                              <h4 className="text-white font-semibold text-base mb-1 leading-snug">
+                              <h4
+                                className={`font-semibold text-sm mb-1 leading-snug tracking-[-0.01em] ${
+                                  isCurrent ? 'text-white/90' : 'text-white/35'
+                                }`}
+                              >
                                 {m.title}
                               </h4>
-                              <p className="text-slate-400 group-hover:text-slate-300 text-sm leading-relaxed transition-colors duration-300">
+                              <p
+                                className={`text-[13px] leading-relaxed transition-colors duration-300 ${
+                                  isCurrent
+                                    ? 'text-slate-500 group-hover:text-slate-400'
+                                    : 'text-slate-600/70'
+                                }`}
+                              >
                                 {m.event}
                               </p>
                             </div>
+
                           </div>
                         </AnimatedSection>
                       ))}
                     </div>
                   </div>
+
                 </AnimatedSection>
               )
             })}
