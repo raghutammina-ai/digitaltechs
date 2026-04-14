@@ -54,10 +54,10 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors duration-200 ${
+                className={`text-sm font-medium pb-px border-b transition-all duration-200 ${
                   pathname === link.href
-                    ? 'text-white'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'text-white border-blue-400/60'
+                    : 'text-slate-400 border-transparent hover:text-slate-100 hover:border-white/20'
                 }`}
               >
                 {link.label}
@@ -93,10 +93,10 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`block px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                className={`block px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
                   pathname === link.href
-                    ? 'bg-white/[0.08] text-white'
-                    : 'text-slate-400 hover:bg-white/[0.05] hover:text-white'
+                    ? 'bg-white/[0.07] text-white border border-white/[0.09]'
+                    : 'text-slate-400 border border-transparent hover:bg-white/[0.04] hover:text-slate-100'
                 }`}
                 onClick={() => setIsOpen(false)}
               >
