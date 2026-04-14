@@ -223,8 +223,16 @@ export default function ServicesPage() {
       </section>
 
       {/* ── Process ────────────────────────────────────────────────────── */}
-      <section className="py-28 border-t border-white/[0.05]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-28 overflow-hidden border-t border-white/[0.05]">
+        {/* Background radial glow */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-blue-600/8 rounded-full blur-[120px]" />
+          <div className="absolute top-1/3 left-1/4 w-[300px] h-[300px] bg-violet-600/6 rounded-full blur-[80px]" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* Heading */}
           <AnimatedSection className="text-center mb-16">
             <span className="text-xs font-semibold uppercase tracking-widest text-blue-400 mb-4 block">
               How We Work
@@ -232,27 +240,43 @@ export default function ServicesPage() {
             <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-5">
               Our Delivery Process
             </h2>
-            <p className="text-slate-400 text-lg max-w-xl mx-auto">
-              A proven, transparent 6-step process that ensures quality and alignment at every stage.
+            <p className="text-slate-400 text-lg max-w-xl mx-auto leading-relaxed">
+              A proven, transparent 6-step process that ensures quality
+              and alignment at every stage.
             </p>
           </AnimatedSection>
 
+          {/* Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {process.map((p, i) => (
               <AnimatedSection key={p.step} delay={i * 0.08}>
                 <div
-                  className="group relative rounded-2xl p-6 h-full border border-white/[0.07] hover:border-white/[0.14] hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
-                  style={{ background: 'rgba(255,255,255,0.03)' }}
+                  className="group relative rounded-2xl p-7 h-full border border-white/[0.07] hover:border-blue-500/30 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 cursor-pointer overflow-hidden"
+                  style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(12px)' }}
                 >
-                  <span className="block text-4xl font-black text-white/[0.06] group-hover:text-blue-500/20 transition-colors duration-300 mb-3 leading-none">
+                  {/* Hover gradient wash */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-600/[0.07] to-violet-600/[0.04] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl pointer-events-none" />
+
+                  {/* Step number — large decorative */}
+                  <span className="block font-black leading-none mb-5 text-6xl bg-gradient-to-br from-blue-500 to-violet-500 bg-clip-text text-transparent opacity-20 group-hover:opacity-40 transition-opacity duration-300 select-none">
                     {p.step}
                   </span>
-                  <h3 className="text-white font-semibold text-base mb-2">{p.title}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{p.desc}</p>
+
+                  {/* Content */}
+                  <h3 className="relative text-white font-bold text-lg mb-2 leading-snug">
+                    {p.title}
+                  </h3>
+                  <p className="relative text-slate-400 group-hover:text-slate-300 text-sm leading-relaxed transition-colors duration-300">
+                    {p.desc}
+                  </p>
+
+                  {/* Bottom accent line */}
+                  <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               </AnimatedSection>
             ))}
           </div>
+
         </div>
       </section>
 

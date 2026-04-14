@@ -44,10 +44,24 @@ const values = [
 ]
 
 const milestones = [
-  { year: '2025', title: 'Company Founded',    event: 'Founded with a mission to deliver modern AI and digital solutions.' },
-  { year: '2025', title: 'First Client Project', event: 'Successfully delivered our first client project.' },
-  { year: '2025', title: 'Service Expansion',  event: 'Expanded services to AI, Web Development, and Data Solutions.' },
-  { year: '2025', title: 'Growing Team',       event: 'Building a passionate team of developers and designers.' },
+  {
+    year: '2025',
+    items: [
+      { title: 'Company Founded',    event: 'Founded with a mission to deliver modern AI and digital solutions.' },
+      { title: 'First Client Project', event: 'Successfully delivered our first client project.' },
+      { title: 'Service Expansion',  event: 'Expanded services to AI, Web Development, and Data Solutions.' },
+      { title: 'Growing Team',       event: 'Built a strong team of developers and designers.' },
+    ],
+  },
+  {
+    year: '2026',
+    items: [
+      { title: 'Product Innovation',     event: 'Launched internal AI tools and automation solutions to improve efficiency.' },
+      { title: 'Scaling Operations',     event: 'Expanded operations and started serving clients across multiple regions.' },
+      { title: 'Strategic Partnerships', event: 'Partnered with startups and enterprises to deliver scalable digital solutions.' },
+      { title: 'Brand Growth',           event: 'Strengthened brand presence and built long-term client relationships.' },
+    ],
+  },
 ]
 
 const stats = [
@@ -199,40 +213,100 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section className="bg-[#030712] py-28">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-14">
+      <section className="relative bg-[#030712] py-28 overflow-hidden">
+        {/* Background glow */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-blue-600/8 rounded-full blur-[100px]" />
+          <div className="absolute top-1/3 right-1/4 w-[250px] h-[250px] bg-violet-600/6 rounded-full blur-[80px]" />
+        </div>
+
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection className="text-center mb-16">
             <span className="text-xs font-semibold uppercase tracking-widest text-blue-400 mb-4 block">Journey</span>
             <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">Our Milestones</h2>
-            <p className="text-slate-400 text-lg max-w-md mx-auto">
+            <p className="text-slate-400 text-lg max-w-md mx-auto leading-relaxed">
               Every great journey starts with a single step. Here&apos;s ours.
             </p>
           </AnimatedSection>
 
-          <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-[18px] top-2 bottom-2 w-px bg-gradient-to-b from-blue-500 via-cyan-500 to-transparent" />
-
-            <div className="space-y-8">
-              {milestones.map((m, i) => (
-                <AnimatedSection key={`${m.title}-${i}`} delay={i * 0.1} direction="right">
-                  <div className="relative flex items-start gap-6 pl-12">
-                    {/* Dot */}
-                    <div className="absolute left-[10px] mt-1.5 w-4 h-4 bg-blue-600 rounded-full border-2 border-[#030712] shadow-lg shadow-blue-600/40 flex-shrink-0" />
-
-                    {/* Card */}
-                    <div
-                      className="flex-1 rounded-2xl p-5 transition-all duration-300 hover:border-white/[0.12]"
-                      style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)' }}
+          <div className="space-y-14">
+            {milestones.map((group, gi) => {
+              const isCurrent = gi === milestones.length - 1
+              return (
+                <AnimatedSection key={group.year} delay={gi * 0.1}>
+                  {/* Year badge */}
+                  <div className="flex items-center gap-4 mb-8">
+                    <span
+                      className={`text-3xl font-black tracking-tight ${
+                        isCurrent
+                          ? 'bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent'
+                          : 'text-white/30'
+                      }`}
                     >
-                      <span className="text-xs font-bold text-blue-400 uppercase tracking-widest">{m.year}</span>
-                      <h4 className="text-white font-semibold text-base mt-1 mb-1">{m.title}</h4>
-                      <p className="text-slate-400 text-sm leading-relaxed">{m.event}</p>
+                      {group.year}
+                    </span>
+                    <div
+                      className={`flex-1 h-px ${
+                        isCurrent
+                          ? 'bg-gradient-to-r from-blue-500/60 to-transparent'
+                          : 'bg-white/[0.06]'
+                      }`}
+                    />
+                    {isCurrent && (
+                      <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full">
+                        Current
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Items */}
+                  <div className="relative">
+                    {/* Vertical connector */}
+                    <div
+                      className={`absolute left-[11px] top-2 bottom-2 w-px ${
+                        isCurrent
+                          ? 'bg-gradient-to-b from-blue-500 via-violet-500 to-transparent'
+                          : 'bg-gradient-to-b from-white/20 to-transparent'
+                      }`}
+                    />
+
+                    <div className="space-y-5">
+                      {group.items.map((m, i) => (
+                        <AnimatedSection key={m.title} delay={gi * 0.1 + i * 0.07} direction="right">
+                          <div className="relative flex items-start gap-5 pl-10">
+                            {/* Node dot */}
+                            <div
+                              className={`absolute left-[6px] mt-2 w-[11px] h-[11px] rounded-full border-2 border-[#030712] flex-shrink-0 transition-all duration-300 ${
+                                isCurrent
+                                  ? 'bg-blue-500 shadow-md shadow-blue-500/50'
+                                  : 'bg-white/30'
+                              }`}
+                            />
+
+                            {/* Card */}
+                            <div
+                              className={`group flex-1 rounded-2xl p-5 border transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl ${
+                                isCurrent
+                                  ? 'border-white/[0.09] hover:border-blue-500/30 hover:shadow-blue-500/10'
+                                  : 'border-white/[0.06] hover:border-white/[0.12]'
+                              }`}
+                              style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(8px)' }}
+                            >
+                              <h4 className="text-white font-semibold text-base mb-1 leading-snug">
+                                {m.title}
+                              </h4>
+                              <p className="text-slate-400 group-hover:text-slate-300 text-sm leading-relaxed transition-colors duration-300">
+                                {m.event}
+                              </p>
+                            </div>
+                          </div>
+                        </AnimatedSection>
+                      ))}
                     </div>
                   </div>
                 </AnimatedSection>
-              ))}
-            </div>
+              )
+            })}
           </div>
         </div>
       </section>
