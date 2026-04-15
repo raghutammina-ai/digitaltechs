@@ -45,13 +45,6 @@ const services = [
   },
 ]
 
-const industries = [
-  'Healthcare', 'Finance & Banking', 'Retail & E-commerce',
-  'Manufacturing', 'Education', 'Logistics', 'Real Estate', 'Government',
-  'Pharma & Life Sciences', 'Energy & Utilities', 'Telecom', 'Agriculture',
-  'Legal & Compliance', 'Media & Entertainment', 'Insurance', 'Travel & Hospitality',
-]
-
 const clientResults = [
   {
     industry: 'Healthcare',
