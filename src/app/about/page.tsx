@@ -12,47 +12,51 @@ const values = [
   {
     icon: Lightbulb,
     title: 'Innovation with Purpose',
-    desc: 'We don\'t innovate for innovation\'s sake. Every technology choice is driven by the tangible value it creates for your business and your customers.',
-    color: 'text-yellow-600',
-    bg: 'bg-yellow-50',
+    desc: 'We don\'t innovate for innovation\'s sake. Every technology choice is driven by the tangible value it creates for your business and customers.',
   },
   {
     icon: Zap,
     title: 'Automation for Efficiency',
     desc: 'Manual processes are bottlenecks. We identify, design, and deploy automation that frees your team to focus on what truly matters.',
-    color: 'text-blue-600',
-    bg: 'bg-blue-50',
   },
   {
     icon: Users,
     title: 'Partnership for Growth',
-    desc: 'We believe the best outcomes come from deep collaboration. We embed ourselves in your goals, challenges, and culture — not just your tech stack.',
-    color: 'text-green-600',
-    bg: 'bg-green-50',
+    desc: 'The best outcomes come from deep collaboration. We embed ourselves in your goals, challenges, and culture — not just your tech stack.',
   },
   {
     icon: Shield,
     title: 'Transformation with Integrity',
     desc: 'Security, transparency, and ethical AI are non-negotiables. We build responsibly and hold ourselves accountable to the highest standards.',
-    color: 'text-purple-600',
-    bg: 'bg-purple-50',
   },
 ]
 
 const milestones = [
-  { year: '2014', event: 'Founded with a mission to make AI accessible to every business' },
-  { year: '2016', event: 'First enterprise data analytics platform delivered to a Fortune 500 client' },
-  { year: '2018', event: 'Expanded globally with teams across Asia, Europe, and North America' },
-  { year: '2020', event: 'Launched our AI Centre of Excellence for rapid prototyping' },
-  { year: '2022', event: 'Crossed 200+ projects and 50+ enterprise clients worldwide' },
-  { year: '2024', event: 'Pioneering Generative AI solutions across 15+ industry verticals' },
+  {
+    year: '2025',
+    items: [
+      { title: 'Company Founded',    event: 'Founded with a mission to deliver modern AI and digital solutions.' },
+      { title: 'First Client Project', event: 'Successfully delivered our first client project.' },
+      { title: 'Service Expansion',  event: 'Expanded services to AI, Web Development, and Data Solutions.' },
+      { title: 'Growing Team',       event: 'Built a strong team of developers and designers.' },
+    ],
+  },
+  {
+    year: '2026',
+    items: [
+      { title: 'Product Innovation',     event: 'Launched internal AI tools and automation solutions to improve efficiency.' },
+      { title: 'Scaling Operations',     event: 'Expanded operations and started serving clients across multiple regions.' },
+      { title: 'Strategic Partnerships', event: 'Partnered with startups and enterprises to deliver scalable digital solutions.' },
+      { title: 'Brand Growth',           event: 'Strengthened brand presence and built long-term client relationships.' },
+    ],
+  },
 ]
 
 const stats = [
-  { icon: Award,  value: '10+', label: 'Years of Expertise' },
-  { icon: Globe,  value: '15+', label: 'Countries' },
-  { icon: Users,  value: '50+', label: 'Happy Clients' },
-  { icon: Zap,    value: '200+', label: 'Projects Delivered' },
+  { icon: Award,  value: '1+',  label: 'Years of Experience' },
+  { icon: Globe,  value: '2+',  label: 'Countries'           },
+  { icon: Users,  value: '10+', label: 'Clients'             },
+  { icon: Zap,    value: '6+',  label: 'Projects'            },
 ]
 
 export default function AboutPage() {
@@ -107,22 +111,21 @@ export default function AboutPage() {
             <AnimatedSection direction="right">
               <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">Our Story</span>
               <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-2 mb-6">
-                A Decade of Driving Digital Transformation
+                Our Story
               </h2>
               <div className="space-y-4 text-slate-600 leading-relaxed">
                 <p>
-                  Digital Tech Prosperity was born from a simple belief: that intelligent technology
-                  should be accessible to every business, regardless of size or sector.
+                  Digital Tech Prosperity was founded in 2025 with a vision to help businesses
+                  grow through modern technology.
                 </p>
                 <p>
-                  Over the past decade, we&apos;ve grown from a small team of passionate technologists
-                  into a global digital solutions partner, serving clients across 15+ countries and
-                  delivering 200+ transformative projects.
+                  We are a passionate team focused on building scalable solutions in AI, web
+                  development, and data-driven systems. Our approach combines innovation,
+                  simplicity, and performance to deliver real business value.
                 </p>
                 <p>
-                  Today, we specialize in AI application development, data intelligence, custom software,
-                  and cloud engineering — combining deep technical expertise with genuine business
-                  understanding to deliver solutions that move the needle.
+                  As a growing startup, we are committed to learning, evolving, and helping
+                  our clients succeed in the digital world.
                 </p>
               </div>
             </AnimatedSection>
@@ -151,50 +154,126 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="bg-slate-50 py-24">
+      <section className="bg-[#030712] py-28 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* Heading */}
           <AnimatedSection className="text-center mb-14">
-            <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">Our Values</span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-2">What We Stand For</h2>
+            <span className="text-xs font-semibold uppercase tracking-widest text-blue-400 mb-4 block">
+              Our Values
+            </span>
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+              What We Stand For
+            </h2>
+            <p className="text-slate-400 text-lg max-w-xl mx-auto">
+              The principles that guide every decision, every line of code, and every client engagement.
+            </p>
           </AnimatedSection>
+
+          {/* Cards grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {values.map((v, i) => (
               <AnimatedSection key={v.title} delay={i * 0.1}>
-                <div className="bg-white border border-slate-200 rounded-2xl p-7 card-glow">
-                  <div className={`w-12 h-12 ${v.bg} ${v.color} rounded-xl flex items-center justify-center mb-4`}>
-                    <v.icon size={24} />
+                <div className="group flex flex-col gap-4 rounded-2xl p-7 h-full bg-gradient-to-br from-[#0B1220] via-[#0F172A] to-black border border-blue-500/30 hover:border-blue-400 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:-translate-y-1 transition-all duration-300">
+
+                  {/* Icon */}
+                  <div className="w-11 h-11 bg-blue-500/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <v.icon size={22} className="text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />
                   </div>
-                  <h3 className="text-slate-900 font-bold text-lg mb-2">{v.title}</h3>
-                  <p className="text-slate-500 leading-relaxed">{v.desc}</p>
+
+                  {/* Text */}
+                  <div>
+                    <h3 className="text-white font-semibold text-lg mb-2 leading-snug group-hover:text-blue-400 transition-colors duration-300">
+                      {v.title}
+                    </h3>
+                    <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+                      {v.desc}
+                    </p>
+                  </div>
                 </div>
               </AnimatedSection>
             ))}
           </div>
+
         </div>
       </section>
 
       {/* Timeline */}
-      <section className="bg-white py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-14">
-            <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">Journey</span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-2">Our Milestones</h2>
+      <section className="relative bg-[#030712] py-28 overflow-hidden">
+        {/* Ambient glow */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-blue-500/10 rounded-full blur-[140px]" />
+        </div>
+
+        <div className="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* Heading */}
+          <AnimatedSection className="text-center mb-20">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-4 block">
+              Journey
+            </span>
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+              Our Milestones
+            </h2>
+            <p className="text-slate-500 text-base max-w-sm mx-auto leading-relaxed">
+              Every great journey starts with a single step. Here&apos;s ours.
+            </p>
           </AnimatedSection>
-          <div className="relative">
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-600 to-cyan-500" />
-            <div className="space-y-8">
-              {milestones.map((m, i) => (
-                <AnimatedSection key={m.year} delay={i * 0.08} direction="right">
-                  <div className="relative flex items-start gap-6 pl-20">
-                    <div className="absolute left-5 w-6 h-6 bg-blue-600 rounded-full border-4 border-white shadow-md flex items-center justify-center -translate-x-1/2" />
-                    <div className="bg-slate-50 border border-slate-200 rounded-xl p-5 flex-1">
-                      <span className="text-blue-600 font-bold text-sm">{m.year}</span>
-                      <p className="text-slate-700 mt-1">{m.event}</p>
+
+          <div className="space-y-16">
+            {milestones.map((group, gi) => {
+              const isCurrent = gi === milestones.length - 1
+              return (
+                <AnimatedSection key={group.year} delay={gi * 0.1}>
+
+                  {/* Year row */}
+                  <div className="flex items-center gap-4 mb-10">
+                    <span className="text-2xl font-black tracking-tight tabular-nums bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+                      {group.year}
+                    </span>
+                    <div className="flex-1 h-px bg-gradient-to-r from-blue-500/50 to-transparent" />
+                    {isCurrent && (
+                      <span className="text-[11px] font-medium tracking-wide text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-full">
+                        Current
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Item list */}
+                  <div className="relative">
+                    {/* Vertical connector */}
+                    <div className="absolute left-[9px] top-3 bottom-3 w-px bg-gradient-to-b from-blue-500/70 via-blue-500/30 to-transparent" />
+
+                    <div className="space-y-3">
+                      {group.items.map((m, i) => (
+                        <AnimatedSection key={m.title} delay={gi * 0.1 + i * 0.06} direction="right">
+                          <div className="relative flex items-start gap-5 pl-8">
+
+                            {/* Node dot */}
+                            <div className="absolute left-[5px] top-[1.1rem] w-[9px] h-[9px] rounded-full flex-shrink-0 bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.6)]" />
+
+                            {/* Card */}
+                            <div
+                              className="group flex-1 rounded-2xl px-5 py-4 border border-blue-500/20 hover:border-blue-400/40 hover:shadow-[0_0_25px_rgba(59,130,246,0.2)] hover:-translate-y-1 transition-all duration-300 ease-out cursor-default"
+                              style={{ background: 'rgba(59,130,246,0.03)', backdropFilter: 'blur(8px)' }}
+                            >
+                              <h4 className="font-semibold text-sm mb-1 leading-snug tracking-[-0.01em] text-white/90 group-hover:text-white transition-colors duration-300">
+                                {m.title}
+                              </h4>
+                              <p className="text-[13px] leading-relaxed text-slate-400 group-hover:text-slate-300 transition-colors duration-300">
+                                {m.event}
+                              </p>
+                            </div>
+
+                          </div>
+                        </AnimatedSection>
+                      ))}
                     </div>
                   </div>
+
                 </AnimatedSection>
-              ))}
-            </div>
+              )
+            })}
           </div>
         </div>
       </section>

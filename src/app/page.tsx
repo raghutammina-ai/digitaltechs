@@ -1,24 +1,24 @@
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
+import Link from 'next/link'
 import {
-  Brain, BarChart3, Code2, Cloud, ArrowRight,
-  CheckCircle2, Users, Zap, Shield, Lightbulb,
-  Lock, Cpu, Phone
-} from 'lucide-react';
+  Brain, BarChart3, Code2, Cloud, Lock, Cpu,
+} from 'lucide-react'
 
-import AnimatedSection from '@/components/AnimatedSection';
-import NeuralNetwork from '@/components/NeuralNetwork';
-import TypewriterText from '@/components/TypewriterText';
-import AnimatedCounter from '@/components/AnimatedCounter';
-import ROICalculator from '@/components/ROICalculator';
-import TechStack from '@/components/TechStack';
-import NewsletterSection from '@/components/NewsletterSection';
+import AnimatedSection from '@/components/AnimatedSection'
+import NeuralNetwork from '@/components/NeuralNetwork'
+import TypewriterText from '@/components/TypewriterText'
 
-/* ---------------- DATA ---------------- */
+/* ---------- DATA ---------- */
 
 const services = [
+  { icon: Brain, title: 'AI Development', desc: 'Custom AI apps.' },
+  { icon: BarChart3, title: 'Analytics', desc: 'Data insights.' },
+  { icon: Code2, title: 'Engineering', desc: 'Full-stack apps.' },
+  { icon: Cloud, title: 'Cloud', desc: 'Scalable infra.' },
+  { icon: Lock, title: 'Security', desc: 'Secure systems.' },
+  { icon: Cpu, title: 'Testing', desc: 'Automation QA.' },
+]
   { icon: Brain, title: 'AI Application Development', desc: 'Custom AI-powered apps.', color: 'text-blue-600', bg: 'bg-blue-50' },
   { icon: BarChart3, title: 'Data Analytics', desc: 'Turn data into insights.', color: 'text-cyan-600', bg: 'bg-cyan-50' },
   { icon: Code2, title: 'Product Engineering', desc: 'Build scalable apps.', color: 'text-indigo-600', bg: 'bg-indigo-50' },
@@ -93,71 +93,55 @@ const clientResults = [
 
 export default function HomePage() {
   return (
-    <>
+    <div className="bg-[#030712] text-white overflow-x-hidden">
+
       {/* HERO */}
-      <section className="relative min-h-screen hero-gradient flex items-center text-center">
+      <section className="min-h-screen flex items-center justify-center text-center relative">
         <NeuralNetwork />
 
-        <div className="max-w-6xl mx-auto px-4 py-32">
-          <span className="bg-white/10 text-white px-4 py-2 rounded-full text-sm">
-            AI & Digital Transformation
-          </span>
-
-          <h1 className="text-5xl font-bold text-white mt-6 mb-4">
-            Transform Your Business with
-            <span className="text-cyan-300"> AI Solutions</span>
+        <div className="max-w-4xl mx-auto px-4 relative z-10">
+          <h1 className="text-5xl font-bold mb-4">
+            AI & Digital Solutions
           </h1>
 
           <TypewriterText />
 
-          <p className="text-blue-100 mt-4 mb-8">
-            Build, automate, and scale with AI-powered systems.
+          <p className="text-gray-400 mt-4 mb-6">
+            Build smarter systems with AI.
           </p>
 
           <div className="flex gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-blue-700 px-6 py-3 rounded-lg">
-              <Phone size={16} /> Get Free Consultation
+            <Link
+              href="/contact"
+              className="bg-blue-600 px-6 py-3 rounded-lg"
+            >
+              Get Started
             </Link>
-            <Link href="/services" className="border text-white px-6 py-3 rounded-lg">
-              View Services
+
+            <Link
+              href="/services"
+              className="border border-white/20 px-6 py-3 rounded-lg"
+            >
+              Services
             </Link>
           </div>
         </div>
       </section>
 
-      {/* STATS */}
-      <section className="bg-slate-50 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          {[6561, 600, 250, 10].map((num, i) => (
-            <AnimatedSection key={i}>
-              <div className="text-center">
-                <h3 className="text-3xl font-bold">
-                  <AnimatedCounter target={num} suffix="+" />
-                </h3>
-                <p className="text-sm text-gray-500">Stat</p>
-              </div>
-            </AnimatedSection>
-          ))}
-        </div>
-      </section>
+      {/* SERVICES (ORIGINAL SIMPLE STYLE) */}
+      <section className="py-16">
+        <h2 className="text-center text-3xl font-bold mb-10">
+          Services
+        </h2>
 
-      {/* SERVICES */}
-      <section className="py-20">
-        <h2 className="text-center text-3xl font-bold mb-10">Our Services</h2>
-
-        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
           {services.map((s, i) => (
             <AnimatedSection key={i}>
-              <div className="border p-6 rounded-xl hover:shadow-lg">
-                <s.icon />
-                <h3 className="font-semibold mt-2">{s.title}</h3>
-                <p className="text-sm text-gray-500">{s.desc}</p>
-              </div>
-            </AnimatedSection>
-          ))}
-        </div>
-      </section>
+              <div className="border border-white/10 p-6 rounded-xl">
 
+                <s.icon className="mb-3" />
+
+                <h3 className="font-semibold">{s.title}</h3>
       {/* WHY US */}
       <section className="bg-slate-50 py-20">
         <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
@@ -248,32 +232,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* PROCESS */}
-      <section className="py-20">
-        <h2 className="text-center text-3xl font-bold mb-10">Process</h2>
+                <p className="text-sm text-gray-400">
+                  {s.desc}
+                </p>
 
-        <div className="grid md:grid-cols-5 gap-4 max-w-6xl mx-auto">
-          {processSteps.map((p) => (
-            <div key={p.step} className="border p-4 rounded-xl text-center">
-              <h3 className="text-xl font-bold">{p.step}</h3>
-              <p>{p.title}</p>
-            </div>
+              </div>
+            </AnimatedSection>
           ))}
         </div>
       </section>
 
-      {/* EXTRA */}
-      <ROICalculator />
-      <TechStack />
-      <NewsletterSection />
-
-      {/* CTA */}
-      <section className="py-20 text-center hero-gradient text-white">
-        <h2 className="text-3xl font-bold mb-4">Ready to Start?</h2>
-        <Link href="/contact" className="bg-white text-blue-700 px-6 py-3 rounded-lg">
-          Contact Us
-        </Link>
-      </section>
-    </>
-  );
+    </div>
+  )
 }

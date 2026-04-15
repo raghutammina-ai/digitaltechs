@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { X, Send, Bot, User, Sparkles } from 'lucide-react'
 
 interface Message {
@@ -9,287 +10,116 @@ interface Message {
   links?: { label: string; href: string }[]
 }
 
-// ── Knowledge base built from actual website content ──────────────────────────
-
 interface KBEntry {
   keywords: string[]
   answer: string
   links?: { label: string; href: string }[]
 }
 
+/* ─── Knowledge base ─────────────────────────────────────────────────────── */
+
 const kb: KBEntry[] = [
-  // Greetings
   {
     keywords: ['hello', 'hi', 'hey', 'start', 'help', 'good morning', 'good afternoon'],
-    answer: "Hi there! 👋 I'm the DTP AI Assistant. I can answer questions about our services, industries, pricing, process, careers, and more — all from our actual website content.\n\nWhat would you like to know?",
+    answer: "Hi there! 👋 I'm DTP's AI Assistant. Ask me anything about our services, industries, pricing, or process.",
     links: [
       { label: 'Our Services', href: '/services' },
-      { label: 'Industries We Serve', href: '/#industries' },
+      { label: 'Industries', href: '/#industries' },
       { label: 'Book Free Consultation', href: '/contact' },
     ],
   },
-
-  // What is DTP / About
   {
-    keywords: ['what do you do', 'what is dtp', 'about', 'who are you', 'company', 'digital tech prosperity', 'what is digital tech'],
-    answer: "Digital Tech Prosperity is an end-to-end AI and digital solutions company with 10+ years of experience.\n\nWe build:\n• AI applications & LLM integrations\n• Data analytics & intelligence platforms\n• Custom web & mobile software\n• Cloud & automation engineering\n\nWe've delivered 200+ projects for 50+ clients across 15+ countries.",
+    keywords: ['what do you do', 'what is dtp', 'about', 'who are you', 'company', 'digital tech prosperity'],
+    answer: "Digital Tech Prosperity is an end-to-end AI and digital solutions company with 10+ years of experience.\n\nWe build:\n• AI applications & LLM integrations\n• Data analytics & intelligence platforms\n• Custom web & mobile software\n• Cloud & automation engineering\n\n200+ projects · 50+ clients · 15+ countries.",
     links: [
       { label: 'About Us', href: '/about' },
       { label: 'Our Services', href: '/services' },
     ],
   },
-
-  // Services — general
   {
-    keywords: ['service', 'offer', 'provide', 'what can you build', 'capabilities', 'what you do'],
-    answer: "We offer 4 core service areas:\n\n🧠 AI Application Development\nCustom LLM apps, chatbots, computer vision, NLP, predictive analytics, MLOps pipelines.\n\n📊 Data Analytics & Intelligence\nReal-time dashboards, BI platforms, data pipelines, and predictive intelligence.\n\n💻 Custom Software Development\nFull-stack web and mobile apps built for scale across any industry.\n\n☁️ Cloud & Automation Engineering\nAWS, Azure, GCP infrastructure, DevOps, CI/CD, and RPA automation.",
-    links: [
-      { label: 'Explore All Services', href: '/services' },
-    ],
+    keywords: ['service', 'offer', 'provide', 'what can you build', 'capabilities'],
+    answer: "Our 6 core service areas:\n\n🧠 AI Application Development\n📊 Data Analytics & Intelligence\n💻 Custom Software Development\n☁️ Cloud & DevOps Engineering\n🔒 Cybersecurity Solutions\n🧪 Intelligent QA & Testing",
+    links: [{ label: 'Explore All Services', href: '/services' }],
   },
-
-  // AI / LLM / Machine Learning
   {
-    keywords: ['ai', 'artificial intelligence', 'machine learning', 'llm', 'gpt', 'chatgpt', 'openai', 'anthropic', 'claude', 'gemini', 'llama', 'generative', 'large language model', 'rag', 'retrieval'],
-    answer: "Yes — AI is our core specialisation. We work with:\n\n• OpenAI (GPT-4, GPT-4o)\n• Anthropic Claude\n• Google Gemini\n• Open-source models (LLaMA, Mistral)\n\nWe build:\n• RAG (Retrieval-Augmented Generation) systems\n• Custom fine-tuned models\n• AI copilots & document intelligence\n• Computer vision & NLP pipelines\n• MLOps & model monitoring\n\nModel selection depends on your use case, budget, and data privacy requirements.",
-    links: [
-      { label: 'AI Services', href: '/services' },
-      { label: 'RAG vs Fine-Tuning Article', href: '/blog/rag-vs-fine-tuning-llm' },
-    ],
+    keywords: ['ai', 'artificial intelligence', 'machine learning', 'llm', 'gpt', 'chatgpt', 'openai', 'anthropic', 'claude', 'generative', 'rag'],
+    answer: "AI is our core specialisation. We work with:\n\n• OpenAI (GPT-4o)\n• Anthropic Claude\n• Google Gemini\n• Open-source (LLaMA, Mistral)\n\nWe build RAG systems, custom agents, computer vision, NLP pipelines, and MLOps infrastructure.",
+    links: [{ label: 'AI Services', href: '/services' }],
   },
-
-  // Data Analytics
   {
-    keywords: ['data', 'analytics', 'dashboard', 'business intelligence', 'bi', 'pipeline', 'warehouse', 'reporting', 'insights'],
-    answer: "Our Data Analytics & Intelligence service covers:\n\n• Real-time data pipelines (Kafka, Spark, Flink)\n• Data warehousing (Snowflake, BigQuery, Redshift)\n• BI dashboards (Tableau, Power BI, custom)\n• Predictive analytics & forecasting\n• Data quality & governance\n\nWe've built systems processing 2M+ events per second for financial services clients.",
-    links: [
-      { label: 'Data Analytics Service', href: '/services' },
-      { label: 'Real-Time Pipelines Article', href: '/blog/real-time-data-pipelines-financial-services' },
-    ],
+    keywords: ['data', 'analytics', 'dashboard', 'business intelligence', 'bi', 'pipeline', 'warehouse', 'reporting'],
+    answer: "Our Data Analytics & Intelligence service covers:\n\n• Real-time pipelines (Kafka, Spark)\n• Data warehousing (Snowflake, BigQuery)\n• BI dashboards (Tableau, Power BI, custom)\n• Predictive analytics & forecasting",
+    links: [{ label: 'Data Analytics', href: '/services' }],
   },
-
-  // Cloud / DevOps / Automation
   {
-    keywords: ['cloud', 'aws', 'azure', 'gcp', 'google cloud', 'devops', 'kubernetes', 'docker', 'terraform', 'automation', 'rpa', 'migration', 'infrastructure'],
-    answer: "Our Cloud & Automation Engineering service includes:\n\n• Cloud architecture & migration (AWS, Azure, GCP)\n• Kubernetes & container orchestration\n• CI/CD pipeline design (GitHub Actions, Jenkins)\n• Infrastructure as Code (Terraform)\n• RPA & workflow automation\n• Cost optimisation (typically 20–40% savings)\n\nAll cloud providers we use are ISO 27001 and SOC 2 certified.",
+    keywords: ['cloud', 'aws', 'azure', 'gcp', 'devops', 'kubernetes', 'docker', 'terraform', 'automation', 'migration'],
+    answer: "Our Cloud & DevOps service includes:\n\n• Cloud architecture & migration (AWS, Azure, GCP)\n• Kubernetes & containers\n• CI/CD pipelines\n• Infrastructure as Code (Terraform)\n• Cost optimisation (typically 20–40% savings)",
     links: [
       { label: 'Cloud Services', href: '/services' },
-      { label: 'Cloud Cost Optimisation Article', href: '/blog/cloud-cost-optimisation-strategies' },
       { label: 'Security & Compliance', href: '/security' },
     ],
   },
-
-  // Industries — general
   {
-    keywords: ['industry', 'industries', 'sector', 'vertical', 'which industries', 'what sectors'],
-    answer: "We serve ALL industries. Our 6 fully detailed industry hubs:\n\n🏥 Healthcare — 🏦 Finance & Banking\n🛍️ Retail & E-commerce — 🏭 Manufacturing\n🎓 Education — 🚚 Logistics\n\nAnd 10 more coming soon:\nReal Estate · Government · Pharma · Energy · Telecom · Agriculture · Legal · Media · Insurance · Travel\n\nEvery solution is custom-built for your specific domain and compliance requirements.",
-    links: [
-      { label: 'All Industries', href: '/#industries' },
-    ],
+    keywords: ['industry', 'industries', 'sector', 'which industries', 'what sectors'],
+    answer: "We serve ALL industries. 6 detailed hubs live:\n\n🏥 Healthcare · 🏦 Finance & Banking\n🛍️ Retail & E-commerce · 🏭 Manufacturing\n🎓 Education · 🚚 Logistics\n\n10 more launching soon.",
+    links: [{ label: 'All Industries', href: '/#industries' }],
   },
-
-  // Healthcare
   {
-    keywords: ['healthcare', 'health', 'hospital', 'medical', 'clinical', 'patient', 'hipaa', 'radiology', 'diagnostic', 'ehr'],
-    answer: "Our Healthcare AI solutions include:\n\n• Medical imaging AI (radiology, pathology) — 94% diagnostic accuracy\n• Clinical NLP & documentation automation\n• Patient risk stratification & readmission prediction\n• AI-powered scheduling, billing & coding\n• Drug discovery support\n\nAll healthcare projects are built HIPAA-compliant with data residency options.",
-    links: [
-      { label: 'AI for Healthcare', href: '/industries/healthcare' },
-      { label: 'Healthcare AI Article', href: '/blog/generative-ai-healthcare-diagnostics' },
-    ],
+    keywords: ['healthcare', 'health', 'hospital', 'medical', 'clinical', 'patient', 'hipaa'],
+    answer: "Our Healthcare AI solutions include:\n\n• Medical imaging AI — 94% diagnostic accuracy\n• Clinical NLP & documentation automation\n• Patient risk stratification\n• AI-powered scheduling & billing\n\nAll projects are built HIPAA-compliant.",
+    links: [{ label: 'AI for Healthcare', href: '/industries/healthcare' }],
   },
-
-  // Finance / Banking
   {
-    keywords: ['finance', 'banking', 'fintech', 'fraud', 'trading', 'credit', 'risk', 'aml', 'kyc', 'compliance', 'investment', 'portfolio', 'capital markets'],
-    answer: "Our Finance & Banking AI solutions include:\n\n• Real-time fraud & AML detection\n• Algorithmic trading intelligence — 2M+ events/sec\n• AI credit scoring & risk modelling\n• KYC automation & regulatory reporting\n• Customer churn prediction\n\nWe've achieved 60% fraud reduction and 3× faster risk decisions for financial services clients.",
-    links: [
-      { label: 'AI for Finance', href: '/industries/finance' },
-      { label: 'Trading Intelligence Article', href: '/blog/real-time-data-pipelines-financial-services' },
-    ],
+    keywords: ['finance', 'banking', 'fintech', 'fraud', 'trading', 'credit', 'risk', 'aml', 'kyc'],
+    answer: "Our Finance & Banking AI solutions:\n\n• Real-time fraud & AML detection\n• Trading intelligence — 2M+ events/sec\n• AI credit scoring & risk modelling\n• KYC automation & regulatory reporting\n\n60% fraud reduction for financial clients.",
+    links: [{ label: 'AI for Finance', href: '/industries/finance' }],
   },
-
-  // Retail / E-commerce
   {
-    keywords: ['retail', 'ecommerce', 'e-commerce', 'shop', 'recommendation', 'inventory', 'demand forecast', 'customer support bot', 'product search'],
-    answer: "Our Retail & E-commerce AI solutions include:\n\n• Personalised product recommendation engines\n• Demand forecasting & inventory optimisation\n• LLM customer support agents (72% query automation)\n• Visual search & virtual try-on\n• Price optimisation & churn prediction\n\nClients have seen 30% sales increases and 25% inventory reduction.",
-    links: [
-      { label: 'AI for Retail', href: '/industries/retail' },
-      { label: 'Retail AI Article', href: '/blog/ai-in-retail' },
-    ],
-  },
-
-  // Manufacturing
-  {
-    keywords: ['manufacturing', 'factory', 'predictive maintenance', 'quality inspection', 'iot', 'industrial', 'supply chain', 'defect', 'downtime'],
-    answer: "Our Manufacturing AI solutions include:\n\n• Predictive maintenance (IoT + ML) — 38% downtime reduction\n• Computer vision quality inspection at line speed\n• Supply chain AI & demand sensing\n• Energy consumption optimisation\n• Worker safety AI\n\nOne client reduced unplanned downtime by 38%, saving £1.5M/year.",
-    links: [
-      { label: 'AI for Manufacturing', href: '/industries/manufacturing' },
-      { label: 'Predictive Maintenance Case Study', href: '/blog/predictive-maintenance-manufacturing' },
-    ],
-  },
-
-  // Logistics
-  {
-    keywords: ['logistics', 'supply chain', 'route', 'delivery', 'fleet', 'warehouse', 'shipping', 'last mile', 'tracking'],
-    answer: "Our Logistics AI solutions include:\n\n• Dynamic route optimisation (25% fuel cost savings)\n• Warehouse automation & AI picking\n• Real-time supply chain visibility\n• Demand sensing & capacity planning\n• Last-mile delivery AI\n\nClients have achieved 45% operational cost savings and 30% faster delivery.",
-    links: [
-      { label: 'AI for Logistics', href: '/industries/logistics' },
-    ],
-  },
-
-  // Education
-  {
-    keywords: ['education', 'edtech', 'learning', 'student', 'school', 'university', 'adaptive learning', 'tutoring', 'grading'],
-    answer: "Our Education AI solutions include:\n\n• Adaptive learning platforms (personalised to each student)\n• Student risk prediction & early intervention\n• AI teaching assistants (24/7 Q&A, grading)\n• Admin automation (enrolment, scheduling)\n• Plagiarism detection\n\nClients have seen 35% improved outcomes and 28% dropout reduction.",
-    links: [
-      { label: 'AI for Education', href: '/industries/education' },
-    ],
-  },
-
-  // Other industries
-  {
-    keywords: ['real estate', 'property', 'government', 'pharma', 'pharmaceutical', 'energy', 'utilities', 'telecom', 'agriculture', 'farming', 'legal', 'law', 'media', 'entertainment', 'insurance', 'travel', 'hospitality', 'hotel'],
-    answer: "We also serve these industries (pages launching soon):\n\n🏢 Real Estate · 🏛️ Government · 🔬 Pharma & Life Sciences\n⚡ Energy & Utilities · 📡 Telecom · 🌾 Agriculture\n⚖️ Legal & Compliance · 🎬 Media & Entertainment\n🛡️ Insurance · ✈️ Travel & Hospitality\n\nWe actively take on projects in all these verticals now — the dedicated pages are coming shortly.",
-    links: [
-      { label: 'Register Your Interest', href: '/#industries' },
-      { label: 'Contact Us', href: '/contact' },
-    ],
-  },
-
-  // Pricing
-  {
-    keywords: ['price', 'cost', 'pricing', 'how much', 'budget', 'rate', 'fee', 'charge', 'expensive', 'affordable', 'minimum'],
-    answer: "We're transparent about pricing. Here's how we work:\n\n💰 Minimum project size: $10,000 USD\nFor startups, we offer a lightweight discovery sprint first.\n\n📋 Engagement models:\n• Fixed-price — defined scope, predictable cost\n• Time & Materials — hourly/daily for evolving work\n• Dedicated Team — your embedded DTP team\n\nAll pricing is discussed openly in your free consultation — no hidden fees.",
+    keywords: ['price', 'cost', 'pricing', 'how much', 'budget', 'rate', 'fee', 'minimum'],
+    answer: "We're transparent about pricing:\n\n💰 Minimum project: $10,000 USD\n\n📋 Engagement models:\n• Fixed-price — defined scope\n• Time & Materials — evolving work\n• Dedicated Team — embedded team\n\nAll pricing discussed in your free consultation.",
     links: [
       { label: 'FAQ — Pricing', href: '/faq' },
       { label: 'Book Free Consultation', href: '/contact' },
     ],
   },
-
-  // Free consultation
   {
-    keywords: ['free consultation', 'consultation', 'book', 'schedule', 'meeting', 'call', 'talk', 'discovery'],
-    answer: "Yes — we offer a free 30-minute consultation with no obligation.\n\nIn the call we'll:\n✓ Understand your challenge\n✓ Assess technical feasibility\n✓ Suggest an approach and rough timeline\n✓ Answer any questions\n\nTo book, just fill in our contact form and mention you'd like a discovery call.",
-    links: [
-      { label: 'Book Your Free Call', href: '/contact' },
-    ],
+    keywords: ['free consultation', 'consultation', 'book', 'schedule', 'meeting', 'call', 'discovery'],
+    answer: "Yes — free 30-minute consultation, no obligation.\n\nIn the call we'll:\n✓ Understand your challenge\n✓ Assess technical feasibility\n✓ Suggest an approach and timeline\n✓ Answer any questions",
+    links: [{ label: 'Book Your Free Call', href: '/contact' }],
   },
-
-  // Timeline / How long
   {
-    keywords: ['timeline', 'how long', 'duration', 'time', 'weeks', 'months', 'deadline', 'delivery', 'fast', 'quick'],
-    answer: "Typical project timelines:\n\n⚡ AI Proof-of-Concept: 4–6 weeks\n🏗️ Full AI Platform: 3–6 months\n🔄 Ongoing Support: Monthly retainer\n\nWe use agile 2-week sprints with regular demos so you see progress throughout. A detailed timeline is provided after the discovery phase.",
-    links: [
-      { label: 'Our Process', href: '/services' },
-      { label: 'FAQ', href: '/faq' },
-    ],
+    keywords: ['timeline', 'how long', 'duration', 'time', 'weeks', 'months', 'deadline', 'delivery'],
+    answer: "Typical timelines:\n\n⚡ AI Proof-of-Concept: 4–6 weeks\n🏗️ Full AI Platform: 3–6 months\n🔄 Ongoing Support: Monthly retainer\n\nAgile 2-week sprints with regular demos.",
+    links: [{ label: 'FAQ', href: '/faq' }],
   },
-
-  // Process / How it works
   {
-    keywords: ['process', 'how does it work', 'methodology', 'approach', 'steps', 'agile', 'sprint', 'delivery'],
-    answer: "Our 6-step delivery process:\n\n1️⃣ Discovery — Understand your challenge & goals\n2️⃣ Strategy — Define approach, architecture & timeline\n3️⃣ Design — UX, data model & system design\n4️⃣ Development — Agile sprints with regular demos\n5️⃣ Testing — QA, performance & security testing\n6️⃣ Launch & Support — Go-live + ongoing optimisation\n\nYou're involved at every stage — no black boxes.",
-    links: [
-      { label: 'Full Process Details', href: '/services' },
-    ],
+    keywords: ['security', 'secure', 'compliance', 'gdpr', 'hipaa', 'soc2', 'iso', 'pci', 'data protection', 'encryption'],
+    answer: "Security is built into everything:\n\n✅ GDPR compliant\n✅ HIPAA compliant\n✅ PCI-DSS via certified processors\n🔄 ISO 27001 aligned\n🔄 SOC 2 Type II audit underway\n\nAES-256 at rest · TLS 1.3 in transit.",
+    links: [{ label: 'Security Details', href: '/security' }],
   },
-
-  // Security / Compliance
   {
-    keywords: ['security', 'secure', 'compliance', 'gdpr', 'hipaa', 'soc2', 'iso', 'pci', 'data protection', 'encryption', 'safe', 'privacy', 'breach', 'audit', 'certification'],
-    answer: "Security and compliance are built into everything we do:\n\n✅ GDPR compliant — DPAs available\n✅ HIPAA compliant — for all health projects\n✅ PCI-DSS — via certified payment processors\n🔄 ISO 27001 aligned — formal audit in progress\n🔄 SOC 2 Type II — audit underway, Q4 2026\n\nAll data is AES-256 encrypted at rest, TLS 1.3 in transit. Cloud hosted on AWS/Azure/GCP (all SOC 2 certified). On-premises deployment available for regulated industries.",
-    links: [
-      { label: 'Full Security Details', href: '/security' },
-    ],
+    keywords: ['portfolio', 'case study', 'example', 'work', 'previous', 'project', 'proof'],
+    answer: "Selected case studies:\n\n• Medical imaging — 94% diagnostic accuracy\n• Trading system — 2M+ events/sec\n• Retail support bot — 72% query automation\n• Predictive maintenance — 38% downtime reduction\n• Government doc AI — 60% faster processing",
+    links: [{ label: 'View Portfolio', href: '/portfolio' }],
   },
-
-  // IP / Code ownership
   {
-    keywords: ['ip', 'intellectual property', 'ownership', 'own the code', 'source code', 'copyright', 'nda', 'confidential'],
-    answer: "All code and deliverables built for your project become your property on full payment.\n\nWe also:\n• Sign NDA before any technical discussion\n• Offer source code escrow for long-term contracts\n• Clearly define IP terms in every service agreement\n• Never reuse client-specific code for other clients",
-    links: [
-      { label: 'Security & IP Protection', href: '/security' },
-      { label: 'FAQ — IP Ownership', href: '/faq' },
-    ],
+    keywords: ['career', 'job', 'hiring', 'join', 'vacancy', 'opening', 'apply', 'engineer', 'developer'],
+    answer: "We're hiring! Current openings:\n\n👩‍💻 Senior AI/ML Engineer\n🖥️ Full Stack Developer\n🔧 Data Engineer\n☁️ Cloud & DevOps Engineer\n📋 AI Product Manager\n\nAll remote / India, full-time.",
+    links: [{ label: 'View Openings', href: '/careers' }],
   },
-
-  // Support / Maintenance
   {
-    keywords: ['support', 'maintenance', 'after launch', 'post launch', 'ongoing', 'retainer', 'sla', 'monitor', 'update'],
-    answer: "Yes — we offer ongoing support after every project:\n\n🔧 Monthly support retainers\n📊 Model monitoring & retraining\n🐛 Bug fixes & security patches\n🚀 Feature development\n\nMost clients stay with us on retainer to keep their systems optimised and up to date. SLA response times are defined in the support agreement.",
-    links: [
-      { label: 'Contact Us', href: '/contact' },
-    ],
-  },
-
-  // Portfolio / Case studies
-  {
-    keywords: ['portfolio', 'case study', 'example', 'work', 'previous', 'project', 'client', 'reference', 'proof'],
-    answer: "Our portfolio covers AI, data, software, and cloud projects across industries:\n\n• Medical imaging platform — 94% diagnostic accuracy\n• Trading intelligence system — 2M+ events/sec\n• Retail support bot — 72% query automation\n• Predictive maintenance — 38% downtime reduction\n• Government document AI — 60% faster processing\n\nClient names are withheld under NDA, but we can arrange verified references upon request.",
-    links: [
-      { label: 'View Portfolio', href: '/portfolio' },
-      { label: 'Request References', href: '/contact' },
-    ],
-  },
-
-  // Blog / Insights
-  {
-    keywords: ['blog', 'article', 'read', 'insight', 'resource', 'guide', 'learn', 'content', 'news'],
-    answer: "Our blog covers practical AI, data, and cloud topics:\n\n📰 Recent articles:\n• Generative AI in Healthcare Diagnostics\n• RAG vs Fine-Tuning: Which to Choose\n• Predictive Maintenance in Manufacturing\n• Real-Time Data Pipelines for Finance\n• Cloud Cost Optimisation Strategies\n• Responsible AI: Fair & Explainable Systems\n\nNew articles published monthly.",
-    links: [
-      { label: 'All Articles', href: '/blog' },
-      { label: 'AI & ML Posts', href: '/blog' },
-    ],
-  },
-
-  // Careers / Jobs
-  {
-    keywords: ['career', 'job', 'hiring', 'join', 'work for', 'vacancy', 'opening', 'apply', 'engineer', 'developer', 'data scientist', 'recruit'],
-    answer: "We're hiring! Current open roles:\n\n👩‍💻 Senior AI/ML Engineer\n🖥️ Full Stack Developer\n🔧 Data Engineer\n☁️ Cloud & DevOps Engineer\n📋 AI Product Manager\n💼 Business Development Manager\n\nAll roles are Remote / India, full-time. We're also open to exceptional talent outside of listed roles.",
-    links: [
-      { label: 'View All Openings', href: '/careers' },
-      { label: 'Apply Now', href: '/contact' },
-    ],
-  },
-
-  // Contact / Location
-  {
-    keywords: ['contact', 'email', 'phone', 'reach', 'address', 'location', 'india', 'office', 'where are you', 'based'],
-    answer: "Get in touch with us:\n\n📧 info@digitaltechs.in\n🏢 Headquartered in India\n🌍 Operating globally in 15+ countries\n🕐 Response within 24 business hours\n\nWe work fully remote and are flexible on timezones for meetings.",
-    links: [
-      { label: 'Contact Form', href: '/contact' },
-      { label: 'Book a Call', href: '/contact' },
-    ],
-  },
-
-  // Responsible AI / Ethics
-  {
-    keywords: ['responsible ai', 'ethical', 'bias', 'fair', 'explainable', 'transparent', 'ethics', 'eu ai act', 'governance'],
-    answer: "Responsible AI is core to how we build:\n\n• Bias testing on all ML models before deployment\n• SHAP/LIME explainability for high-stakes systems\n• Human-in-the-loop for critical decisions\n• Model cards documenting training data & limitations\n• EU AI Act risk classification compliance\n• Data minimisation — collect only what's needed",
-    links: [
-      { label: 'Responsible AI Article', href: '/blog/responsible-ai-fair-explainable' },
-      { label: 'Security & AI Governance', href: '/security' },
-    ],
-  },
-
-  // FAQ
-  {
-    keywords: ['faq', 'question', 'frequently asked', 'common question'],
-    answer: "Our FAQ page covers the most common questions across:\n\n• General — what we do & where we operate\n• AI Services — models, accuracy, ethics\n• Projects & Process — timeline, delivery, IP\n• Pricing & Engagement — costs, minimum, consultation",
-    links: [
-      { label: 'Read All FAQs', href: '/faq' },
-    ],
+    keywords: ['contact', 'email', 'phone', 'reach', 'address', 'location', 'india'],
+    answer: "Get in touch:\n\n📧 info@digitaltechs.in\n🏢 Headquartered in India\n🌍 Operating in 15+ countries\n🕐 Response within 24 business hours",
+    links: [{ label: 'Contact Form', href: '/contact' }],
   },
 ]
 
-// ── Matching engine — score-based, returns best match ─────────────────────────
-
 const FALLBACK: KBEntry = {
   keywords: [],
-  answer: "Thanks for your question! I don't have a specific answer for that, but our team does.\n\n📧 info@digitaltechs.in\n📝 Or use the contact form for a detailed response.",
+  answer: "Thanks for your question! Our team has a more detailed answer for you.\n\n📧 info@digitaltechs.in\n📝 Or use the contact form for a full response.",
   links: [
     { label: 'Contact Us', href: '/contact' },
-    { label: 'Read Our FAQs', href: '/faq' },
+    { label: 'Read FAQs', href: '/faq' },
   ],
 }
 
@@ -312,17 +142,15 @@ function getAnswer(input: string): KBEntry {
   return bestScore > 0 ? bestMatch! : FALLBACK
 }
 
-// ── Quick reply chips shown at start ──────────────────────────────────────────
 const quickReplies = [
   'What services do you offer?',
-  'Which industries do you serve?',
   'How much does a project cost?',
   'How long does a project take?',
   'Do you offer a free consultation?',
   'Are you GDPR / HIPAA compliant?',
 ]
 
-// ── Component ─────────────────────────────────────────────────────────────────
+/* ─── Component ──────────────────────────────────────────────────────────── */
 
 export default function ChatBot() {
   const [open, setOpen] = useState(false)
@@ -358,153 +186,226 @@ export default function ChatBot() {
     setTimeout(() => {
       setTyping(false)
       const response = getAnswer(userMsg)
-      setMessages(prev => [...prev, {
-        role: 'bot',
-        text: response.answer,
-        links: response.links,
-      }])
+      setMessages(prev => [
+        ...prev,
+        { role: 'bot', text: response.answer, links: response.links },
+      ])
     }, 700)
   }
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
 
-      {/* Chat window */}
-      {open && (
-        <div
-          className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl w-80 sm:w-96 flex flex-col overflow-hidden animate-in slide-in-from-bottom-4"
-          style={{ height: '520px' }}
-        >
-          {/* Header */}
-          <div className="hero-gradient p-4 flex items-center justify-between flex-shrink-0">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 bg-white/20 rounded-xl flex items-center justify-center">
-                <Bot size={20} className="text-white" />
-              </div>
-              <div>
-                <p className="font-bold text-white text-sm">DTP AI Assistant</p>
-                <div className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
-                  <span className="text-blue-100 text-xs">Knows our full website</span>
+      {/* ── Chat window ─────────────────────────────────────────────── */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            key="chat-window"
+            initial={{ opacity: 0, scale: 0.92, y: 16 }}
+            animate={{ opacity: 1, scale: 1,    y: 0  }}
+            exit={{   opacity: 0, scale: 0.92, y: 16  }}
+            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            className="w-80 sm:w-[360px] flex flex-col overflow-hidden rounded-2xl shadow-2xl"
+            style={{
+              height: 520,
+              background: 'rgba(8, 10, 20, 0.92)',
+              backdropFilter: 'blur(24px)',
+              WebkitBackdropFilter: 'blur(24px)',
+              border: '1px solid rgba(255,255,255,0.08)',
+            }}
+          >
+            {/* Header */}
+            <div
+              className="flex items-center justify-between px-4 py-3.5 flex-shrink-0"
+              style={{
+                background: 'linear-gradient(135deg, #1d4ed8 0%, #0891b2 100%)',
+                borderBottom: '1px solid rgba(255,255,255,0.1)',
+              }}
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-white/15 rounded-xl flex items-center justify-center">
+                  <Bot size={17} className="text-white" />
+                </div>
+                <div>
+                  <p className="font-semibold text-white text-sm leading-tight">DTP AI Assistant</p>
+                  <div className="flex items-center gap-1.5 mt-0.5">
+                    <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+                    <span className="text-white/60 text-xs">Online</span>
+                  </div>
                 </div>
               </div>
+              <button
+                onClick={() => setOpen(false)}
+                className="w-7 h-7 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white transition-colors"
+              >
+                <X size={15} />
+              </button>
             </div>
-            <button onClick={() => setOpen(false)} className="text-white/70 hover:text-white transition-colors">
-              <X size={18} />
-            </button>
-          </div>
 
-          {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-slate-50 dark:bg-slate-900">
-            {messages.map((msg, i) => (
-              <div key={i} className={`flex gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                {msg.role === 'bot' && (
-                  <div className="w-7 h-7 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Bot size={14} className="text-white" />
+            {/* Messages */}
+            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
+              {messages.map((msg, i) => (
+                <div key={i} className={`flex gap-2.5 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                  {msg.role === 'bot' && (
+                    <div className="w-6 h-6 bg-blue-600/30 border border-blue-500/30 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <Bot size={12} className="text-blue-300" />
+                    </div>
+                  )}
+                  <div className="max-w-[82%] space-y-2">
+                    <div
+                      className={`px-4 py-2.5 text-sm leading-relaxed whitespace-pre-line ${
+                        msg.role === 'bot'
+                          ? 'rounded-2xl rounded-tl-sm text-slate-200'
+                          : 'rounded-2xl rounded-tr-sm bg-blue-600 text-white'
+                      }`}
+                      style={
+                        msg.role === 'bot'
+                          ? { background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.08)' }
+                          : undefined
+                      }
+                    >
+                      {msg.text}
+                    </div>
+                    {msg.links && msg.links.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5">
+                        {msg.links.map(link => (
+                          <a
+                            key={link.href}
+                            href={link.href}
+                            className="inline-block text-xs font-medium px-3 py-1 rounded-full text-blue-300 transition-all"
+                            style={{ background: 'rgba(59,130,246,0.12)', border: '1px solid rgba(59,130,246,0.25)' }}
+                            onMouseEnter={e => {
+                              (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(59,130,246,0.25)'
+                            }}
+                            onMouseLeave={e => {
+                              (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(59,130,246,0.12)'
+                            }}
+                          >
+                            {link.label} →
+                          </a>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                )}
-                <div className="max-w-[80%] space-y-2">
-                  <div className={`rounded-2xl px-4 py-2.5 text-sm whitespace-pre-line leading-relaxed ${
-                    msg.role === 'bot'
-                      ? 'bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-100 rounded-tl-sm'
-                      : 'bg-blue-600 text-white rounded-tr-sm'
-                  }`}>
-                    {msg.text}
-                  </div>
-                  {/* Link buttons */}
-                  {msg.links && msg.links.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5">
-                      {msg.links.map(link => (
-                        <a
-                          key={link.href}
-                          href={link.href}
-                          className="inline-block text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200 px-2.5 py-1 rounded-full hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors"
-                        >
-                          {link.label} →
-                        </a>
-                      ))}
+                  {msg.role === 'user' && (
+                    <div className="w-6 h-6 bg-white/10 border border-white/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <User size={12} className="text-slate-400" />
                     </div>
                   )}
                 </div>
-                {msg.role === 'user' && (
-                  <div className="w-7 h-7 bg-slate-200 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <User size={14} className="text-slate-600" />
+              ))}
+
+              {/* Typing indicator */}
+              {typing && (
+                <div className="flex gap-2.5 justify-start">
+                  <div className="w-6 h-6 bg-blue-600/30 border border-blue-500/30 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Bot size={12} className="text-blue-300" />
                   </div>
-                )}
-              </div>
-            ))}
-
-            {/* Typing indicator */}
-            {typing && (
-              <div className="flex gap-2 justify-start">
-                <div className="w-7 h-7 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Bot size={14} className="text-white" />
+                  <div
+                    className="flex gap-1.5 items-center px-4 py-3 rounded-2xl rounded-tl-sm"
+                    style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.08)' }}
+                  >
+                    {[0, 1, 2].map(j => (
+                      <span
+                        key={j}
+                        className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce"
+                        style={{ animationDelay: `${j * 0.15}s` }}
+                      />
+                    ))}
+                  </div>
                 </div>
-                <div className="bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-2xl rounded-tl-sm px-4 py-3 flex gap-1.5 items-center">
-                  {[0, 1, 2].map(i => (
-                    <span key={i} className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: `${i * 0.15}s` }} />
-                  ))}
+              )}
+
+              {/* Quick replies */}
+              {showQuickReplies && !typing && (
+                <div className="space-y-2 pt-1">
+                  <p className="text-xs text-white/30 font-medium">Quick questions</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {quickReplies.map(q => (
+                      <button
+                        key={q}
+                        onClick={() => send(q)}
+                        className="text-xs px-3 py-1.5 rounded-full text-slate-400 hover:text-slate-200 transition-all text-left"
+                        style={{
+                          background: 'rgba(255,255,255,0.04)',
+                          border: '1px solid rgba(255,255,255,0.08)',
+                        }}
+                        onMouseEnter={e => {
+                          (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.08)'
+                          ;(e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.16)'
+                        }}
+                        onMouseLeave={e => {
+                          (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.04)'
+                          ;(e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.08)'
+                        }}
+                      >
+                        {q}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
 
-            {/* Quick reply chips */}
-            {showQuickReplies && !typing && (
-              <div className="space-y-2">
-                <p className="text-xs text-slate-400 font-medium px-1">Quick questions:</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {quickReplies.map(q => (
-                    <button
-                      key={q}
-                      onClick={() => send(q)}
-                      className="text-xs bg-white border border-slate-200 text-slate-600 px-3 py-1.5 rounded-full hover:border-blue-400 hover:text-blue-700 hover:bg-blue-50 transition-colors text-left"
-                    >
-                      {q}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            <div ref={bottomRef} />
-          </div>
-
-          {/* Input */}
-          <div className="p-3 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex-shrink-0">
-            <div className="flex gap-2">
-              <input
-                type="text"
-                value={input}
-                onChange={e => setInput(e.target.value)}
-                onKeyDown={e => e.key === 'Enter' && send()}
-                placeholder="Ask about services, pricing, industries…"
-                className="flex-1 border border-slate-200 dark:border-slate-600 rounded-xl px-3 py-2 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-50 dark:bg-slate-700 dark:placeholder-slate-400"
-              />
-              <button
-                onClick={() => send()}
-                className="w-9 h-9 bg-blue-600 text-white rounded-xl flex items-center justify-center hover:bg-blue-700 transition-colors flex-shrink-0"
-              >
-                <Send size={15} />
-              </button>
+              <div ref={bottomRef} />
             </div>
-            <p className="text-xs text-slate-400 mt-1.5 text-center">
-              Answers sourced from digitaltechs.in
-            </p>
-          </div>
-        </div>
-      )}
 
-      {/* Toggle button */}
-      <button
+            {/* Input */}
+            <div
+              className="px-3 py-3 flex-shrink-0"
+              style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+            >
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={input}
+                  onChange={e => setInput(e.target.value)}
+                  onKeyDown={e => e.key === 'Enter' && send()}
+                  placeholder="Ask about services, pricing…"
+                  className="flex-1 px-3.5 py-2.5 text-sm text-slate-200 placeholder-white/25 rounded-xl outline-none focus:ring-1 focus:ring-blue-500/50 transition-all"
+                  style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}
+                />
+                <button
+                  onClick={() => send()}
+                  className="w-9 h-9 bg-blue-600 hover:bg-blue-500 text-white rounded-xl flex items-center justify-center transition-colors flex-shrink-0"
+                >
+                  <Send size={14} />
+                </button>
+              </div>
+              <p className="text-center text-white/20 text-xs mt-2">
+                Answers sourced from digitaltechs.in
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── Toggle button ───────────────────────────────────────────── */}
+      <motion.button
         onClick={() => setOpen(!open)}
-        className="w-14 h-14 hero-gradient text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-all active:scale-95 relative"
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.93 }}
+        className="relative w-14 h-14 text-white rounded-full shadow-lg shadow-blue-600/30 flex items-center justify-center"
+        style={{
+          background: 'linear-gradient(135deg, #1d4ed8 0%, #0891b2 100%)',
+        }}
         aria-label="Open AI chat assistant"
       >
-        {open ? <X size={22} /> : <Sparkles size={22} />}
+        <AnimatePresence mode="wait">
+          {open ? (
+            <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
+              <X size={22} />
+            </motion.div>
+          ) : (
+            <motion.div key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
+              <Sparkles size={22} />
+            </motion.div>
+          )}
+        </AnimatePresence>
         {!open && (
-          <span className="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white animate-pulse" />
+          <span className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-400 rounded-full border-2 border-[#030712] animate-pulse" />
         )}
-      </button>
+      </motion.button>
+
     </div>
   )
 }
