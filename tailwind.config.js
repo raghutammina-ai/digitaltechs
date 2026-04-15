@@ -9,8 +9,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans:    ['var(--font-inter)', 'ui-sans-serif', 'system-ui'],
-        display: ['var(--font-syne)', 'var(--font-inter)', 'ui-sans-serif'],
+        sans:    ['var(--font-jakarta)', 'ui-sans-serif', 'system-ui'],
+        display: ['var(--font-jakarta)', 'ui-sans-serif', 'system-ui'],
       },
       colors: {
         brand: {
