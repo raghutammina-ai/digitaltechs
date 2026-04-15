@@ -1,13 +1,13 @@
-name: Sync Main → Test
+name: Sync Test → Main
 
 on:
   push:
     branches:
-      - main
+      - test
 
 jobs:
   sync:
-    name: Merge main into test
+    name: Merge test into main
     runs-on: ubuntu-latest
     # Skip if this push was made by the bot (prevents infinite loop)
     if: github.actor != 'github-actions[bot]'
@@ -27,9 +27,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Merge main into test
+      - name: Merge test into main
         run: |
-          git checkout test
-          git merge origin/main -X ours --no-edit \
-            -m "chore: sync main → test [skip ci]"
-          git push origin test
+          git checkout main
+          git merge origin/test -X theirs --no-edit \
+            -m "chore: sync test → main [skip ci]"
+          git push origin main
