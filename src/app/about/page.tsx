@@ -242,22 +242,10 @@ export default function AboutPage() {
 
                   {/* Year row */}
                   <div className="flex items-center gap-4 mb-10">
-                    <span
-                      className={`text-2xl font-black tracking-tight tabular-nums transition-colors duration-300 ${
-                        isCurrent
-                          ? 'bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent'
-                          : 'text-white/25'
-                      }`}
-                    >
+                    <span className="text-2xl font-black tracking-tight tabular-nums bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
                       {group.year}
                     </span>
-                    <div
-                      className={`flex-1 h-px ${
-                        isCurrent
-                          ? 'bg-gradient-to-r from-blue-500/50 to-transparent'
-                          : 'bg-white/[0.04]'
-                      }`}
-                    />
+                    <div className="flex-1 h-px bg-gradient-to-r from-blue-500/50 to-transparent" />
                     {isCurrent && (
                       <span className="text-[11px] font-medium tracking-wide text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-full">
                         Current
