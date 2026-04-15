@@ -256,13 +256,7 @@ export default function AboutPage() {
                   {/* Item list */}
                   <div className="relative">
                     {/* Vertical connector */}
-                    <div
-                      className={`absolute left-[9px] top-3 bottom-3 w-px ${
-                        isCurrent
-                          ? 'bg-gradient-to-b from-blue-500/70 via-blue-500/30 to-transparent'
-                          : 'bg-gradient-to-b from-white/[0.08] to-transparent'
-                      }`}
-                    />
+                    <div className="absolute left-[9px] top-3 bottom-3 w-px bg-gradient-to-b from-blue-500/70 via-blue-500/30 to-transparent" />
 
                     <div className="space-y-3">
                       {group.items.map((m, i) => (
@@ -270,43 +264,17 @@ export default function AboutPage() {
                           <div className="relative flex items-start gap-5 pl-8">
 
                             {/* Node dot */}
-                            <div
-                              className={`absolute left-[5px] top-[1.1rem] w-[9px] h-[9px] rounded-full flex-shrink-0 transition-all duration-500 ${
-                                isCurrent
-                                  ? 'bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.6)]'
-                                  : 'bg-white/[0.15]'
-                              }`}
-                            />
+                            <div className="absolute left-[5px] top-[1.1rem] w-[9px] h-[9px] rounded-full flex-shrink-0 bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.6)]" />
 
                             {/* Card */}
                             <div
-                              className={`group flex-1 rounded-2xl px-5 py-4 border transition-all duration-300 ease-out cursor-default
-                                hover:-translate-y-1 ${
-                                isCurrent
-                                  ? 'border-blue-500/20 hover:border-blue-400/40 hover:shadow-[0_0_25px_rgba(59,130,246,0.12)]'
-                                  : 'border-white/[0.04] hover:border-white/[0.09] hover:shadow-[0_8px_24px_rgba(0,0,0,0.4)]'
-                              }`}
-                              style={{
-                                background: isCurrent
-                                  ? 'rgba(59,130,246,0.04)'
-                                  : 'rgba(255,255,255,0.015)',
-                                backdropFilter: 'blur(8px)',
-                              }}
+                              className="group flex-1 rounded-2xl px-5 py-4 border border-blue-500/20 hover:border-blue-400/40 hover:shadow-[0_0_25px_rgba(59,130,246,0.2)] hover:-translate-y-1 transition-all duration-300 ease-out cursor-default"
+                              style={{ background: 'rgba(59,130,246,0.03)', backdropFilter: 'blur(8px)' }}
                             >
-                              <h4
-                                className={`font-semibold text-sm mb-1 leading-snug tracking-[-0.01em] ${
-                                  isCurrent ? 'text-white/90' : 'text-white/35'
-                                }`}
-                              >
+                              <h4 className="font-semibold text-sm mb-1 leading-snug tracking-[-0.01em] text-white/90 group-hover:text-white transition-colors duration-300">
                                 {m.title}
                               </h4>
-                              <p
-                                className={`text-[13px] leading-relaxed transition-colors duration-300 ${
-                                  isCurrent
-                                    ? 'text-slate-400 group-hover:text-slate-300'
-                                    : 'text-slate-600/70'
-                                }`}
-                              >
+                              <p className="text-[13px] leading-relaxed text-slate-400 group-hover:text-slate-300 transition-colors duration-300">
                                 {m.event}
                               </p>
                             </div>
