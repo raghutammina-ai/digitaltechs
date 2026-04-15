@@ -3,54 +3,60 @@ import AnimatedSection from './AnimatedSection'
 const stacks = [
   {
     category: 'AI & Machine Learning',
-    color: 'text-blue-600',
-    bg: 'bg-blue-50',
+    accent: 'text-blue-400',
+    border: 'border-blue-500/20',
+    tagBg: 'bg-blue-500/10 text-blue-300 border-blue-500/20',
     tools: ['OpenAI / GPT-4', 'Anthropic Claude', 'LangChain', 'TensorFlow', 'PyTorch', 'Hugging Face', 'Scikit-learn', 'YOLO'],
   },
   {
     category: 'Data & Analytics',
-    color: 'text-cyan-600',
-    bg: 'bg-cyan-50',
+    accent: 'text-cyan-400',
+    border: 'border-cyan-500/20',
+    tagBg: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/20',
     tools: ['Apache Spark', 'Apache Kafka', 'Snowflake', 'dbt', 'Databricks', 'Power BI', 'Tableau', 'Airflow'],
   },
   {
     category: 'Cloud & Infrastructure',
-    color: 'text-teal-600',
-    bg: 'bg-teal-50',
+    accent: 'text-teal-400',
+    border: 'border-teal-500/20',
+    tagBg: 'bg-teal-500/10 text-teal-300 border-teal-500/20',
     tools: ['AWS', 'Google Cloud', 'Microsoft Azure', 'Terraform', 'Kubernetes', 'Docker', 'GitHub Actions', 'Pulumi'],
   },
   {
     category: 'Software Development',
-    color: 'text-indigo-600',
-    bg: 'bg-indigo-50',
+    accent: 'text-violet-400',
+    border: 'border-violet-500/20',
+    tagBg: 'bg-violet-500/10 text-violet-300 border-violet-500/20',
     tools: ['React / Next.js', 'Node.js', 'Python', 'TypeScript', 'FastAPI', 'PostgreSQL', 'React Native', 'GraphQL'],
   },
 ]
 
 export default function TechStack() {
   return (
-    <section className="bg-white py-24">
+    <section className="bg-[#020817] py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <AnimatedSection className="text-center mb-14">
-          <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">Technology</span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-2 mb-4">
+        <AnimatedSection className="text-center mb-16">
+          <span className="text-blue-400 text-xs font-bold uppercase tracking-[0.25em] mb-4 block">Technology</span>
+          <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tight mb-4">
             Our Technology Stack
           </h2>
-          <p className="text-slate-500 max-w-xl mx-auto">
+          <p className="text-slate-400 max-w-xl mx-auto text-lg leading-relaxed">
             We work with the industry&apos;s best tools across AI, data, cloud, and software engineering.
           </p>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {stacks.map((stack, i) => (
-            <AnimatedSection key={stack.category} delay={i * 0.1}>
-              <div className="border border-slate-200 rounded-2xl p-6 card-glow">
-                <h3 className={`font-bold text-base mb-4 ${stack.color}`}>{stack.category}</h3>
+            <AnimatedSection key={stack.category} delay={i * 0.08}>
+              <div className={`bg-white/[0.03] border border-white/[0.07] hover:${stack.border} rounded-2xl p-7 transition-all duration-300`}>
+                <h3 className={`font-bold text-sm uppercase tracking-wider mb-5 ${stack.accent}`}>
+                  {stack.category}
+                </h3>
                 <div className="flex flex-wrap gap-2">
                   {stack.tools.map(tool => (
                     <span
                       key={tool}
-                      className={`text-sm font-medium px-3 py-1.5 rounded-lg ${stack.bg} ${stack.color} border border-current/10`}
+                      className={`text-xs font-medium px-3 py-1.5 rounded-lg border ${stack.tagBg}`}
                     >
                       {tool}
                     </span>
