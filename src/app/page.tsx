@@ -42,7 +42,7 @@ export default function DeliveryProcess() {
 
         {/* HEADER */}
         <div className="text-center mb-12">
-          <p className="text-blue-400 text-sm tracking-widest uppercase mb-2">
+          <p className="text-gray-400 text-sm tracking-widest uppercase mb-2">
             HOW WE WORK
           </p>
 
@@ -59,20 +59,20 @@ export default function DeliveryProcess() {
         <div className="grid md:grid-cols-3 gap-6">
           {steps.map((step, i) => (
             <AnimatedSection key={i}>
-              <div className="group bg-[#0B1220]/60 backdrop-blur-md border border-blue-500/20 rounded-2xl p-6 transition-all duration-300 hover:border-blue-400/40 hover:-translate-y-1">
+              <div className="border border-white/10 rounded-2xl p-6">
 
-                {/* NUMBER (BALANCED — NO GLOW) */}
-                <span className="text-5xl font-bold text-blue-400/90 group-hover:text-blue-300 transition">
+                {/* NUMBER (ORIGINAL DARK STYLE) */}
+                <span className="text-5xl font-bold text-gray-600">
                   {step.num}
                 </span>
 
                 {/* TITLE */}
-                <h3 className="mt-4 font-semibold text-white group-hover:text-blue-400 transition">
+                <h3 className="mt-4 font-semibold text-white">
                   {step.title}
                 </h3>
 
                 {/* DESC */}
-                <p className="text-sm text-gray-400 mt-2 group-hover:text-gray-300">
+                <p className="text-sm text-gray-400 mt-2">
                   {step.desc}
                 </p>
 
