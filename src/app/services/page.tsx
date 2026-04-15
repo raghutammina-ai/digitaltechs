@@ -213,7 +213,7 @@ export default function ServicesPage() {
                   style={{ background: 'rgba(255,255,255,0.025)', backdropFilter: 'blur(12px)' }}
                 >
                   {/* Step number — watermark */}
-                  <span className="block font-black leading-none mb-5 text-[4.5rem] tracking-tighter tabular-nums bg-gradient-to-br from-blue-400 to-blue-600 bg-clip-text text-transparent opacity-50 group-hover:opacity-80 transition-opacity duration-300 select-none">
+                  <span className="block font-black leading-none mb-5 text-[4.5rem] tracking-tighter tabular-nums bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(59,130,246,0.8)] group-hover:drop-shadow-[0_0_18px_rgba(59,130,246,1)] transition-all duration-300 select-none">
                     {p.step}
                   </span>
 
