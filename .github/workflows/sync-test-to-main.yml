@@ -1,0 +1,35 @@
+name: Sync Test → Main
+
+on:
+  push:
+    branches:
+      - test
+
+jobs:
+  sync:
+    name: Merge test into main
+    runs-on: ubuntu-latest
+    # Skip if this push was made by the bot (prevents infinite loop)
+    if: github.actor != 'github-actions[bot]'
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository (full history)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Merge test into main
+        run: |
+          git checkout main
+          git merge origin/test -X theirs --no-edit \
+            -m "chore: sync test → main [skip ci]"
+          git push origin main

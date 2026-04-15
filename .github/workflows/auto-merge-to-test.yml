@@ -1,55 +1,45 @@
-name: Auto Merge to Test
+name: Auto Merge Feature → Test
 
 on:
-  workflow_run:
-    workflows: ["CI"]
-    types: [completed]
+  push:
+    branches:
+      - 'feature/**'
 
 jobs:
-  auto-merge:
-    name: Auto merge feature branch to test
+  merge-to-test:
+    name: Merge to test branch
     runs-on: ubuntu-latest
-    # Only run when CI passed and the branch is NOT test or main
-    if: >
-      github.event.workflow_run.conclusion == 'success' &&
-      github.event.workflow_run.head_branch != 'test' &&
-      github.event.workflow_run.head_branch != 'main'
 
     permissions:
       contents: write
-      pull-requests: write
 
     steps:
-      - name: Auto merge PR into test
-        uses: actions/github-script@v7
+      - name: Checkout repository (full history)
+        uses: actions/checkout@v4
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const branch = context.payload.workflow_run.head_branch;
-            console.log(`CI passed on branch: ${branch}`);
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-            // Find open PRs from this branch targeting test
-            const { data: prs } = await github.rest.pulls.list({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open',
-              base: 'test',
-              head: `${context.repo.owner}:${branch}`
-            });
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-            if (prs.length === 0) {
-              console.log('No open PR found targeting test branch. Skipping.');
-              return;
-            }
+      - name: Merge feature branch into test
+        run: |
+          FEATURE_BRANCH="${GITHUB_REF#refs/heads/}"
+          echo "Merging $FEATURE_BRANCH → test"
 
-            for (const pr of prs) {
-              console.log(`Merging PR #${pr.number}: ${pr.title}`);
-              await github.rest.pulls.merge({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: pr.number,
-                merge_method: 'squash',
-                commit_title: `[auto] ${pr.title} (#${pr.number})`
-              });
-              console.log(`PR #${pr.number} merged into test successfully.`);
-            }
+          git checkout test
+
+          # Merge, favouring the incoming feature branch on any conflict
+          if git merge "origin/$FEATURE_BRANCH" -X theirs --no-edit \
+               -m "chore: auto-merge $FEATURE_BRANCH into test [skip ci]"; then
+            echo "Merge succeeded."
+          else
+            echo "Merge failed even with -X theirs. Resetting test to feature branch tip."
+            git merge --abort || true
+            git reset --hard "origin/$FEATURE_BRANCH"
+          fi
+
+          git push origin test
