@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import {
   Brain, BarChart3, Code2, Cloud, ArrowRight,
-  CheckCircle2, Lock, Cpu,
+  Lock, Cpu,
 } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
 
@@ -146,38 +146,30 @@ export default function ServicesPage() {
 
       {/* ── Service Cards ──────────────────────────────────────────────── */}
       <section className="py-8 pb-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          {services.map((svc, i) => (
-            <AnimatedSection key={svc.title} delay={i * 0.05}>
-              <div className="group relative rounded-2xl p-8 md:p-10 bg-gradient-to-br from-[#0B1220] via-[#0F172A] to-black border border-blue-500/30 hover:border-blue-400 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {services.map((svc, i) => (
+              <AnimatedSection key={svc.title} delay={i * 0.05}>
+                <div className="group flex flex-col gap-4 rounded-2xl p-7 h-full bg-[#0B1220] border border-blue-500/30 hover:border-blue-400 hover:-translate-y-1 transition-all duration-200 ease-out cursor-default">
 
-                <div className="flex flex-col md:flex-row gap-8 md:gap-12">
-
-                  {/* Left — icon + title */}
-                  <div className="md:w-72 flex-shrink-0">
-                    <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mb-5">
-                      <svc.icon size={24} className="text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />
-                    </div>
-                    <h2 className="text-white font-semibold text-xl mb-2 leading-snug group-hover:text-blue-400 transition-colors duration-300">{svc.title}</h2>
-                    <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300">{svc.tagline}</p>
-                    <div className="mt-5 h-px w-12 bg-gradient-to-r from-blue-400 to-blue-600 opacity-60" />
+                  {/* Icon */}
+                  <div className="w-11 h-11 bg-blue-500/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <svc.icon size={22} className="text-blue-400 group-hover:text-blue-300 transition-colors duration-200" />
                   </div>
 
-                  {/* Right — features */}
-                  <div className="flex-1">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
-                      {svc.features.map((f) => (
-                        <div key={f} className="flex items-start gap-2.5">
-                          <CheckCircle2 size={15} className="text-blue-400 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-300 text-sm leading-relaxed">{f}</span>
-                        </div>
-                      ))}
-                    </div>
+                  {/* Text */}
+                  <div>
+                    <h2 className="text-white font-semibold text-lg mb-2 leading-snug group-hover:text-blue-400 transition-colors duration-200">
+                      {svc.title}
+                    </h2>
+                    <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-200">
+                      {svc.tagline}
+                    </p>
                   </div>
                 </div>
-              </div>
-            </AnimatedSection>
-          ))}
+              </AnimatedSection>
+            ))}
+          </div>
         </div>
       </section>
 
