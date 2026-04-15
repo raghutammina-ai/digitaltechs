@@ -18,12 +18,6 @@ const services = [
     icon: Brain,
     title: 'AI Application Development',
     tagline: 'Intelligent software that thinks, learns, and adapts.',
-    accent: 'from-blue-500 to-cyan-400',
-    iconBg: 'bg-blue-500/10',
-    iconColor: 'text-blue-400',
-    checkColor: 'text-blue-400',
-    borderHover: 'hover:border-blue-500/40',
-    glowShadow: 'hover:shadow-blue-500/10',
     features: [
       'Custom LLM integrations & chatbot development',
       'Computer vision & image recognition systems',
@@ -37,12 +31,6 @@ const services = [
     icon: BarChart3,
     title: 'Data Analytics & Intelligence',
     tagline: 'Turn your data into your most powerful competitive advantage.',
-    accent: 'from-cyan-500 to-teal-400',
-    iconBg: 'bg-cyan-500/10',
-    iconColor: 'text-cyan-400',
-    checkColor: 'text-cyan-400',
-    borderHover: 'hover:border-cyan-500/40',
-    glowShadow: 'hover:shadow-cyan-500/10',
     features: [
       'Business intelligence (BI) dashboards',
       'Real-time data pipelines & ETL',
@@ -56,12 +44,6 @@ const services = [
     icon: Code2,
     title: 'Custom Software Development',
     tagline: 'Full-stack solutions engineered for scale and longevity.',
-    accent: 'from-indigo-500 to-violet-400',
-    iconBg: 'bg-indigo-500/10',
-    iconColor: 'text-indigo-400',
-    checkColor: 'text-indigo-400',
-    borderHover: 'hover:border-indigo-500/40',
-    glowShadow: 'hover:shadow-indigo-500/10',
     features: [
       'Web application development (React, Next.js)',
       'Mobile apps (iOS, Android, React Native)',
@@ -75,12 +57,6 @@ const services = [
     icon: Cloud,
     title: 'Cloud & Automation Engineering',
     tagline: 'Resilient infrastructure and automated workflows at scale.',
-    accent: 'from-teal-500 to-emerald-400',
-    iconBg: 'bg-teal-500/10',
-    iconColor: 'text-teal-400',
-    checkColor: 'text-teal-400',
-    borderHover: 'hover:border-teal-500/40',
-    glowShadow: 'hover:shadow-teal-500/10',
     features: [
       'Cloud migration & multi-cloud strategy',
       'DevOps & CI/CD pipeline setup',
@@ -94,12 +70,6 @@ const services = [
     icon: Lock,
     title: 'Cybersecurity Solutions',
     tagline: 'Protect your digital assets with enterprise-grade security.',
-    accent: 'from-rose-500 to-pink-400',
-    iconBg: 'bg-rose-500/10',
-    iconColor: 'text-rose-400',
-    checkColor: 'text-rose-400',
-    borderHover: 'hover:border-rose-500/40',
-    glowShadow: 'hover:shadow-rose-500/10',
     features: [
       'Security audits & vulnerability assessments',
       'Penetration testing & ethical hacking',
@@ -113,12 +83,6 @@ const services = [
     icon: Cpu,
     title: 'Intelligent QA & Testing',
     tagline: 'Quality at every stage — faster releases, fewer failures.',
-    accent: 'from-violet-500 to-purple-400',
-    iconBg: 'bg-violet-500/10',
-    iconColor: 'text-violet-400',
-    checkColor: 'text-violet-400',
-    borderHover: 'hover:border-violet-500/40',
-    glowShadow: 'hover:shadow-violet-500/10',
     features: [
       'AI-driven test automation frameworks',
       'End-to-end regression & smoke testing',
@@ -186,22 +150,22 @@ export default function ServicesPage() {
           {services.map((svc, i) => (
             <AnimatedSection key={svc.title} delay={i * 0.05}>
               <div
-                className={`group relative rounded-2xl p-8 md:p-10 border border-white/[0.07] ${svc.borderHover} ${svc.glowShadow} hover:shadow-2xl transition-all duration-300 overflow-hidden`}
-                style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(12px)' }}
+                className="group relative rounded-2xl p-8 md:p-10 border border-blue-500/20 hover:border-blue-400/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+                style={{ background: 'rgba(59,130,246,0.03)', backdropFilter: 'blur(12px)' }}
               >
-                {/* Gradient glow on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${svc.accent} opacity-0 group-hover:opacity-[0.04] transition-opacity duration-300 rounded-2xl pointer-events-none`} />
+                {/* Blue gradient wash on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-700 opacity-0 group-hover:opacity-[0.04] transition-opacity duration-300 rounded-2xl pointer-events-none" />
 
                 <div className="relative flex flex-col md:flex-row gap-8 md:gap-12">
 
                   {/* Left — icon + title */}
                   <div className="md:w-72 flex-shrink-0">
-                    <div className={`w-12 h-12 ${svc.iconBg} ${svc.iconColor} rounded-xl flex items-center justify-center mb-5`}>
+                    <div className="w-12 h-12 bg-blue-500/10 text-blue-400 group-hover:text-blue-300 rounded-xl flex items-center justify-center mb-5 transition-colors duration-300">
                       <svc.icon size={24} />
                     </div>
-                    <h2 className="text-white font-bold text-xl mb-2 leading-snug">{svc.title}</h2>
+                    <h2 className="text-white font-bold text-xl mb-2 leading-snug group-hover:text-white transition-colors duration-300">{svc.title}</h2>
                     <p className="text-slate-400 text-sm leading-relaxed">{svc.tagline}</p>
-                    <div className={`mt-5 h-px w-12 bg-gradient-to-r ${svc.accent} opacity-60`} />
+                    <div className="mt-5 h-px w-12 bg-gradient-to-r from-blue-400 to-blue-600 opacity-60" />
                   </div>
 
                   {/* Right — features */}
@@ -209,7 +173,7 @@ export default function ServicesPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
                       {svc.features.map((f) => (
                         <div key={f} className="flex items-start gap-2.5">
-                          <CheckCircle2 size={15} className={`${svc.checkColor} flex-shrink-0 mt-0.5`} />
+                          <CheckCircle2 size={15} className="text-blue-400 flex-shrink-0 mt-0.5" />
                           <span className="text-slate-300 text-sm leading-relaxed">{f}</span>
                         </div>
                       ))}
