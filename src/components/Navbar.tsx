@@ -7,83 +7,57 @@ import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/services', label: 'Services' },
-  { href: '/about', label: 'About' },
+  { href: '/',          label: 'Home'      },
+  { href: '/services',  label: 'Services'  },
+  { href: '/about',     label: 'About'     },
   { href: '/portfolio', label: 'Portfolio' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/careers', label: 'Careers' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/careers',   label: 'Careers'   },
 ]
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen]   = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    const onScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-md border-b border-slate-200 dark:border-slate-700'
-          : 'bg-transparent'
+          ? 'bg-black/70 backdrop-blur-xl border-b border-white/[0.06] shadow-xl shadow-black/20'
+          : 'bg-white/[0.02] backdrop-blur-md border-b border-white/[0.04]'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
 
-          {/* Logo — white over hero gradient, switches for scrolled + light mode */}
-          <Link href="/" className="flex items-center gap-2">
-            {/* Not scrolled: always white logo (gradient behind is dark) */}
-            {!scrolled && (
-              <Image
-                src="https://www.digitaltechs.in/assets/img/logo/white-logo.png"
-                alt="Digital Tech Prosperity"
-                width={180} height={45}
-                className="h-10 w-auto"
-                priority
-              />
-            )}
-            {/* Scrolled + light mode: black logo */}
-            {scrolled && (
-              <Image
-                src="https://www.digitaltechs.in/assets/img/logo/black-logo.png"
-                alt="Digital Tech Prosperity"
-                width={180} height={45}
-                className="h-10 w-auto block dark:hidden"
-                priority
-              />
-            )}
-            {/* Scrolled + dark mode: white logo */}
-            {scrolled && (
-              <Image
-                src="https://www.digitaltechs.in/assets/img/logo/white-logo.png"
-                alt="Digital Tech Prosperity"
-                width={180} height={45}
-                className="h-10 w-auto hidden dark:block"
-                priority
-              />
-            )}
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 flex-shrink-0">
+            <Image
+              src="https://www.digitaltechs.in/assets/img/logo/white-logo.png"
+              alt="Digital Tech Prosperity"
+              width={180}
+              height={45}
+              className="h-9 w-auto"
+              priority
+            />
           </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-7">
+            {navLinks.map(link => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors ${
+                className={`text-sm font-medium pb-px border-b transition-all duration-200 ${
                   pathname === link.href
-                    ? 'text-blue-600 dark:text-blue-400'
-                    : scrolled
-                      ? 'text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400'
-                      : 'text-white/90 hover:text-white'
+                    ? 'text-white border-blue-400/60'
+                    : 'text-slate-400 border-transparent hover:text-slate-100 hover:border-white/20'
                 }`}
               >
                 {link.label}
@@ -91,7 +65,7 @@ export default function Navbar() {
             ))}
             <Link
               href="/contact"
-              className="btn-glow bg-blue-600 text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
+              className="bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-all duration-200 shadow-md shadow-blue-600/20 hover:shadow-blue-500/30"
             >
               Get in Touch
             </Link>
@@ -99,11 +73,7 @@ export default function Navbar() {
 
           {/* Mobile toggle */}
           <button
-            className={`md:hidden p-2 rounded-lg transition-colors ${
-              scrolled
-                ? 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
-                : 'text-white hover:bg-white/10'
-            }`}
+            className="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/[0.06] transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -112,18 +82,21 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 shadow-lg">
+        <div
+          className="md:hidden border-t border-white/[0.06]"
+          style={{ background: 'rgba(8, 10, 20, 0.96)', backdropFilter: 'blur(24px)' }}
+        >
           <div className="px-4 py-4 space-y-1">
-            {navLinks.map((link) => (
+            {navLinks.map(link => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`block px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                className={`block px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
                   pathname === link.href
-                    ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
-                    : 'text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800'
+                    ? 'bg-white/[0.07] text-white border border-white/[0.09]'
+                    : 'text-slate-400 border border-transparent hover:bg-white/[0.04] hover:text-slate-100'
                 }`}
                 onClick={() => setIsOpen(false)}
               >
@@ -132,7 +105,7 @@ export default function Navbar() {
             ))}
             <Link
               href="/contact"
-              className="block bg-blue-600 text-white text-sm font-medium px-4 py-2.5 rounded-lg text-center mt-3 hover:bg-blue-700 transition-colors"
+              className="block bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-4 py-2.5 rounded-xl text-center mt-3 transition-colors"
               onClick={() => setIsOpen(false)}
             >
               Get in Touch
