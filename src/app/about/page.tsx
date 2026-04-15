@@ -13,33 +13,21 @@ const values = [
     icon: Lightbulb,
     title: 'Innovation with Purpose',
     desc: 'We don\'t innovate for innovation\'s sake. Every technology choice is driven by the tangible value it creates for your business and customers.',
-    iconColor: 'text-yellow-400',
-    glowColor: 'group-hover:border-yellow-500/40',
-    iconBg: 'bg-yellow-500/10',
   },
   {
     icon: Zap,
     title: 'Automation for Efficiency',
     desc: 'Manual processes are bottlenecks. We identify, design, and deploy automation that frees your team to focus on what truly matters.',
-    iconColor: 'text-blue-400',
-    glowColor: 'group-hover:border-blue-500/40',
-    iconBg: 'bg-blue-500/10',
   },
   {
     icon: Users,
     title: 'Partnership for Growth',
     desc: 'The best outcomes come from deep collaboration. We embed ourselves in your goals, challenges, and culture — not just your tech stack.',
-    iconColor: 'text-emerald-400',
-    glowColor: 'group-hover:border-emerald-500/40',
-    iconBg: 'bg-emerald-500/10',
   },
   {
     icon: Shield,
     title: 'Transformation with Integrity',
     desc: 'Security, transparency, and ethical AI are non-negotiables. We build responsibly and hold ourselves accountable to the highest standards.',
-    iconColor: 'text-violet-400',
-    glowColor: 'group-hover:border-violet-500/40',
-    iconBg: 'bg-violet-500/10',
   },
 ]
 
@@ -186,21 +174,19 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {values.map((v, i) => (
               <AnimatedSection key={v.title} delay={i * 0.1}>
-                <div
-                  className={`group relative flex flex-col gap-4 rounded-2xl p-7 h-full border border-white/[0.07] ${v.glowColor} transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-xl`}
-                  style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(12px)' }}
-                >
+                <div className="group flex flex-col gap-4 rounded-2xl p-7 h-full bg-gradient-to-br from-[#0B1220] via-[#0F172A] to-black border border-blue-500/30 hover:border-blue-400 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:-translate-y-1 transition-all duration-300">
+
                   {/* Icon */}
-                  <div className={`w-11 h-11 ${v.iconBg} ${v.iconColor} rounded-xl flex items-center justify-center flex-shrink-0`}>
-                    <v.icon size={22} />
+                  <div className="w-11 h-11 bg-blue-500/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <v.icon size={22} className="text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />
                   </div>
 
                   {/* Text */}
                   <div>
-                    <h3 className="text-white font-semibold text-lg mb-2 leading-snug">
+                    <h3 className="text-white font-semibold text-lg mb-2 leading-snug group-hover:text-blue-400 transition-colors duration-300">
                       {v.title}
                     </h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">
+                    <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                       {v.desc}
                     </p>
                   </div>
