@@ -43,7 +43,7 @@ export default function DeliveryProcess() {
         {/* HEADER */}
         <div className="text-center mb-12">
           <p className="text-blue-400 text-sm tracking-widest uppercase mb-2">
-            How We Work
+            HOW WE WORK
           </p>
 
           <h2 className="text-4xl font-bold mb-4">
@@ -61,8 +61,8 @@ export default function DeliveryProcess() {
             <AnimatedSection key={i}>
               <div className="group bg-[#0B1220]/60 backdrop-blur-md border border-blue-500/20 rounded-2xl p-6 transition-all duration-300 hover:border-blue-400/40 hover:-translate-y-1">
 
-                {/* NUMBER (FIXED — NO GLOW) */}
-                <span className="text-5xl font-bold text-blue-500/60 group-hover:text-blue-400 transition">
+                {/* NUMBER (BALANCED — NO GLOW) */}
+                <span className="text-5xl font-bold text-blue-400/90 group-hover:text-blue-300 transition">
                   {step.num}
                 </span>
 
