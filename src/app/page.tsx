@@ -119,9 +119,11 @@ export default function HomePage() {
       <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Ambient background */}
         <div className="absolute inset-0 bg-gradient-to-b from-blue-950/40 via-[#020817] to-[#020817]" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
-        <div className="absolute top-40 right-0 w-[500px] h-[400px] bg-cyan-500/6 rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[400px] bg-violet-600/6 rounded-full blur-[120px] pointer-events-none" />
+        {/* Dot grid overlay */}
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-blue-600/12 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-40 right-0 w-[500px] h-[400px] bg-cyan-500/8 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[400px] bg-violet-600/8 rounded-full blur-[120px] pointer-events-none" />
 
         <NeuralNetwork />
 
