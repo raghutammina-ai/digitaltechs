@@ -149,22 +149,17 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           {services.map((svc, i) => (
             <AnimatedSection key={svc.title} delay={i * 0.05}>
-              <div
-                className="group relative rounded-2xl p-8 md:p-10 border border-blue-500/20 hover:border-blue-400/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] hover:-translate-y-1 transition-all duration-300 overflow-hidden"
-                style={{ background: 'rgba(59,130,246,0.03)', backdropFilter: 'blur(12px)' }}
-              >
-                {/* Blue gradient wash on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-700 opacity-0 group-hover:opacity-[0.04] transition-opacity duration-300 rounded-2xl pointer-events-none" />
+              <div className="group relative rounded-2xl p-8 md:p-10 bg-gradient-to-br from-[#0B1220] via-[#0F172A] to-black border border-blue-500/30 hover:border-blue-400 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:-translate-y-1 transition-all duration-300 overflow-hidden">
 
-                <div className="relative flex flex-col md:flex-row gap-8 md:gap-12">
+                <div className="flex flex-col md:flex-row gap-8 md:gap-12">
 
                   {/* Left — icon + title */}
                   <div className="md:w-72 flex-shrink-0">
-                    <div className="w-12 h-12 bg-blue-500/10 text-blue-400 group-hover:text-blue-300 rounded-xl flex items-center justify-center mb-5 transition-colors duration-300">
-                      <svc.icon size={24} />
+                    <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mb-5">
+                      <svc.icon size={24} className="text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />
                     </div>
-                    <h2 className="text-white font-bold text-xl mb-2 leading-snug group-hover:text-white transition-colors duration-300">{svc.title}</h2>
-                    <p className="text-slate-400 text-sm leading-relaxed">{svc.tagline}</p>
+                    <h2 className="text-white font-semibold text-xl mb-2 leading-snug group-hover:text-blue-400 transition-colors duration-300">{svc.title}</h2>
+                    <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300">{svc.tagline}</p>
                     <div className="mt-5 h-px w-12 bg-gradient-to-r from-blue-400 to-blue-600 opacity-60" />
                   </div>
 
@@ -174,7 +169,7 @@ export default function ServicesPage() {
                       {svc.features.map((f) => (
                         <div key={f} className="flex items-start gap-2.5">
                           <CheckCircle2 size={15} className="text-blue-400 flex-shrink-0 mt-0.5" />
-                          <span className="text-slate-300 text-sm leading-relaxed">{f}</span>
+                          <span className="text-gray-300 text-sm leading-relaxed">{f}</span>
                         </div>
                       ))}
                     </div>
