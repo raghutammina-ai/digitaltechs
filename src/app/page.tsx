@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 import {
   Brain, BarChart3, Code2, Cloud, Lock, Cpu,
 } from 'lucide-react'
@@ -41,16 +40,22 @@ export default function HomePage() {
           </p>
 
           <div className="flex gap-4 justify-center">
-            <Link href="/contact" className="bg-blue-600 px-6 py-3 rounded-lg hover:bg-blue-500 transition">
+            <Link
+              href="/contact"
+              className="bg-blue-600 px-6 py-3 rounded-lg hover:bg-blue-500 transition"
+            >
               Get Started
             </Link>
-            <Link href="/services" className="border border-blue-500/30 px-6 py-3 rounded-lg hover:border-blue-400 transition">
+
+            <Link
+              href="/services"
+              className="border border-blue-500/30 px-6 py-3 rounded-lg hover:border-blue-400 transition"
+            >
               Services
             </Link>
           </div>
         </div>
       </section>
-
 
       {/* SERVICES */}
       <section className="py-16 relative">
@@ -61,16 +66,19 @@ export default function HomePage() {
         <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
           {services.map((s, i) => (
             <AnimatedSection key={i}>
-              <div className="group bg-gradient-to-br from-[#0B1220] via-[#0F172A] to-black border border-blue-500/30 rounded-2xl p-6 transition-all duration-300 hover:border-blue-400 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:-translate-y-1">
+              <div className="group bg-[#0B1220]/60 backdrop-blur-md border border-blue-500/20 rounded-2xl p-6 transition-all duration-300 hover:border-blue-400/40 hover:-translate-y-1">
 
-                <div className="text-blue-400 group-hover:text-blue-300 transition mb-3">
-                  <s.icon />
+                {/* ICON */}
+                <div className="text-blue-400/80 group-hover:text-blue-400 transition mb-3">
+                  <s.icon size={28} />
                 </div>
 
+                {/* TITLE */}
                 <h3 className="mt-2 font-semibold text-white group-hover:text-blue-400 transition">
                   {s.title}
                 </h3>
 
+                {/* DESC */}
                 <p className="text-sm text-gray-400 group-hover:text-gray-300">
                   {s.desc}
                 </p>
