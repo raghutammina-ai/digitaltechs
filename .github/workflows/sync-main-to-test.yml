@@ -1,0 +1,33 @@
+name: Sync Main → Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    name: Merge main back into test
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository (full history)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Merge main into test
+        run: |
+          git checkout test
+          git merge origin/main -X ours --no-edit \
+            -m "chore: sync main into test [skip ci]"
+          git push origin test
