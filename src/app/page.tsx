@@ -1,87 +1,87 @@
 'use client'
 
-import AnimatedSection from '@/components/AnimatedSection'
+import Link from 'next/link'
+import {
+  Brain, BarChart3, Code2, Cloud, Lock, Cpu,
+} from 'lucide-react'
 
-const steps = [
-  {
-    num: '01',
-    title: 'Discovery',
-    desc: 'Deep-dive into your business goals, challenges, and technical landscape.',
-  },
-  {
-    num: '02',
-    title: 'Strategy',
-    desc: 'Design a tailored roadmap with clear milestones and technology choices.',
-  },
-  {
-    num: '03',
-    title: 'Design',
-    desc: 'UX/UI design and system architecture aligned to your users and scale.',
-  },
-  {
-    num: '04',
-    title: 'Development',
-    desc: 'Agile sprints with continuous delivery and transparent progress updates.',
-  },
-  {
-    num: '05',
-    title: 'Testing',
-    desc: 'Rigorous QA, security reviews, and performance benchmarking.',
-  },
-  {
-    num: '06',
-    title: 'Launch & Support',
-    desc: 'Smooth deployment with ongoing monitoring, updates, and optimization.',
-  },
+import AnimatedSection from '@/components/AnimatedSection'
+import NeuralNetwork from '@/components/NeuralNetwork'
+import TypewriterText from '@/components/TypewriterText'
+
+/* ---------- DATA ---------- */
+
+const services = [
+  { icon: Brain, title: 'AI Development', desc: 'Custom AI apps.' },
+  { icon: BarChart3, title: 'Analytics', desc: 'Data insights.' },
+  { icon: Code2, title: 'Engineering', desc: 'Full-stack apps.' },
+  { icon: Cloud, title: 'Cloud', desc: 'Scalable infra.' },
+  { icon: Lock, title: 'Security', desc: 'Secure systems.' },
+  { icon: Cpu, title: 'Testing', desc: 'Automation QA.' },
 ]
 
-export default function DeliveryProcess() {
+export default function HomePage() {
   return (
-    <section className="py-20 bg-[#030712] text-white">
-      <div className="max-w-6xl mx-auto px-4">
+    <div className="bg-[#030712] text-white overflow-x-hidden">
 
-        {/* HEADER */}
-        <div className="text-center mb-12">
-          <p className="text-gray-400 text-sm tracking-widest uppercase mb-2">
-            HOW WE WORK
+      {/* HERO */}
+      <section className="min-h-screen flex items-center justify-center text-center relative">
+        <NeuralNetwork />
+
+        <div className="max-w-4xl mx-auto px-4 relative z-10">
+          <h1 className="text-5xl font-bold mb-4">
+            AI & Digital Solutions
+          </h1>
+
+          <TypewriterText />
+
+          <p className="text-gray-400 mt-4 mb-6">
+            Build smarter systems with AI.
           </p>
 
-          <h2 className="text-4xl font-bold mb-4">
-            Our Delivery Process
-          </h2>
+          <div className="flex gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="bg-blue-600 px-6 py-3 rounded-lg"
+            >
+              Get Started
+            </Link>
 
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            A proven, transparent 6-step process that ensures quality and alignment at every stage.
-          </p>
+            <Link
+              href="/services"
+              className="border border-white/20 px-6 py-3 rounded-lg"
+            >
+              Services
+            </Link>
+          </div>
         </div>
+      </section>
 
-        {/* GRID */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {steps.map((step, i) => (
+      {/* SERVICES (ORIGINAL SIMPLE STYLE) */}
+      <section className="py-16">
+        <h2 className="text-center text-3xl font-bold mb-10">
+          Services
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
+          {services.map((s, i) => (
             <AnimatedSection key={i}>
-              <div className="border border-white/10 rounded-2xl p-6">
+              <div className="border border-white/10 p-6 rounded-xl">
 
-                {/* NUMBER (ORIGINAL DARK STYLE) */}
-                <span className="text-5xl font-bold text-gray-600">
-                  {step.num}
-                </span>
+                <s.icon className="mb-3" />
 
-                {/* TITLE */}
-                <h3 className="mt-4 font-semibold text-white">
-                  {step.title}
-                </h3>
+                <h3 className="font-semibold">{s.title}</h3>
 
-                {/* DESC */}
-                <p className="text-sm text-gray-400 mt-2">
-                  {step.desc}
+                <p className="text-sm text-gray-400">
+                  {s.desc}
                 </p>
 
               </div>
             </AnimatedSection>
           ))}
         </div>
+      </section>
 
-      </div>
-    </section>
+    </div>
   )
 }
