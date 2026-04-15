@@ -208,12 +208,10 @@ export default function ServicesPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {process.map((p, i) => (
               <AnimatedSection key={p.step} delay={i * 0.07}>
-                <div
-                  className="group relative rounded-2xl p-7 h-full border border-white/[0.06] hover:border-white/[0.12] hover:-translate-y-1 hover:shadow-[0_20px_56px_rgba(0,0,0,0.45)] transition-all duration-300 ease-out cursor-default overflow-hidden"
-                  style={{ background: 'rgba(255,255,255,0.025)', backdropFilter: 'blur(12px)' }}
-                >
-                  {/* Step number — watermark */}
-                  <span className="block font-black leading-none mb-5 text-[4.5rem] tracking-tighter tabular-nums bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(59,130,246,0.8)] group-hover:drop-shadow-[0_0_18px_rgba(59,130,246,1)] transition-all duration-300 select-none">
+                <div className="group flex flex-col rounded-2xl p-7 h-full bg-[#0B1220] border border-white/10 hover:border-blue-500/40 hover:-translate-y-0.5 transition-all duration-200 ease-out cursor-default">
+
+                  {/* Step number */}
+                  <span className="block font-black leading-none mb-5 text-5xl tabular-nums text-blue-400/60 group-hover:text-blue-400/90 transition-colors duration-200 select-none">
                     {p.step}
                   </span>
 
@@ -221,7 +219,7 @@ export default function ServicesPage() {
                   <h3 className="text-white font-semibold text-base mb-2 leading-snug tracking-[-0.01em]">
                     {p.title}
                   </h3>
-                  <p className="text-slate-500 group-hover:text-slate-400 text-[13px] leading-relaxed transition-colors duration-300">
+                  <p className="text-gray-400 text-[13px] leading-relaxed">
                     {p.desc}
                   </p>
                 </div>
