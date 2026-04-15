@@ -214,9 +214,9 @@ export default function AboutPage() {
 
       {/* Timeline */}
       <section className="relative bg-[#030712] py-28 overflow-hidden">
-        {/* Single subtle ambient glow */}
+        {/* Ambient glow */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-blue-500/[0.04] rounded-full blur-[140px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-blue-500/10 rounded-full blur-[140px]" />
         </div>
 
         <div className="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -244,18 +244,22 @@ export default function AboutPage() {
                   <div className="flex items-center gap-4 mb-10">
                     <span
                       className={`text-2xl font-black tracking-tight tabular-nums transition-colors duration-300 ${
-                        isCurrent ? 'text-white' : 'text-white/20'
+                        isCurrent
+                          ? 'bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent'
+                          : 'text-white/25'
                       }`}
                     >
                       {group.year}
                     </span>
                     <div
                       className={`flex-1 h-px ${
-                        isCurrent ? 'bg-white/[0.08]' : 'bg-white/[0.04]'
+                        isCurrent
+                          ? 'bg-gradient-to-r from-blue-500/50 to-transparent'
+                          : 'bg-white/[0.04]'
                       }`}
                     />
                     {isCurrent && (
-                      <span className="text-[11px] font-medium tracking-wide text-slate-400 bg-white/[0.04] border border-white/[0.08] px-2.5 py-1 rounded-full">
+                      <span className="text-[11px] font-medium tracking-wide text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-full">
                         Current
                       </span>
                     )}
@@ -267,8 +271,8 @@ export default function AboutPage() {
                     <div
                       className={`absolute left-[9px] top-3 bottom-3 w-px ${
                         isCurrent
-                          ? 'bg-gradient-to-b from-white/[0.15] via-white/[0.07] to-transparent'
-                          : 'bg-gradient-to-b from-white/[0.06] to-transparent'
+                          ? 'bg-gradient-to-b from-blue-500/70 via-blue-500/30 to-transparent'
+                          : 'bg-gradient-to-b from-white/[0.08] to-transparent'
                       }`}
                     />
 
@@ -281,7 +285,7 @@ export default function AboutPage() {
                             <div
                               className={`absolute left-[5px] top-[1.1rem] w-[9px] h-[9px] rounded-full flex-shrink-0 transition-all duration-500 ${
                                 isCurrent
-                                  ? 'bg-white/70 shadow-[0_0_8px_rgba(255,255,255,0.18)]'
+                                  ? 'bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.6)]'
                                   : 'bg-white/[0.15]'
                               }`}
                             />
@@ -289,15 +293,14 @@ export default function AboutPage() {
                             {/* Card */}
                             <div
                               className={`group flex-1 rounded-2xl px-5 py-4 border transition-all duration-300 ease-out cursor-default
-                                hover:-translate-y-1
-                                hover:shadow-[0_16px_48px_rgba(0,0,0,0.5)] ${
+                                hover:-translate-y-1 ${
                                 isCurrent
-                                  ? 'border-white/[0.08] hover:border-white/[0.14]'
-                                  : 'border-white/[0.04] hover:border-white/[0.09]'
+                                  ? 'border-blue-500/20 hover:border-blue-400/40 hover:shadow-[0_0_25px_rgba(59,130,246,0.12)]'
+                                  : 'border-white/[0.04] hover:border-white/[0.09] hover:shadow-[0_8px_24px_rgba(0,0,0,0.4)]'
                               }`}
                               style={{
                                 background: isCurrent
-                                  ? 'rgba(255,255,255,0.03)'
+                                  ? 'rgba(59,130,246,0.04)'
                                   : 'rgba(255,255,255,0.015)',
                                 backdropFilter: 'blur(8px)',
                               }}
@@ -312,7 +315,7 @@ export default function AboutPage() {
                               <p
                                 className={`text-[13px] leading-relaxed transition-colors duration-300 ${
                                   isCurrent
-                                    ? 'text-slate-500 group-hover:text-slate-400'
+                                    ? 'text-slate-400 group-hover:text-slate-300'
                                     : 'text-slate-600/70'
                                 }`}
                               >
