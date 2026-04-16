@@ -205,7 +205,7 @@ export default function HomePage() {
           </motion.div>
 
           {/* Trust strip */}
-          <motion.div {...fadeUp(0.26)} className="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-600">
+          <motion.div {...fadeUp(0.26)} className="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400">
             {['No commitment required', 'Free 30-min strategy call', 'Results in weeks, not months'].map((t) => (
               <span key={t} className="flex items-center gap-2">
                 <CheckCircle2 size={12} className="text-blue-500/70" />{t}
@@ -223,13 +223,13 @@ export default function HomePage() {
           MARQUEE
       ══════════════════════════════════════════════════ */}
       <div className="py-6 overflow-hidden border-y border-white/[0.06]">
-        <p className="text-center text-[10px] uppercase tracking-[0.35em] text-slate-700 font-bold mb-5">
+        <p className="text-center text-[10px] uppercase tracking-[0.35em] text-slate-400 font-bold mb-5">
           Powered by world-leading technologies
         </p>
         <div className="relative">
           <div className="flex gap-12 animate-marquee whitespace-nowrap w-max">
             {[...marquee, ...marquee].map((t, i) => (
-              <span key={i} className="text-sm font-semibold text-slate-700 hover:text-slate-300 transition-colors cursor-default">{t}</span>
+              <span key={i} className="text-sm font-semibold text-slate-400 hover:text-white transition-colors cursor-default">{t}</span>
             ))}
           </div>
           <div className="absolute inset-y-0 left-0 w-32 pointer-events-none" style={{ background: 'linear-gradient(to right, #04040a, transparent)' }} />
@@ -280,10 +280,10 @@ export default function HomePage() {
                     <h3 className="text-white font-bold text-xl mb-3 leading-snug tracking-tight">{s.title}</h3>
                     <p className="text-slate-500 text-sm leading-relaxed mb-6">{s.desc}</p>
                     <div className="flex items-center justify-between">
-                      <span className="text-[11px] font-semibold text-slate-700 bg-white/5 border border-white/[0.07] px-3 py-1.5 rounded-full">
+                      <span className="text-[11px] font-semibold text-slate-400 bg-white/5 border border-white/[0.07] px-3 py-1.5 rounded-full">
                         {s.tag}
                       </span>
-                      <ArrowUpRight size={15} className="text-slate-700 group-hover:text-slate-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" />
+                      <ArrowUpRight size={15} className="text-slate-400 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" />
                     </div>
                   </div>
                 </div>
@@ -482,7 +482,7 @@ export default function HomePage() {
                       </div>
                       <div className="text-right">
                         <div className={`text-4xl font-extrabold ${r.text} tabular-nums leading-none tracking-tight`}>{r.metric}</div>
-                        <div className="text-[11px] text-slate-600 mt-1">{r.sub}</div>
+                        <div className="text-[11px] text-slate-400 mt-1">{r.sub}</div>
                       </div>
                     </div>
 
@@ -510,7 +510,7 @@ export default function HomePage() {
           </div>
 
           <AnimatedSection className="text-center mt-10">
-            <p className="text-slate-700 text-sm mb-4">Want case studies or a reference call?</p>
+            <p className="text-slate-400 text-sm mb-4">Want case studies or a reference call?</p>
             <Link href="/contact"
               className="group inline-flex items-center gap-2 border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/8 text-slate-300 hover:text-white font-semibold px-6 py-3 rounded-xl text-sm transition-all duration-200"
             >
