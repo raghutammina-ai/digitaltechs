@@ -192,20 +192,20 @@ export default function HomePage() {
           <motion.div {...fadeUp(0.2)} className="flex flex-col sm:flex-row gap-3 justify-center mb-14">
             <Link href="/services"
               className="btn-shimmer group inline-flex items-center justify-center gap-2 font-bold px-8 py-4 rounded-xl text-base text-white transition-all duration-200"
-              style={{ background: 'linear-gradient(135deg, #2563eb, #7c3aed)', boxShadow: '0 0 40px rgba(99,102,241,0.4)' }}
+              style={{ background: 'linear-gradient(135deg, #1d4ed8, #6d28d9)', boxShadow: '0 0 24px rgba(99,102,241,0.25)' }}
             >
               Explore Services
               <ArrowRight size={17} className="group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
             <Link href="/contact"
-              className="inline-flex items-center justify-center gap-2 border border-white/10 hover:border-white/25 bg-white/5 hover:bg-white/10 text-slate-200 font-semibold px-8 py-4 rounded-xl transition-all duration-200 text-base backdrop-blur-sm"
+              className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/35 bg-[#0c0c1a] hover:bg-[#111128] text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 text-base"
             >
               Book Free Strategy Call
             </Link>
           </motion.div>
 
           {/* Trust strip */}
-          <motion.div {...fadeUp(0.26)} className="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-600">
+          <motion.div {...fadeUp(0.26)} className="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400">
             {['No commitment required', 'Free 30-min strategy call', 'Results in weeks, not months'].map((t) => (
               <span key={t} className="flex items-center gap-2">
                 <CheckCircle2 size={12} className="text-blue-500/70" />{t}
@@ -223,13 +223,13 @@ export default function HomePage() {
           MARQUEE
       ══════════════════════════════════════════════════ */}
       <div className="py-6 overflow-hidden border-y border-white/[0.06]">
-        <p className="text-center text-[10px] uppercase tracking-[0.35em] text-slate-700 font-bold mb-5">
+        <p className="text-center text-[10px] uppercase tracking-[0.35em] text-slate-400 font-bold mb-5">
           Powered by world-leading technologies
         </p>
         <div className="relative">
           <div className="flex gap-12 animate-marquee whitespace-nowrap w-max">
             {[...marquee, ...marquee].map((t, i) => (
-              <span key={i} className="text-sm font-semibold text-slate-700 hover:text-slate-300 transition-colors cursor-default">{t}</span>
+              <span key={i} className="text-sm font-semibold text-slate-400 hover:text-white transition-colors cursor-default">{t}</span>
             ))}
           </div>
           <div className="absolute inset-y-0 left-0 w-32 pointer-events-none" style={{ background: 'linear-gradient(to right, #04040a, transparent)' }} />
@@ -254,7 +254,7 @@ export default function HomePage() {
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.03em] leading-[1.05] text-white mb-5">
               Services built for scale
             </h2>
-            <p className="text-slate-500 max-w-lg mx-auto text-lg leading-relaxed">
+            <p className="text-slate-300 max-w-lg mx-auto text-lg leading-relaxed">
               End-to-end delivery across AI, data, software, and cloud engineering.
             </p>
           </AnimatedSection>
@@ -262,28 +262,44 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {services.map((s, i) => (
               <AnimatedSection key={s.title} delay={i * 0.08}>
-                <div className={`group relative rounded-2xl border border-white/[0.08] ${s.border} ${s.glow} bg-[#070710] hover:bg-[#0a0a16] transition-all duration-300 hover:-translate-y-2 overflow-hidden h-full`}>
-                  {/* Top gradient */}
-                  <div className={`absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r ${s.iconGradient}`} />
+                <div className={`group relative rounded-2xl ${s.glow} bg-[#070710] hover:bg-[#0a0a16] transition-all duration-300 hover:-translate-y-2 overflow-hidden h-full`}
+                  style={{ border: '1px solid rgba(255,255,255,0.07)' }}>
+                  {/* Animated gradient border on hover */}
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                    style={{ padding: '1px', background: `linear-gradient(135deg, ${s.iconGradient.includes('blue') ? 'rgba(59,130,246,0.5)' : s.iconGradient.includes('cyan') ? 'rgba(6,182,212,0.5)' : s.iconGradient.includes('violet') ? 'rgba(139,92,246,0.5)' : 'rgba(16,185,129,0.5)'}, rgba(255,255,255,0.05))` }} />
+                  {/* Top gradient bar */}
+                  <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${s.iconGradient} opacity-80`} />
                   {/* Subtle bg gradient */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${s.gradient} opacity-50`} />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${s.gradient} opacity-60`} />
+                  {/* Glow orb */}
+                  <div className="absolute top-0 right-0 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl pointer-events-none"
+                    style={{ background: s.iconGradient.includes('blue') ? 'rgba(59,130,246,0.12)' : s.iconGradient.includes('cyan') ? 'rgba(6,182,212,0.12)' : s.iconGradient.includes('violet') ? 'rgba(139,92,246,0.12)' : 'rgba(16,185,129,0.12)' }} />
 
                   <div className="relative p-8">
                     <div className="flex items-start justify-between mb-6">
-                      <div className={`w-12 h-12 ${s.iconBg} rounded-xl flex items-center justify-center`}>
-                        <s.icon size={22} className={`bg-gradient-to-br ${s.iconGradient} bg-clip-text`}
-                          style={{ color: s.iconGradient.includes('blue') ? '#60a5fa' : s.iconGradient.includes('cyan') ? '#22d3ee' : s.iconGradient.includes('violet') ? '#a78bfa' : '#34d399' }}
-                        />
+                      <div className="relative">
+                        <div className={`absolute inset-0 rounded-xl blur-md opacity-0 group-hover:opacity-70 transition-opacity duration-300`}
+                          style={{ background: s.iconGradient.includes('blue') ? 'rgba(59,130,246,0.3)' : s.iconGradient.includes('cyan') ? 'rgba(6,182,212,0.3)' : s.iconGradient.includes('violet') ? 'rgba(139,92,246,0.3)' : 'rgba(16,185,129,0.3)' }} />
+                        <div className={`relative w-12 h-12 ${s.iconBg} rounded-xl flex items-center justify-center`}
+                          style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+                          <s.icon size={22}
+                            style={{ color: s.iconGradient.includes('blue') ? '#60a5fa' : s.iconGradient.includes('cyan') ? '#22d3ee' : s.iconGradient.includes('violet') ? '#a78bfa' : '#34d399' }}
+                          />
+                        </div>
                       </div>
-                      <span className="text-[11px] font-black text-white/10 font-mono tracking-widest">{s.num}</span>
+                      <span className="text-[13px] font-black font-mono tracking-widest"
+                        style={{
+                          background: s.iconGradient.includes('blue') ? 'linear-gradient(135deg,#60a5fa,#818cf8)' : s.iconGradient.includes('cyan') ? 'linear-gradient(135deg,#22d3ee,#67e8f9)' : s.iconGradient.includes('violet') ? 'linear-gradient(135deg,#a78bfa,#c4b5fd)' : 'linear-gradient(135deg,#34d399,#6ee7b7)',
+                          WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', opacity: 0.5,
+                        }}>{s.num}</span>
                     </div>
                     <h3 className="text-white font-bold text-xl mb-3 leading-snug tracking-tight">{s.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed mb-6">{s.desc}</p>
+                    <p className="text-slate-300 text-sm leading-relaxed mb-6">{s.desc}</p>
                     <div className="flex items-center justify-between">
-                      <span className="text-[11px] font-semibold text-slate-700 bg-white/5 border border-white/[0.07] px-3 py-1.5 rounded-full">
+                      <span className="text-[11px] font-semibold text-slate-300 bg-white/[0.06] border border-white/10 px-3 py-1.5 rounded-full">
                         {s.tag}
                       </span>
-                      <ArrowUpRight size={15} className="text-slate-700 group-hover:text-slate-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" />
+                      <ArrowUpRight size={15} className="text-slate-400 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" />
                     </div>
                   </div>
                 </div>
@@ -316,7 +332,7 @@ export default function HomePage() {
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.03em] text-white mb-4">
               How we work
             </h2>
-            <p className="text-slate-500 text-lg max-w-sm mx-auto">
+            <p className="text-slate-300 text-lg max-w-sm mx-auto">
               Three clear steps from brief to live results.
             </p>
           </AnimatedSection>
@@ -324,26 +340,43 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {steps.map((step, i) => (
               <AnimatedSection key={step.n} delay={i * 0.1}>
-                <div className="relative group">
+                <div className="relative group h-full">
+                  {/* Glow behind card */}
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"
+                    style={{ background: 'radial-gradient(circle at 50% 80%, rgba(99,102,241,0.18) 0%, transparent 70%)' }} />
                   {/* Gradient border wrapper */}
-                  <div className="p-[1px] rounded-2xl h-full transition-all duration-300 group-hover:shadow-[0_20px_60px_rgba(99,102,241,0.15)]"
-                    style={{ background: 'linear-gradient(135deg, rgba(99,102,241,0.3), rgba(139,92,246,0.2), rgba(59,130,246,0.2))' }}>
-                    <div className="bg-[#07070e] hover:bg-[#09091a] rounded-2xl p-8 h-full transition-colors duration-300">
-                      <div className="flex items-center justify-between mb-8">
-                        <div className="w-12 h-12 rounded-xl flex items-center justify-center"
-                          style={{ background: 'linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.15))', border: '1px solid rgba(99,102,241,0.3)' }}>
-                          <step.icon size={20} className="text-violet-400" />
+                  <div className="relative p-[1px] rounded-2xl h-full transition-all duration-300 group-hover:-translate-y-1.5 group-hover:shadow-[0_24px_64px_rgba(99,102,241,0.2)]"
+                    style={{ background: 'linear-gradient(135deg, rgba(99,102,241,0.5), rgba(139,92,246,0.35), rgba(59,130,246,0.3))' }}>
+                    <div className="bg-[#07070e] group-hover:bg-[#0a0a1c] rounded-2xl p-8 h-full transition-colors duration-300 flex flex-col">
+                      {/* Top: icon + number */}
+                      <div className="flex items-start justify-between mb-8">
+                        <div className="relative">
+                          <div className="absolute inset-0 rounded-xl blur-md opacity-60"
+                            style={{ background: 'linear-gradient(135deg, rgba(99,102,241,0.5), rgba(139,92,246,0.4))' }} />
+                          <div className="relative w-13 h-13 w-12 h-12 rounded-xl flex items-center justify-center"
+                            style={{ background: 'linear-gradient(135deg, rgba(99,102,241,0.25), rgba(139,92,246,0.2))', border: '1px solid rgba(139,92,246,0.4)' }}>
+                            <step.icon size={20} className="text-violet-300" />
+                          </div>
                         </div>
-                        <span className="font-black text-4xl text-white/[0.06] font-mono">{step.n}</span>
+                        <span className="font-black text-5xl font-mono leading-none"
+                          style={{
+                            background: 'linear-gradient(135deg, rgba(99,102,241,0.35), rgba(139,92,246,0.2))',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text',
+                          }}>{step.n}</span>
                       </div>
                       <h3 className="text-white font-bold text-xl mb-3 tracking-tight">{step.title}</h3>
-                      <p className="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
+                      <p className="text-slate-300 text-sm leading-relaxed flex-1">{step.desc}</p>
+                      {/* Bottom accent line */}
+                      <div className="mt-6 h-px w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style={{ background: 'linear-gradient(to right, rgba(99,102,241,0.6), transparent)' }} />
                     </div>
                   </div>
                   {/* Arrow connector */}
                   {i < 2 && (
                     <div className="hidden md:flex absolute top-1/2 -right-3 z-10 -translate-y-1/2">
-                      <ArrowRight size={14} className="text-violet-500/30" />
+                      <ArrowRight size={14} className="text-violet-400/50" />
                     </div>
                   )}
                 </div>
@@ -368,7 +401,7 @@ export default function HomePage() {
                 Four principles.<br />
                 <span className="gradient-text">Every engagement.</span>
               </h2>
-              <p className="text-slate-500 text-lg leading-relaxed mb-10">
+              <p className="text-slate-300 text-lg leading-relaxed mb-10">
                 Deep technical expertise and a client-first mindset — from first call to final delivery.
               </p>
               <ul className="space-y-3 mb-10">
@@ -482,7 +515,7 @@ export default function HomePage() {
                       </div>
                       <div className="text-right">
                         <div className={`text-4xl font-extrabold ${r.text} tabular-nums leading-none tracking-tight`}>{r.metric}</div>
-                        <div className="text-[11px] text-slate-600 mt-1">{r.sub}</div>
+                        <div className="text-[11px] text-slate-400 mt-1">{r.sub}</div>
                       </div>
                     </div>
 
@@ -510,7 +543,7 @@ export default function HomePage() {
           </div>
 
           <AnimatedSection className="text-center mt-10">
-            <p className="text-slate-700 text-sm mb-4">Want case studies or a reference call?</p>
+            <p className="text-slate-400 text-sm mb-4">Want case studies or a reference call?</p>
             <Link href="/contact"
               className="group inline-flex items-center gap-2 border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/8 text-slate-300 hover:text-white font-semibold px-6 py-3 rounded-xl text-sm transition-all duration-200"
             >
