@@ -134,29 +134,35 @@ export default function PortfolioPage() {
           </AnimatedSection>
 
           {/* Cards grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {filtered.map((p, i) => (
               <AnimatedSection key={p.title} delay={i * 0.05}>
-                <div className="p-[1px] rounded-2xl h-full transition-all duration-300 hover:-translate-y-1 group"
-                  style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03))' }}>
-                  <div className="bg-[#07070e] group-hover:bg-[#09091a] rounded-2xl overflow-hidden h-full flex flex-col transition-colors duration-300">
-                    <div className="h-[2px]" style={{ background: `linear-gradient(to right, ${p.accent}, transparent)` }} />
-                    <div className="p-6 flex flex-col flex-1">
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{p.industry}</span>
-                        <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${categoryColors[p.category]}`}>
-                          {p.category}
-                        </span>
-                      </div>
-                      <h3 className="text-white font-bold text-lg mb-2 tracking-tight">{p.title}</h3>
-                      <p className="text-slate-300 text-sm leading-relaxed flex-1">{p.desc}</p>
-                      <div className="flex flex-wrap gap-1.5 mt-5">
-                        {p.tags.map((tag) => (
-                          <span key={tag} className="text-[11px] font-semibold px-2.5 py-1 rounded-lg text-slate-300"
-                            style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}>
-                            {tag}
+                <div className="group relative h-full">
+                  {/* Glow */}
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl pointer-events-none"
+                    style={{ background: `radial-gradient(circle at 50% 100%, ${p.accent.replace('0.5', '0.12')}, transparent 70%)` }} />
+                  <div className="relative p-[1px] rounded-2xl h-full transition-all duration-300 group-hover:-translate-y-1.5 group-hover:shadow-[0_24px_60px_rgba(0,0,0,0.5)]"
+                    style={{ background: `linear-gradient(135deg, ${p.accent}, rgba(255,255,255,0.04))` }}>
+                    <div className="bg-[#07070e] group-hover:bg-[#09091a] rounded-2xl overflow-hidden h-full flex flex-col transition-colors duration-300">
+                      {/* Accent top bar */}
+                      <div className="h-[2px]" style={{ background: `linear-gradient(to right, ${p.accent}, transparent)` }} />
+                      <div className="p-7 flex flex-col flex-1">
+                        <div className="flex items-center justify-between mb-5">
+                          <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{p.industry}</span>
+                          <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${categoryColors[p.category]}`}>
+                            {p.category}
                           </span>
-                        ))}
+                        </div>
+                        <h3 className="text-white font-bold text-xl mb-3 tracking-tight leading-snug">{p.title}</h3>
+                        <p className="text-slate-300 text-sm leading-relaxed flex-1">{p.desc}</p>
+                        <div className="flex flex-wrap gap-2 mt-6">
+                          {p.tags.map((tag) => (
+                            <span key={tag} className="text-xs font-semibold px-3 py-1.5 rounded-lg text-slate-300"
+                              style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
