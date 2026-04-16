@@ -109,11 +109,11 @@ export default function CareersPage() {
                 Matters.
               </span>
             </h1>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed mb-8">
+            <p className="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed mb-8">
               We&apos;re a team of engineers, data scientists, and problem solvers building intelligent
               solutions across every industry. Come build the future with us.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-6 text-slate-500 text-sm">
+            <div className="flex flex-wrap items-center justify-center gap-6 text-slate-300 text-sm">
               <span className="flex items-center gap-1.5"><Globe size={14} className="text-blue-400" /> Remote-First</span>
               <span className="flex items-center gap-1.5"><Zap size={14} className="text-violet-400" /> {openings.length} Open Roles</span>
               <span className="flex items-center gap-1.5"><Users size={14} className="text-cyan-400" /> Collaborative Culture</span>
@@ -128,7 +128,7 @@ export default function CareersPage() {
           <AnimatedSection className="text-center mb-14">
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-blue-400 mb-4 block">Why DTP</span>
             <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.03em] text-white mb-4">Why People Love Working Here</h2>
-            <p className="text-slate-500 text-lg max-w-md mx-auto">The benefits, culture, and perks that make DTP a great place to grow.</p>
+            <p className="text-slate-300 text-lg max-w-md mx-auto">The benefits, culture, and perks that make DTP a great place to grow.</p>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -142,7 +142,7 @@ export default function CareersPage() {
                       <p.icon size={20} className="text-blue-400" />
                     </div>
                     <h3 className="font-bold text-white mb-2 tracking-tight">{p.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">{p.desc}</p>
+                    <p className="text-slate-300 text-sm leading-relaxed">{p.desc}</p>
                   </div>
                 </div>
               </AnimatedSection>
@@ -157,7 +157,7 @@ export default function CareersPage() {
           <AnimatedSection className="text-center mb-14">
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-violet-400 mb-4 block">Open Positions</span>
             <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.03em] text-white mb-4">Current Openings</h2>
-            <p className="text-slate-500 text-base max-w-sm mx-auto leading-relaxed">
+            <p className="text-slate-300 text-base max-w-sm mx-auto leading-relaxed">
               All roles are remote-friendly and full-time.
             </p>
           </AnimatedSection>
@@ -174,18 +174,18 @@ export default function CareersPage() {
                           <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${departmentColors[job.department]}`}>
                             {job.department}
                           </span>
-                          <span className="flex items-center gap-1 text-xs text-slate-500">
+                          <span className="flex items-center gap-1 text-xs text-slate-300">
                             <MapPin size={11} />{job.location}
                           </span>
-                          <span className="flex items-center gap-1 text-xs text-slate-500">
+                          <span className="flex items-center gap-1 text-xs text-slate-300">
                             <Clock size={11} />{job.type}
                           </span>
                         </div>
                         <h3 className="text-lg font-bold text-white mb-1.5 tracking-tight">{job.title}</h3>
-                        <p className="text-slate-500 text-sm mb-4 leading-relaxed">{job.desc}</p>
+                        <p className="text-slate-300 text-sm mb-4 leading-relaxed">{job.desc}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {job.skills.map(s => (
-                            <span key={s} className="text-[11px] font-semibold px-2.5 py-1 rounded-lg text-slate-400"
+                            <span key={s} className="text-[11px] font-semibold px-2.5 py-1 rounded-lg text-slate-300"
                               style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}>
                               {s}
                             </span>
@@ -207,7 +207,7 @@ export default function CareersPage() {
           </div>
 
           <AnimatedSection className="mt-12 text-center">
-            <p className="text-slate-500 mb-4">Don&apos;t see the right role? We&apos;re always open to exceptional talent.</p>
+            <p className="text-slate-300 mb-4">Don&apos;t see the right role? We&apos;re always open to exceptional talent.</p>
             <Link href="/contact"
               className="inline-flex items-center gap-2 text-blue-400 font-semibold hover:text-blue-300 transition-colors group">
               Send us your CV <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
@@ -225,7 +225,7 @@ export default function CareersPage() {
             <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.03em] text-white mb-5">
               Ready to Shape the Future?
             </h2>
-            <p className="text-slate-500 text-lg mb-10">
+            <p className="text-slate-300 text-lg mb-10">
               Join a team that builds intelligent technology for the world&apos;s most important industries.
             </p>
             <Link href="/contact"
