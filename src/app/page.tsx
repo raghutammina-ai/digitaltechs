@@ -192,13 +192,13 @@ export default function HomePage() {
           <motion.div {...fadeUp(0.2)} className="flex flex-col sm:flex-row gap-3 justify-center mb-14">
             <Link href="/services"
               className="btn-shimmer group inline-flex items-center justify-center gap-2 font-bold px-8 py-4 rounded-xl text-base text-white transition-all duration-200"
-              style={{ background: 'linear-gradient(135deg, #2563eb, #7c3aed)', boxShadow: '0 0 40px rgba(99,102,241,0.4)' }}
+              style={{ background: 'linear-gradient(135deg, #1d4ed8, #6d28d9)', boxShadow: '0 0 24px rgba(99,102,241,0.25)' }}
             >
               Explore Services
               <ArrowRight size={17} className="group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
             <Link href="/contact"
-              className="inline-flex items-center justify-center gap-2 border border-white/10 hover:border-white/25 bg-white/5 hover:bg-white/10 text-slate-200 font-semibold px-8 py-4 rounded-xl transition-all duration-200 text-base backdrop-blur-sm"
+              className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/35 bg-[#0c0c1a] hover:bg-[#111128] text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 text-base"
             >
               Book Free Strategy Call
             </Link>
