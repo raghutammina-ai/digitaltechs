@@ -74,6 +74,22 @@ const departmentColors: Record<string, string> = {
   'Sales':            'bg-orange-500/10 text-orange-300 border-orange-500/20',
 }
 
+const departmentAccent: Record<string, string> = {
+  'Engineering':      'rgba(59,130,246,0.6)',
+  'Data & Analytics': 'rgba(6,182,212,0.6)',
+  'Infrastructure':   'rgba(16,185,129,0.6)',
+  'Product':          'rgba(139,92,246,0.6)',
+  'Sales':            'rgba(251,146,60,0.6)',
+}
+
+const departmentIconColor: Record<string, string> = {
+  'Engineering':      '#60a5fa',
+  'Data & Analytics': '#22d3ee',
+  'Infrastructure':   '#34d399',
+  'Product':          '#a78bfa',
+  'Sales':            '#fb923c',
+}
+
 export default function CareersPage() {
   return (
     <div className="bg-[#04040a] text-white">
@@ -134,15 +150,23 @@ export default function CareersPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {perks.map((p, i) => (
               <AnimatedSection key={p.title} delay={i * 0.08}>
-                <div className="p-[1px] rounded-2xl h-full transition-all duration-300 hover:-translate-y-1"
-                  style={{ background: 'linear-gradient(135deg, rgba(59,130,246,0.15), rgba(139,92,246,0.1), rgba(255,255,255,0.05))' }}>
-                  <div className="bg-[#060612] hover:bg-[#08081a] rounded-2xl p-7 h-full text-center transition-colors duration-300">
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-5"
-                      style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(99,102,241,0.25)' }}>
-                      <p.icon size={20} className="text-blue-400" />
+                <div className="group relative h-full">
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl pointer-events-none"
+                    style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.12), transparent 70%)' }} />
+                  <div className="relative p-[1px] rounded-2xl h-full transition-all duration-300 hover:-translate-y-1.5"
+                    style={{ background: 'linear-gradient(135deg, rgba(59,130,246,0.3), rgba(139,92,246,0.2), rgba(255,255,255,0.05))' }}>
+                    <div className="bg-[#060612] group-hover:bg-[#08081a] rounded-2xl p-7 h-full text-center transition-colors duration-300">
+                      <div className="relative w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                        <div className="absolute inset-0 rounded-2xl blur-md opacity-0 group-hover:opacity-70 transition-opacity duration-300"
+                          style={{ background: 'rgba(59,130,246,0.3)' }} />
+                        <div className="relative w-14 h-14 rounded-2xl flex items-center justify-center"
+                          style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(99,102,241,0.3)' }}>
+                          <p.icon size={22} className="text-blue-400" />
+                        </div>
+                      </div>
+                      <h3 className="font-bold text-white mb-2 tracking-tight">{p.title}</h3>
+                      <p className="text-slate-300 text-sm leading-relaxed">{p.desc}</p>
                     </div>
-                    <h3 className="font-bold text-white mb-2 tracking-tight">{p.title}</h3>
-                    <p className="text-slate-300 text-sm leading-relaxed">{p.desc}</p>
                   </div>
                 </div>
               </AnimatedSection>
@@ -165,40 +189,51 @@ export default function CareersPage() {
           <div className="space-y-3">
             {openings.map((job, i) => (
               <AnimatedSection key={job.title} delay={i * 0.06}>
-                <div className="p-[1px] rounded-2xl transition-all duration-300 hover:-translate-y-0.5 group"
-                  style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03))' }}>
-                  <div className="bg-[#07070e] group-hover:bg-[#09091a] rounded-2xl p-6 transition-colors duration-300">
-                    <div className="flex flex-col md:flex-row md:items-center gap-5">
-                      <div className="flex-1">
-                        <div className="flex flex-wrap items-center gap-2 mb-3">
-                          <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${departmentColors[job.department]}`}>
-                            {job.department}
-                          </span>
-                          <span className="flex items-center gap-1 text-xs text-slate-300">
-                            <MapPin size={11} />{job.location}
-                          </span>
-                          <span className="flex items-center gap-1 text-xs text-slate-300">
-                            <Clock size={11} />{job.type}
-                          </span>
-                        </div>
-                        <h3 className="text-lg font-bold text-white mb-1.5 tracking-tight">{job.title}</h3>
-                        <p className="text-slate-300 text-sm mb-4 leading-relaxed">{job.desc}</p>
-                        <div className="flex flex-wrap gap-1.5">
-                          {job.skills.map(s => (
-                            <span key={s} className="text-[11px] font-semibold px-2.5 py-1 rounded-lg text-slate-300"
-                              style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                              {s}
-                            </span>
-                          ))}
+                <div className="group relative">
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-lg pointer-events-none"
+                    style={{ background: `radial-gradient(circle at 0% 50%, ${departmentAccent[job.department].replace('0.6','0.08')}, transparent 60%)` }} />
+                  <div className="relative p-[1px] rounded-2xl transition-all duration-300 group-hover:-translate-y-0.5"
+                    style={{ background: `linear-gradient(135deg, ${departmentAccent[job.department]}, rgba(255,255,255,0.04))` }}>
+                    <div className="bg-[#07070e] group-hover:bg-[#09091a] rounded-2xl transition-colors duration-300 overflow-hidden">
+                      {/* Colored left accent bar */}
+                      <div className="flex">
+                        <div className="w-1 flex-shrink-0 rounded-l-2xl"
+                          style={{ background: `linear-gradient(to bottom, ${departmentAccent[job.department]}, transparent)` }} />
+                        <div className="flex-1 p-6">
+                          <div className="flex flex-col md:flex-row md:items-center gap-5">
+                            <div className="flex-1">
+                              <div className="flex flex-wrap items-center gap-2 mb-3">
+                                <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${departmentColors[job.department]}`}>
+                                  {job.department}
+                                </span>
+                                <span className="flex items-center gap-1 text-xs text-slate-300">
+                                  <MapPin size={11} />{job.location}
+                                </span>
+                                <span className="flex items-center gap-1 text-xs text-slate-300">
+                                  <Clock size={11} />{job.type}
+                                </span>
+                              </div>
+                              <h3 className="text-lg font-bold text-white mb-1.5 tracking-tight">{job.title}</h3>
+                              <p className="text-slate-300 text-sm mb-4 leading-relaxed">{job.desc}</p>
+                              <div className="flex flex-wrap gap-1.5">
+                                {job.skills.map(s => (
+                                  <span key={s} className="text-[11px] font-semibold px-2.5 py-1 rounded-lg text-slate-300"
+                                    style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                                    {s}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                            <Link
+                              href="/contact"
+                              className="group/btn inline-flex items-center gap-2 font-bold px-6 py-3 rounded-xl text-white text-sm transition-all duration-200 whitespace-nowrap flex-shrink-0"
+                              style={{ background: 'linear-gradient(135deg, #1d4ed8, #6d28d9)', boxShadow: '0 0 20px rgba(99,102,241,0.25)' }}
+                            >
+                              Apply Now <ArrowRight size={14} className="group-hover/btn:translate-x-0.5 transition-transform" />
+                            </Link>
+                          </div>
                         </div>
                       </div>
-                      <Link
-                        href="/contact"
-                        className="group/btn inline-flex items-center gap-2 font-bold px-6 py-3 rounded-xl text-white text-sm transition-all duration-200 whitespace-nowrap flex-shrink-0"
-                        style={{ background: 'linear-gradient(135deg, #2563eb, #7c3aed)', boxShadow: '0 0 20px rgba(99,102,241,0.25)' }}
-                      >
-                        Apply Now <ArrowRight size={14} className="group-hover/btn:translate-x-0.5 transition-transform" />
-                      </Link>
                     </div>
                   </div>
                 </div>
