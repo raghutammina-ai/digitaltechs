@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import {
   Brain, BarChart3, Code2, Cloud, ArrowRight, ArrowUpRight,
-  CheckCircle2, Users, Zap, Shield, Lightbulb, Search, Layers, Rocket,
+  CheckCircle2, Zap, Shield, Users, Lightbulb, Search, Layers, Rocket,
 } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
 import TechStack from '@/components/TechStack'
@@ -14,77 +14,97 @@ import TypewriterText from '@/components/TypewriterText'
 import AnimatedCounter from '@/components/AnimatedCounter'
 import ROICalculator from '@/components/ROICalculator'
 
-/* ── DATA ──────────────────────────────────────────────────────────────────── */
+/* ─── DATA ──────────────────────────────────────────────────────────────── */
 
 const services = [
   {
-    num: '01', icon: Brain,    title: 'AI Application Development',
-    desc: 'Custom LLM apps, machine learning models, and intelligent automation tailored to your business goals.',
-    color: 'text-blue-400', bg: 'bg-blue-500/10', tag: 'LLMs · ML · Automation',
-    hover: 'hover:border-blue-500/30 hover:shadow-[0_8px_40px_rgba(59,130,246,0.12)]',
+    num: '01', icon: Brain,
+    title: 'AI Application Development',
+    desc: 'Custom LLM applications, intelligent agents, and ML models built for real business outcomes — not demos.',
+    gradient: 'from-blue-500/20 via-blue-600/5 to-transparent',
+    iconGradient: 'from-blue-400 to-cyan-400',
+    iconBg: 'bg-blue-500/10',
+    border: 'hover:border-blue-500/40',
+    glow: 'hover:shadow-[0_20px_60px_rgba(59,130,246,0.15)]',
+    tag: 'LLMs · Agents · ML',
   },
   {
-    num: '02', icon: BarChart3, title: 'Data Analytics & Intelligence',
-    desc: 'Turn raw data into clear decisions with dashboards, pipelines, and predictive analytics platforms.',
-    color: 'text-cyan-400',  bg: 'bg-cyan-500/10',  tag: 'BI · Pipelines · Predictions',
-    hover: 'hover:border-cyan-500/30 hover:shadow-[0_8px_40px_rgba(6,182,212,0.12)]',
+    num: '02', icon: BarChart3,
+    title: 'Data Analytics & Intelligence',
+    desc: 'Turn fragmented data into clear, actionable decisions through modern data pipelines and predictive analytics.',
+    gradient: 'from-cyan-500/20 via-cyan-600/5 to-transparent',
+    iconGradient: 'from-cyan-400 to-teal-400',
+    iconBg: 'bg-cyan-500/10',
+    border: 'hover:border-cyan-500/40',
+    glow: 'hover:shadow-[0_20px_60px_rgba(6,182,212,0.15)]',
+    tag: 'BI · Pipelines · Predictions',
   },
   {
-    num: '03', icon: Code2,    title: 'Custom Software Development',
-    desc: 'Full-stack web and mobile applications designed for scale, performance, and long-term maintainability.',
-    color: 'text-violet-400', bg: 'bg-violet-500/10', tag: 'Web · Mobile · APIs',
-    hover: 'hover:border-violet-500/30 hover:shadow-[0_8px_40px_rgba(139,92,246,0.12)]',
+    num: '03', icon: Code2,
+    title: 'Custom Software Development',
+    desc: 'Full-stack applications engineered for performance, scalability, and long-term maintainability across all platforms.',
+    gradient: 'from-violet-500/20 via-violet-600/5 to-transparent',
+    iconGradient: 'from-violet-400 to-purple-400',
+    iconBg: 'bg-violet-500/10',
+    border: 'hover:border-violet-500/40',
+    glow: 'hover:shadow-[0_20px_60px_rgba(139,92,246,0.15)]',
+    tag: 'Web · Mobile · APIs',
   },
   {
-    num: '04', icon: Cloud,    title: 'Cloud & Automation Engineering',
-    desc: 'Cloud-native infrastructure, CI/CD pipelines, and end-to-end workflow automation built for reliability.',
-    color: 'text-emerald-400', bg: 'bg-emerald-500/10', tag: 'AWS · DevOps · CI/CD',
-    hover: 'hover:border-emerald-500/30 hover:shadow-[0_8px_40px_rgba(16,185,129,0.12)]',
+    num: '04', icon: Cloud,
+    title: 'Cloud & Automation Engineering',
+    desc: 'Cloud-native infrastructure, automated DevOps pipelines, and workflow automation that scales with your business.',
+    gradient: 'from-emerald-500/20 via-emerald-600/5 to-transparent',
+    iconGradient: 'from-emerald-400 to-teal-400',
+    iconBg: 'bg-emerald-500/10',
+    border: 'hover:border-emerald-500/40',
+    glow: 'hover:shadow-[0_20px_60px_rgba(16,185,129,0.15)]',
+    tag: 'AWS · DevOps · CI/CD',
   },
 ]
 
 const steps = [
-  { n: '01', icon: Search,  title: 'Discover',  desc: 'We map your goals, data, and workflows to design the exact solution your business needs.' },
-  { n: '02', icon: Layers,  title: 'Build',     desc: 'Our engineers build in fast, transparent sprints — you see progress every step of the way.' },
-  { n: '03', icon: Rocket,  title: 'Scale',     desc: 'We deploy, monitor, and continuously optimise to deliver measurable ROI from day one.' },
+  { n: '01', icon: Search,  title: 'Discover & Strategise', desc: 'Deep-dive into your goals, data, and workflows to map the precise solution your business needs.' },
+  { n: '02', icon: Layers,  title: 'Design & Build',        desc: 'Fast, transparent sprints. You see real progress at every stage — no surprises, no black boxes.' },
+  { n: '03', icon: Rocket,  title: 'Launch & Scale',        desc: 'Deploy, monitor, and optimise continuously — driving measurable ROI from week one.' },
 ]
 
 const results = [
   {
-    label: 'Healthcare', icon: '🏥',
-    metric: '94%', sub: 'Diagnostic accuracy',
-    desc: 'AI diagnostics platform processing 10,000+ medical scans daily, reducing radiologist review time by 40%.',
+    industry: 'Healthcare', icon: '🏥', metric: '94%', sub: 'Diagnostic accuracy',
+    desc: 'AI diagnostics platform processing 10,000+ scans daily. Radiologist review time cut by 40%.',
     tags: ['Medical Imaging AI', 'HIPAA Compliant'],
-    c: 'text-rose-400', tc: 'bg-rose-500/10 border-rose-500/20 text-rose-300', bar: 94,
+    accent: 'from-rose-500 to-pink-500', text: 'text-rose-400',
+    tagStyle: 'bg-rose-500/10 border-rose-500/20 text-rose-300', bar: 94,
   },
   {
-    label: 'Finance', icon: '🏦',
-    metric: '3×', sub: 'Faster risk decisions',
-    desc: 'Real-time trading intelligence handling 2M+ events/second with live risk exposure visibility.',
+    industry: 'Finance', icon: '🏦', metric: '3×', sub: 'Faster risk decisions',
+    desc: 'Real-time trading intelligence handling 2M+ events/second with live portfolio risk visibility.',
     tags: ['Real-Time Analytics', 'Trading AI'],
-    c: 'text-blue-400', tc: 'bg-blue-500/10 border-blue-500/20 text-blue-300', bar: 75,
+    accent: 'from-blue-500 to-cyan-500', text: 'text-blue-400',
+    tagStyle: 'bg-blue-500/10 border-blue-500/20 text-blue-300', bar: 75,
   },
   {
-    label: 'Retail', icon: '🛍️',
-    metric: '72%', sub: 'Support queries automated',
-    desc: 'LLM customer support agent resolving 72% of tier-1 queries, cutting support costs by £380K/year.',
-    tags: ['LLM Integration', 'Support Automation'],
-    c: 'text-violet-400', tc: 'bg-violet-500/10 border-violet-500/20 text-violet-300', bar: 72,
+    industry: 'Retail', icon: '🛍️', metric: '72%', sub: 'Support queries automated',
+    desc: 'LLM support agent resolving 72% of tier-1 queries, saving £380K/year in support costs.',
+    tags: ['LLM Integration', 'Support AI'],
+    accent: 'from-violet-500 to-purple-500', text: 'text-violet-400',
+    tagStyle: 'bg-violet-500/10 border-violet-500/20 text-violet-300', bar: 72,
   },
   {
-    label: 'Logistics', icon: '🚚',
-    metric: '45%', sub: 'Cost reduction',
-    desc: 'AWS microservices migration with zero downtime. Route optimisation AI cut fuel costs by 25%.',
-    tags: ['Cloud Migration', 'Route AI'],
-    c: 'text-emerald-400', tc: 'bg-emerald-500/10 border-emerald-500/20 text-emerald-300', bar: 45,
+    industry: 'Logistics', icon: '🚚', metric: '45%', sub: 'Cost reduction',
+    desc: 'Zero-downtime migration to AWS microservices. Route AI cut fuel costs 25% in first quarter.',
+    tags: ['Cloud Migration', 'Route Optimisation'],
+    accent: 'from-emerald-500 to-teal-500', text: 'text-emerald-400',
+    tagStyle: 'bg-emerald-500/10 border-emerald-500/20 text-emerald-300', bar: 45,
   },
 ]
 
 const values = [
-  { icon: Lightbulb, title: 'Innovation with Purpose',       desc: 'Every solution is designed to drive real, measurable business impact.' },
-  { icon: Zap,       title: 'Automation for Efficiency',     desc: 'We eliminate bottlenecks and accelerate operations through smart automation.' },
-  { icon: Users,     title: 'Partnership for Growth',        desc: 'We work as an extension of your team, invested in your long-term success.' },
-  { icon: Shield,    title: 'Transformation with Integrity', desc: 'Security, transparency, and ethical AI at the core of everything we build.' },
+  { icon: Lightbulb, title: 'Innovation with Purpose',       desc: 'Every solution is built to drive real, measurable business impact — not just technical novelty.' },
+  { icon: Zap,       title: 'Automation for Efficiency',     desc: 'We identify and eliminate bottlenecks, accelerating operations through intelligent automation.' },
+  { icon: Users,     title: 'Partnership for Growth',        desc: 'We embed in your team and invest in your long-term success — not just the next milestone.' },
+  { icon: Shield,    title: 'Transformation with Integrity', desc: 'Security, transparency, and ethical AI are non-negotiable in everything we build.' },
 ]
 
 const industries = [
@@ -95,205 +115,262 @@ const industries = [
   { name: 'Agriculture',          slug: 'agriculture' },
 ]
 
-const marqueeItems = [
+const marquee = [
   'OpenAI GPT-4', 'Anthropic Claude', 'LangChain', 'TensorFlow', 'PyTorch',
   'AWS', 'Google Cloud', 'Azure', 'Kubernetes', 'Terraform',
   'React / Next.js', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Snowflake',
 ]
 
-/* ── PAGE ──────────────────────────────────────────────────────────────────── */
-
+/* ─── HELPERS ───────────────────────────────────────────────────────────── */
 const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 },
+  initial: { opacity: 0, y: 28 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay, ease: [0.21, 0.47, 0.32, 0.98] },
+  transition: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] },
 })
 
+/* ─── PAGE ──────────────────────────────────────────────────────────────── */
 export default function HomePage() {
   return (
-    <div className="bg-[#09090b] text-white">
+    <div className="bg-[#04040a] text-white">
 
-      {/* ═══════════════════════════════════ HERO ══════════════════════════════ */}
-      <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
+      {/* ══════════════════════════════════════════════════
+          HERO
+      ══════════════════════════════════════════════════ */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
 
-        {/* Background layers */}
-        <div className="absolute inset-0 bg-[#09090b]" />
-        {/* Grid */}
-        <div className="absolute inset-0 pointer-events-none opacity-[0.35]"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)',
-            backgroundSize: '72px 72px',
-          }}
-        />
-        {/* Spotlight */}
-        <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.13) 0%, transparent 70%)' }}
-        />
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#09090b] to-transparent pointer-events-none z-10" />
+        {/* Gradient mesh background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[#04040a]" />
+          <div className="absolute inset-0 grid-bg opacity-60" />
+          {/* Coloured orbs */}
+          <div className="animate-float-slow absolute top-[-10%] left-[10%] w-[600px] h-[600px] rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 70%)' }} />
+          <div className="animate-float-slow absolute top-[20%] right-[5%] w-[500px] h-[500px] rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%)', animationDelay: '-6s' }} />
+          <div className="animate-float-slow absolute bottom-[10%] left-[30%] w-[450px] h-[450px] rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%)', animationDelay: '-12s' }} />
+          {/* Vignette */}
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 40%, #04040a 100%)' }} />
+        </div>
 
         <NeuralNetwork />
 
-        {/* Content */}
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-40 text-center">
 
-          <motion.div {...fadeUp(0)} className="mb-6">
-            <span className="inline-flex items-center gap-2 border border-white/10 bg-white/5 backdrop-blur-sm text-zinc-300 text-xs font-semibold px-4 py-2 rounded-full tracking-wide uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-              AI · Data · Software · Cloud
-            </span>
+          {/* Badge */}
+          <motion.div {...fadeUp(0)} className="mb-8">
+            <div className="inline-block p-[1px] rounded-full"
+              style={{ background: 'linear-gradient(135deg, rgba(59,130,246,0.5), rgba(139,92,246,0.5), rgba(6,182,212,0.4))' }}>
+              <span className="flex items-center gap-2 bg-[#04040a] text-sm font-medium px-5 py-2 rounded-full text-slate-300">
+                <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+                AI · Data · Software · Cloud
+              </span>
+            </div>
           </motion.div>
 
-          <motion.h1 {...fadeUp(0.08)}
-            className="text-6xl sm:text-7xl lg:text-[82px] font-bold leading-[1.04] tracking-[-0.03em] text-white mb-7 max-w-4xl mx-auto"
+          {/* Headline */}
+          <motion.h1 {...fadeUp(0.07)}
+            className="text-6xl sm:text-7xl lg:text-[88px] font-extrabold leading-[1.02] tracking-[-0.04em] mb-6 max-w-4xl mx-auto"
           >
-            The AI Partner<br />
-            <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
-              Built for Results
-            </span>
+            <span className="text-white">We Build AI</span>
+            <br />
+            <span className="gradient-text">That Delivers</span>
           </motion.h1>
 
-          <motion.div {...fadeUp(0.14)} className="text-xl text-zinc-400 mb-5 min-h-[1.75rem] font-medium">
+          {/* Typewriter */}
+          <motion.div {...fadeUp(0.13)} className="text-xl sm:text-2xl text-slate-400 font-medium mb-5 min-h-[2rem]">
             <TypewriterText />
           </motion.div>
 
-          <motion.p {...fadeUp(0.18)}
-            className="text-base sm:text-lg text-zinc-500 max-w-xl mx-auto mb-11 leading-relaxed"
+          {/* Sub */}
+          <motion.p {...fadeUp(0.16)}
+            className="text-base sm:text-lg text-slate-500 max-w-2xl mx-auto mb-12 leading-relaxed"
           >
-            We build intelligent AI applications, data systems, and scalable software — delivering measurable outcomes from day one.
+            From intelligent AI applications to data systems and scalable software —
+            we deliver measurable outcomes for forward-thinking businesses worldwide.
           </motion.p>
 
-          <motion.div {...fadeUp(0.22)} className="flex flex-col sm:flex-row gap-3 justify-center mb-14">
+          {/* CTAs */}
+          <motion.div {...fadeUp(0.2)} className="flex flex-col sm:flex-row gap-3 justify-center mb-14">
             <Link href="/services"
-              className="group inline-flex items-center justify-center gap-2 bg-white text-black font-semibold px-7 py-3.5 rounded-xl hover:bg-zinc-100 transition-all duration-200 text-sm shadow-lg"
+              className="btn-shimmer group inline-flex items-center justify-center gap-2 font-bold px-8 py-4 rounded-xl text-base text-white transition-all duration-200"
+              style={{ background: 'linear-gradient(135deg, #2563eb, #7c3aed)', boxShadow: '0 0 40px rgba(99,102,241,0.4)' }}
             >
               Explore Services
-              <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform duration-200" />
+              <ArrowRight size={17} className="group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
             <Link href="/contact"
-              className="inline-flex items-center justify-center gap-2 border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/8 text-zinc-200 font-semibold px-7 py-3.5 rounded-xl transition-all duration-200 text-sm backdrop-blur-sm"
+              className="inline-flex items-center justify-center gap-2 border border-white/10 hover:border-white/25 bg-white/5 hover:bg-white/10 text-slate-200 font-semibold px-8 py-4 rounded-xl transition-all duration-200 text-base backdrop-blur-sm"
             >
-              Book Free Call
+              Book Free Strategy Call
             </Link>
           </motion.div>
 
-          <motion.div {...fadeUp(0.3)} className="flex flex-wrap items-center justify-center gap-6 text-xs text-zinc-600">
-            {['No commitment required', 'Free 30-min strategy call', 'Delivery in weeks not months'].map((t, i) => (
-              <span key={i} className="flex items-center gap-2">
-                <CheckCircle2 size={12} className="text-zinc-500" />
-                {t}
+          {/* Trust strip */}
+          <motion.div {...fadeUp(0.26)} className="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-600">
+            {['No commitment required', 'Free 30-min strategy call', 'Results in weeks, not months'].map((t) => (
+              <span key={t} className="flex items-center gap-2">
+                <CheckCircle2 size={12} className="text-blue-500/70" />{t}
               </span>
             ))}
           </motion.div>
         </div>
+
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none"
+          style={{ background: 'linear-gradient(to top, #04040a, transparent)' }} />
       </section>
 
-      {/* ════════════════════════════════ MARQUEE ══════════════════════════════ */}
-      <div className="border-y border-white/[0.07] py-5 overflow-hidden">
-        <p className="text-center text-[10px] uppercase tracking-[0.3em] text-zinc-600 font-semibold mb-5">
-          Powered by industry-leading technologies
+      {/* ══════════════════════════════════════════════════
+          MARQUEE
+      ══════════════════════════════════════════════════ */}
+      <div className="py-6 overflow-hidden border-y border-white/[0.06]">
+        <p className="text-center text-[10px] uppercase tracking-[0.35em] text-slate-700 font-bold mb-5">
+          Powered by world-leading technologies
         </p>
         <div className="relative">
-          <div className="flex gap-10 animate-marquee whitespace-nowrap w-max">
-            {[...marqueeItems, ...marqueeItems].map((t, i) => (
-              <span key={i} className="text-sm font-medium text-zinc-600 hover:text-zinc-300 transition-colors cursor-default">{t}</span>
+          <div className="flex gap-12 animate-marquee whitespace-nowrap w-max">
+            {[...marquee, ...marquee].map((t, i) => (
+              <span key={i} className="text-sm font-semibold text-slate-700 hover:text-slate-300 transition-colors cursor-default">{t}</span>
             ))}
           </div>
-          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#09090b] to-transparent pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#09090b] to-transparent pointer-events-none" />
+          <div className="absolute inset-y-0 left-0 w-32 pointer-events-none" style={{ background: 'linear-gradient(to right, #04040a, transparent)' }} />
+          <div className="absolute inset-y-0 right-0 w-32 pointer-events-none" style={{ background: 'linear-gradient(to left, #04040a, transparent)' }} />
         </div>
       </div>
 
-      {/* ═══════════════════════════════════ STATS ═════════════════════════════ */}
-      <section className="py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
-          {[
-            { n: 10,  s: '+', l: 'Years Experience'   },
-            { n: 200, s: '+', l: 'Projects Delivered'  },
-            { n: 50,  s: '+', l: 'Happy Clients'       },
-            { n: 15,  s: '+', l: 'Countries Served'    },
-          ].map((stat, i) => (
-            <AnimatedSection key={stat.l} delay={i * 0.07}>
-              <div className="text-5xl sm:text-6xl font-bold text-white mb-2 tabular-nums tracking-tight">
-                <AnimatedCounter target={stat.n} suffix={stat.s} />
-              </div>
-              <div className="text-sm text-zinc-500 font-medium">{stat.l}</div>
-            </AnimatedSection>
-          ))}
+      {/* ══════════════════════════════════════════════════
+          STATS
+      ══════════════════════════════════════════════════ */}
+      <section className="py-28">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-1 p-[1px] rounded-3xl overflow-hidden"
+            style={{ background: 'linear-gradient(135deg, rgba(59,130,246,0.2), rgba(139,92,246,0.15), rgba(6,182,212,0.15))' }}>
+            {[
+              { n: 10,  s: '+', l: 'Years of Experience', d: 'Building intelligent systems' },
+              { n: 200, s: '+', l: 'Projects Delivered',  d: 'Across all industries'        },
+              { n: 50,  s: '+', l: 'Happy Clients',       d: 'From startups to enterprises' },
+              { n: 15,  s: '+', l: 'Countries Served',    d: 'Global delivery capability'   },
+            ].map((stat, i) => (
+              <AnimatedSection key={stat.l} delay={i * 0.08}
+                className="bg-[#04040a] hover:bg-[#080810] p-10 text-center transition-colors duration-300">
+                <div className="text-5xl sm:text-6xl font-extrabold tracking-tight mb-2 tabular-nums gradient-text">
+                  <AnimatedCounter target={stat.n} suffix={stat.s} />
+                </div>
+                <div className="text-white font-semibold text-sm mb-1">{stat.l}</div>
+                <div className="text-slate-600 text-xs">{stat.d}</div>
+              </AnimatedSection>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ═══════════════════════════════ SERVICES ══════════════════════════════ */}
-      <section className="py-24 border-t border-white/[0.06]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ══════════════════════════════════════════════════
+          SERVICES
+      ══════════════════════════════════════════════════ */}
+      <section className="py-24 relative overflow-hidden">
+        {/* Section glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse, rgba(59,130,246,0.07) 0%, transparent 70%)' }} />
 
-          <AnimatedSection className="mb-16 max-w-xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue-400 mb-4">What We Do</p>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight leading-[1.1] mb-4">
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection className="text-center mb-16">
+            <span className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 text-blue-300 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-5">
+              What We Do
+            </span>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.03em] leading-[1.05] text-white mb-5">
               Services built for scale
             </h2>
-            <p className="text-zinc-500 text-lg leading-relaxed">
+            <p className="text-slate-500 max-w-lg mx-auto text-lg leading-relaxed">
               End-to-end delivery across AI, data, software, and cloud engineering.
             </p>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {services.map((s, i) => (
-              <AnimatedSection key={s.title} delay={i * 0.07}>
-                <div className={`group relative border border-white/[0.08] ${s.hover} rounded-2xl p-7 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300 hover:-translate-y-1 h-full`}>
-                  <div className="flex items-start justify-between mb-5">
-                    <div className={`w-11 h-11 ${s.bg} rounded-xl flex items-center justify-center`}>
-                      <s.icon size={20} className={s.color} />
+              <AnimatedSection key={s.title} delay={i * 0.08}>
+                <div className={`group relative rounded-2xl border border-white/[0.08] ${s.border} ${s.glow} bg-[#070710] hover:bg-[#0a0a16] transition-all duration-300 hover:-translate-y-2 overflow-hidden h-full`}>
+                  {/* Top gradient */}
+                  <div className={`absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r ${s.iconGradient}`} />
+                  {/* Subtle bg gradient */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${s.gradient} opacity-50`} />
+
+                  <div className="relative p-8">
+                    <div className="flex items-start justify-between mb-6">
+                      <div className={`w-12 h-12 ${s.iconBg} rounded-xl flex items-center justify-center`}>
+                        <s.icon size={22} className={`bg-gradient-to-br ${s.iconGradient} bg-clip-text`}
+                          style={{ color: s.iconGradient.includes('blue') ? '#60a5fa' : s.iconGradient.includes('cyan') ? '#22d3ee' : s.iconGradient.includes('violet') ? '#a78bfa' : '#34d399' }}
+                        />
+                      </div>
+                      <span className="text-[11px] font-black text-white/10 font-mono tracking-widest">{s.num}</span>
                     </div>
-                    <span className="text-[11px] font-bold text-zinc-700 font-mono tracking-widest">{s.num}</span>
+                    <h3 className="text-white font-bold text-xl mb-3 leading-snug tracking-tight">{s.title}</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed mb-6">{s.desc}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-semibold text-slate-700 bg-white/5 border border-white/[0.07] px-3 py-1.5 rounded-full">
+                        {s.tag}
+                      </span>
+                      <ArrowUpRight size={15} className="text-slate-700 group-hover:text-slate-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" />
+                    </div>
                   </div>
-                  <h3 className="text-white font-bold text-lg mb-2 leading-snug tracking-tight">{s.title}</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed mb-5">{s.desc}</p>
-                  <span className="inline-block text-[11px] font-semibold text-zinc-600 bg-white/5 border border-white/[0.07] px-3 py-1 rounded-full">
-                    {s.tag}
-                  </span>
                 </div>
               </AnimatedSection>
             ))}
           </div>
 
-          <AnimatedSection className="mt-10">
+          <AnimatedSection className="text-center mt-12">
             <Link href="/services"
-              className="group inline-flex items-center gap-1.5 text-zinc-400 hover:text-white text-sm font-semibold transition-colors duration-200"
+              className="group inline-flex items-center gap-2 text-slate-400 hover:text-white text-sm font-semibold transition-colors duration-200"
             >
-              See all services
-              <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" />
+              View all services
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* ══════════════════════════════ HOW WE WORK ════════════════════════════ */}
-      <section className="py-24 border-t border-white/[0.06]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ══════════════════════════════════════════════════
+          HOW WE WORK
+      ══════════════════════════════════════════════════ */}
+      <section className="py-24 relative">
+        <div className="absolute inset-0 border-y border-white/[0.05]" />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <AnimatedSection className="text-center mb-16">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue-400 mb-4">Process</p>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-4">How it works</h2>
-            <p className="text-zinc-500 text-lg max-w-md mx-auto">Three steps from brief to measurable result.</p>
+            <span className="inline-flex items-center gap-2 bg-violet-500/10 border border-violet-500/20 text-violet-300 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-5">
+              Our Process
+            </span>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.03em] text-white mb-4">
+              How we work
+            </h2>
+            <p className="text-slate-500 text-lg max-w-sm mx-auto">
+              Three clear steps from brief to live results.
+            </p>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {steps.map((step, i) => (
               <AnimatedSection key={step.n} delay={i * 0.1}>
-                <div className="relative border border-white/[0.08] hover:border-white/[0.14] rounded-2xl p-8 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300 hover:-translate-y-1">
-                  {/* Top row */}
-                  <div className="flex items-center justify-between mb-8">
-                    <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
-                      <step.icon size={18} className="text-blue-400" />
+                <div className="relative group">
+                  {/* Gradient border wrapper */}
+                  <div className="p-[1px] rounded-2xl h-full transition-all duration-300 group-hover:shadow-[0_20px_60px_rgba(99,102,241,0.15)]"
+                    style={{ background: 'linear-gradient(135deg, rgba(99,102,241,0.3), rgba(139,92,246,0.2), rgba(59,130,246,0.2))' }}>
+                    <div className="bg-[#07070e] hover:bg-[#09091a] rounded-2xl p-8 h-full transition-colors duration-300">
+                      <div className="flex items-center justify-between mb-8">
+                        <div className="w-12 h-12 rounded-xl flex items-center justify-center"
+                          style={{ background: 'linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.15))', border: '1px solid rgba(99,102,241,0.3)' }}>
+                          <step.icon size={20} className="text-violet-400" />
+                        </div>
+                        <span className="font-black text-4xl text-white/[0.06] font-mono">{step.n}</span>
+                      </div>
+                      <h3 className="text-white font-bold text-xl mb-3 tracking-tight">{step.title}</h3>
+                      <p className="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
                     </div>
-                    <span className="text-3xl font-bold text-white/[0.06] font-mono tracking-tight">{step.n}</span>
                   </div>
-                  <h3 className="text-white font-bold text-xl mb-3 tracking-tight">{step.title}</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed">{step.desc}</p>
-                  {i < steps.length - 1 && (
-                    <div className="hidden md:block absolute top-12 -right-3 z-10">
-                      <ArrowRight size={16} className="text-white/10" />
+                  {/* Arrow connector */}
+                  {i < 2 && (
+                    <div className="hidden md:flex absolute top-1/2 -right-3 z-10 -translate-y-1/2">
+                      <ArrowRight size={14} className="text-violet-500/30" />
                     </div>
                   )}
                 </div>
@@ -303,44 +380,56 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════ WHY US ═════════════════════════════════ */}
-      <section className="py-24 border-t border-white/[0.06]">
+      {/* ══════════════════════════════════════════════════
+          WHY US
+      ══════════════════════════════════════════════════ */}
+      <section className="py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
 
             <AnimatedSection direction="right" className="lg:sticky lg:top-28">
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue-400 mb-4">Why Us</p>
-              <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight leading-[1.1] mb-6">
-                Four principles.<br />Every engagement.
+              <span className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6">
+                Why Us
+              </span>
+              <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.03em] text-white leading-[1.1] mb-6">
+                Four principles.<br />
+                <span className="gradient-text">Every engagement.</span>
               </h2>
-              <p className="text-zinc-500 text-lg leading-relaxed mb-10">
-                We bring deep technical expertise and a client-first mindset to every project — from first call to post-launch.
+              <p className="text-slate-500 text-lg leading-relaxed mb-10">
+                Deep technical expertise and a client-first mindset — from first call to final delivery.
               </p>
               <ul className="space-y-3 mb-10">
                 {['End-to-end AI & software delivery', 'Cross-industry domain expertise', 'Agile & fully transparent process', 'Ongoing support & optimisation'].map(item => (
-                  <li key={item} className="flex items-center gap-3 text-zinc-300 text-sm">
-                    <CheckCircle2 size={15} className="text-blue-400 flex-shrink-0" />
+                  <li key={item} className="flex items-center gap-3 text-slate-300 text-sm">
+                    <span className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
+                      style={{ background: 'rgba(59,130,246,0.15)', border: '1px solid rgba(59,130,246,0.3)' }}>
+                      <CheckCircle2 size={11} className="text-blue-400" />
+                    </span>
                     {item}
                   </li>
                 ))}
               </ul>
               <Link href="/about"
-                className="group inline-flex items-center gap-2 bg-white text-black font-semibold px-6 py-3 rounded-xl hover:bg-zinc-100 transition-all duration-200 text-sm shadow-md"
-              >
-                About Us <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                className="btn-shimmer group inline-flex items-center gap-2 font-bold px-6 py-3 rounded-xl text-sm text-white transition-all duration-200"
+                style={{ background: 'linear-gradient(135deg, #1d4ed8, #4f46e5)', boxShadow: '0 0 25px rgba(79,70,229,0.3)' }}>
+                About Us <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </AnimatedSection>
 
-            <div className="grid grid-cols-1 gap-4">
+            <div className="space-y-4">
               {values.map((v, i) => (
                 <AnimatedSection key={v.title} delay={i * 0.08}>
-                  <div className="group flex items-start gap-5 border border-white/[0.07] hover:border-white/[0.13] rounded-2xl p-6 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300">
-                    <div className="w-10 h-10 bg-blue-500/10 border border-blue-500/20 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <v.icon size={17} className="text-blue-400" />
-                    </div>
-                    <div>
-                      <h4 className="text-white font-semibold mb-1.5 tracking-tight">{v.title}</h4>
-                      <p className="text-zinc-500 text-sm leading-relaxed">{v.desc}</p>
+                  <div className="p-[1px] rounded-2xl transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.1)]"
+                    style={{ background: 'linear-gradient(135deg, rgba(59,130,246,0.15), rgba(139,92,246,0.1), rgba(255,255,255,0.05))' }}>
+                    <div className="flex items-start gap-5 bg-[#060612] hover:bg-[#08081a] rounded-2xl p-6 transition-colors duration-300">
+                      <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"
+                        style={{ background: 'linear-gradient(135deg, rgba(59,130,246,0.15), rgba(99,102,241,0.1))', border: '1px solid rgba(99,102,241,0.25)' }}>
+                        <v.icon size={18} className="text-blue-400" />
+                      </div>
+                      <div>
+                        <h4 className="text-white font-bold mb-2 tracking-tight">{v.title}</h4>
+                        <p className="text-slate-500 text-sm leading-relaxed">{v.desc}</p>
+                      </div>
                     </div>
                   </div>
                 </AnimatedSection>
@@ -350,30 +439,37 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ════════════════════════════ INDUSTRIES ═══════════════════════════════ */}
-      <section className="py-24 border-t border-white/[0.06]">
+      {/* ══════════════════════════════════════════════════
+          INDUSTRIES
+      ══════════════════════════════════════════════════ */}
+      <section className="py-24 border-y border-white/[0.05]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue-400 mb-4">Industries</p>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-4">
+            <span className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-5">
+              Industries
+            </span>
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.03em] text-white mb-4">
               Every industry. One partner.
             </h2>
-            <p className="text-zinc-500 text-lg">Click any industry to explore our tailored solutions.</p>
+            <p className="text-slate-500 text-lg">Click any industry to explore our tailored solutions.</p>
           </AnimatedSection>
           <AnimatedSection>
             <div className="flex flex-wrap justify-center gap-3">
               {industries.map(({ name, slug }, i) => (
                 <motion.div key={name}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, scale: 0.92 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.06 }}
+                  transition={{ delay: i * 0.07, duration: 0.35 }}
                 >
                   <Link href={`/industries/${slug}`}
-                    className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium border border-white/[0.09] bg-white/[0.03] hover:bg-white hover:text-black hover:border-white text-zinc-300 transition-all duration-200"
+                    className="group p-[1px] rounded-full inline-block transition-all duration-200 hover:shadow-[0_0_25px_rgba(59,130,246,0.3)]"
+                    style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04))' }}
                   >
-                    {name}
-                    <ArrowUpRight size={12} className="opacity-40 group-hover:opacity-100 transition-opacity" />
+                    <span className="flex items-center gap-2 bg-[#09090f] group-hover:bg-[#0f1020] px-6 py-2.5 rounded-full text-sm font-semibold text-slate-300 group-hover:text-white transition-all duration-200">
+                      {name}
+                      <ArrowUpRight size={12} className="opacity-30 group-hover:opacity-100 transition-opacity" />
+                    </span>
                   </Link>
                 </motion.div>
               ))}
@@ -382,52 +478,58 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════ RESULTS ═══════════════════════════════ */}
-      <section className="py-24 border-t border-white/[0.06]">
+      {/* ══════════════════════════════════════════════════
+          RESULTS
+      ══════════════════════════════════════════════════ */}
+      <section className="py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
           <AnimatedSection className="text-center mb-16">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue-400 mb-4">Client Results</p>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-4">
+            <span className="inline-flex items-center gap-2 bg-rose-500/10 border border-rose-500/20 text-rose-300 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-5">
+              Client Results
+            </span>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.03em] text-white mb-4">
               Outcomes that speak
             </h2>
-            <p className="text-zinc-500 text-lg max-w-md mx-auto">
-              Real results from delivered projects. NDA protected — references on request.
+            <p className="text-slate-500 text-lg max-w-md mx-auto">
+              Real results, NDA protected — references available on request.
             </p>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {results.map((r, i) => (
-              <AnimatedSection key={r.label} delay={i * 0.07}>
-                <div className="group border border-white/[0.08] hover:border-white/[0.14] rounded-2xl p-7 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
-
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center gap-2.5">
-                      <span className="text-xl">{r.icon}</span>
-                      <span className="text-white font-semibold text-sm">{r.label}</span>
+              <AnimatedSection key={r.industry} delay={i * 0.07}>
+                <div className="p-[1px] rounded-2xl h-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)]"
+                  style={{ background: `linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04), rgba(255,255,255,0.06))` }}>
+                  <div className="bg-[#06060e] hover:bg-[#08081a] rounded-2xl p-7 h-full flex flex-col transition-colors duration-300">
+                    {/* Header */}
+                    <div className="flex items-start justify-between mb-5">
+                      <div className="flex items-center gap-3">
+                        <span className="text-2xl">{r.icon}</span>
+                        <span className="text-white font-bold">{r.industry}</span>
+                      </div>
+                      <div className="text-right">
+                        <div className={`text-4xl font-extrabold ${r.text} tabular-nums leading-none tracking-tight`}>{r.metric}</div>
+                        <div className="text-[11px] text-slate-600 mt-1">{r.sub}</div>
+                      </div>
                     </div>
-                    <div className="text-right">
-                      <div className={`text-3xl font-bold ${r.c} tabular-nums leading-none`}>{r.metric}</div>
-                      <div className="text-[11px] text-zinc-600 mt-0.5">{r.sub}</div>
+
+                    {/* Progress bar */}
+                    <div className="h-[2px] bg-white/[0.05] rounded-full mb-5 overflow-hidden">
+                      <motion.div
+                        className={`h-full rounded-full bg-gradient-to-r ${r.accent}`}
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${r.bar}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.5, delay: 0.2 + i * 0.1, ease: 'easeOut' }}
+                      />
                     </div>
-                  </div>
 
-                  {/* Bar */}
-                  <div className="h-[2px] bg-white/[0.06] rounded-full mb-5 overflow-hidden">
-                    <motion.div
-                      className="h-full bg-gradient-to-r from-blue-500 to-violet-500 rounded-full"
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${r.bar}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.4, delay: 0.2, ease: 'easeOut' }}
-                    />
-                  </div>
-
-                  <p className="text-zinc-500 text-sm leading-relaxed flex-1 mb-5">{r.desc}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {r.tags.map(t => (
-                      <span key={t} className={`text-[11px] font-semibold px-2.5 py-1 rounded-full border ${r.tc}`}>{t}</span>
-                    ))}
+                    <p className="text-slate-500 text-sm leading-relaxed flex-1 mb-5">{r.desc}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {r.tags.map(t => (
+                        <span key={t} className={`text-[11px] font-semibold px-3 py-1.5 rounded-full border ${r.tagStyle}`}>{t}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </AnimatedSection>
@@ -435,49 +537,60 @@ export default function HomePage() {
           </div>
 
           <AnimatedSection className="text-center mt-10">
-            <p className="text-zinc-600 text-sm mb-4">Want to see case studies or speak with a reference?</p>
+            <p className="text-slate-700 text-sm mb-4">Want case studies or a reference call?</p>
             <Link href="/contact"
-              className="group inline-flex items-center gap-2 border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/8 text-zinc-200 font-semibold px-6 py-3 rounded-xl text-sm transition-all duration-200"
+              className="group inline-flex items-center gap-2 border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/8 text-slate-300 hover:text-white font-semibold px-6 py-3 rounded-xl text-sm transition-all duration-200"
             >
-              Request References <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+              Request References <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* ROI / Tech / Newsletter */}
       <ROICalculator />
       <TechStack />
       <NewsletterSection />
 
-      {/* ════════════════════════════════ CTA ══════════════════════════════════ */}
-      <section className="relative py-36 border-t border-white/[0.06] overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px]"
-            style={{ background: 'radial-gradient(ellipse, rgba(59,130,246,0.1) 0%, transparent 70%)' }}
-          />
+      {/* ══════════════════════════════════════════════════
+          CTA
+      ══════════════════════════════════════════════════ */}
+      <section className="relative py-36 overflow-hidden">
+        {/* Rich background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[#04040a]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[700px] rounded-full"
+            style={{ background: 'radial-gradient(ellipse, rgba(99,102,241,0.14) 0%, rgba(59,130,246,0.08) 40%, transparent 70%)' }} />
+          <div className="absolute top-0 left-0 right-0 h-px"
+            style={{ background: 'linear-gradient(90deg, transparent, rgba(99,102,241,0.5), rgba(59,130,246,0.4), transparent)' }} />
         </div>
+
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-zinc-500 mb-6">Get Started</p>
-            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white tracking-[-0.03em] leading-[1.04] mb-6">
-              Ready to build<br />
-              <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
-                something great?
+            <div className="inline-block p-[1px] rounded-full mb-8"
+              style={{ background: 'linear-gradient(135deg, rgba(99,102,241,0.5), rgba(59,130,246,0.4))' }}>
+              <span className="flex items-center gap-2 bg-[#04040a] text-slate-300 text-xs font-bold px-5 py-2 rounded-full uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse" />
+                Get Started Today
               </span>
+            </div>
+
+            <h2 className="text-5xl sm:text-6xl lg:text-[76px] font-extrabold tracking-[-0.04em] leading-[1.02] text-white mb-6">
+              Ready to build<br />
+              <span className="gradient-text">something great?</span>
             </h2>
-            <p className="text-zinc-500 text-lg mb-12 max-w-sm mx-auto leading-relaxed">
-              Book a free 30-minute call. No commitment — just an honest conversation about your goals.
+            <p className="text-slate-500 text-xl mb-12 max-w-md mx-auto leading-relaxed">
+              Book a free 30-minute strategy call. No commitment — just an honest conversation about your goals.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact"
-                className="group inline-flex items-center justify-center gap-2 bg-white text-black font-bold px-9 py-4 rounded-xl hover:bg-zinc-100 transition-all duration-200 text-base shadow-[0_0_50px_rgba(255,255,255,0.15)]"
+                className="btn-shimmer group inline-flex items-center justify-center gap-2 font-bold px-10 py-4.5 rounded-xl text-lg text-white transition-all duration-200"
+                style={{ background: 'linear-gradient(135deg, #2563eb, #7c3aed, #4f46e5)', boxShadow: '0 0 60px rgba(99,102,241,0.5)', padding: '18px 40px' }}
               >
                 Start a Conversation
-                <ArrowRight size={18} className="group-hover:translate-x-0.5 transition-transform" />
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-200" />
               </Link>
               <Link href="/portfolio"
-                className="inline-flex items-center justify-center gap-2 border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/8 text-zinc-200 font-semibold px-9 py-4 rounded-xl transition-all duration-200 text-base"
+                className="inline-flex items-center justify-center gap-2 border border-white/10 hover:border-white/25 bg-white/5 hover:bg-white/10 text-slate-200 font-semibold px-10 py-4 rounded-xl transition-all duration-200 text-lg"
               >
                 View Our Work
               </Link>
@@ -485,7 +598,6 @@ export default function HomePage() {
           </AnimatedSection>
         </div>
       </section>
-
     </div>
   )
 }
