@@ -8,10 +8,8 @@ import {
 } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
 import TechStack from '@/components/TechStack'
-import NewsletterSection from '@/components/NewsletterSection'
 import NeuralNetwork from '@/components/NeuralNetwork'
 import TypewriterText from '@/components/TypewriterText'
-import AnimatedCounter from '@/components/AnimatedCounter'
 import ROICalculator from '@/components/ROICalculator'
 
 /* ─── DATA ──────────────────────────────────────────────────────────────── */
@@ -239,31 +237,6 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ══════════════════════════════════════════════════
-          STATS
-      ══════════════════════════════════════════════════ */}
-      <section className="py-28">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-1 p-[1px] rounded-3xl overflow-hidden"
-            style={{ background: 'linear-gradient(135deg, rgba(59,130,246,0.2), rgba(139,92,246,0.15), rgba(6,182,212,0.15))' }}>
-            {[
-              { n: 10,  s: '+', l: 'Years of Experience', d: 'Building intelligent systems' },
-              { n: 200, s: '+', l: 'Projects Delivered',  d: 'Across all industries'        },
-              { n: 50,  s: '+', l: 'Happy Clients',       d: 'From startups to enterprises' },
-              { n: 15,  s: '+', l: 'Countries Served',    d: 'Global delivery capability'   },
-            ].map((stat, i) => (
-              <AnimatedSection key={stat.l} delay={i * 0.08}
-                className="bg-[#04040a] hover:bg-[#080810] p-10 text-center transition-colors duration-300">
-                <div className="text-5xl sm:text-6xl font-extrabold tracking-tight mb-2 tabular-nums gradient-text">
-                  <AnimatedCounter target={stat.n} suffix={stat.s} />
-                </div>
-                <div className="text-white font-semibold text-sm mb-1">{stat.l}</div>
-                <div className="text-slate-600 text-xs">{stat.d}</div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ══════════════════════════════════════════════════
           SERVICES
@@ -549,7 +522,6 @@ export default function HomePage() {
 
       <ROICalculator />
       <TechStack />
-      <NewsletterSection />
 
       {/* ══════════════════════════════════════════════════
           CTA
