@@ -221,9 +221,10 @@ export default function AboutPage() {
             </p>
           </AnimatedSection>
 
-          <div className="space-y-8">
+          <div className="space-y-0">
             {milestones.map((group, gi) => (
-              <AnimatedSection key={group.year} delay={gi * 0.1}>
+              <div key={group.year}>
+              <AnimatedSection delay={gi * 0.1}>
                 {/* Year header */}
                 <div className="flex items-center gap-4 mb-4">
                   <span className="text-3xl font-extrabold tracking-tight tabular-nums"
@@ -267,6 +268,12 @@ export default function AboutPage() {
                   </div>
                 </div>
               </AnimatedSection>
+              {gi < milestones.length - 1 && (
+                <div className="my-8">
+                  <div className="h-px w-full" style={{ background: 'linear-gradient(to right, transparent, rgba(99,102,241,0.4), transparent)' }} />
+                </div>
+              )}
+              </div>
             ))}
           </div>
         </div>

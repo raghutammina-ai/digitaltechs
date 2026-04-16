@@ -182,14 +182,12 @@ export default function ContactPage() {
                         <label className="block text-sm font-semibold text-slate-300 mb-2">Full Name *</label>
                         <input type="text" name="name" required value={form.name}
                           onChange={handleChange} minLength={2} maxLength={100}
-                          placeholder="John Smith"
                           className={inputClass} style={inputStyle} />
                       </div>
                       <div>
                         <label className="block text-sm font-semibold text-slate-300 mb-2">Email Address *</label>
                         <input type="email" name="email" required value={form.email}
                           onChange={handleChange}
-                          placeholder="john@company.com"
                           className={inputClass} style={inputStyle} />
                       </div>
                     </div>
@@ -199,14 +197,12 @@ export default function ContactPage() {
                         <label className="block text-sm font-semibold text-slate-300 mb-2">Phone Number</label>
                         <input type="tel" name="phone" value={form.phone}
                           onChange={handleChange}
-                          placeholder="+1 234 567 8900"
                           className={inputClass} style={inputStyle} />
                       </div>
                       <div>
                         <label className="block text-sm font-semibold text-slate-300 mb-2">Company</label>
                         <input type="text" name="company" value={form.company}
                           onChange={handleChange}
-                          placeholder="Your company name"
                           className={inputClass} style={inputStyle} />
                       </div>
                     </div>
@@ -226,7 +222,6 @@ export default function ContactPage() {
                       <label className="block text-sm font-semibold text-slate-300 mb-2">Message *</label>
                       <textarea name="message" required value={form.message} rows={5}
                         onChange={handleChange} minLength={10} maxLength={2000}
-                        placeholder="Tell us about your project or challenge..."
                         className={`${inputClass} resize-none`} style={inputStyle} />
                       <p className="text-xs text-slate-600 mt-1 text-right">{form.message.length}/2000</p>
                     </div>
