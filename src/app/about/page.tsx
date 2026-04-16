@@ -96,7 +96,7 @@ export default function AboutPage() {
                 Global Reach.
               </span>
             </h1>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed">
               We are Digital Tech Prosperity — a team of engineers, data scientists, and strategists
               dedicated to building the intelligent technology of tomorrow, today.
             </p>
@@ -123,7 +123,7 @@ export default function AboutPage() {
                   }}>
                   {s.value}
                 </div>
-                <div className="text-slate-500 text-sm font-medium">{s.label}</div>
+                <div className="text-slate-300 text-sm font-medium">{s.label}</div>
               </AnimatedSection>
             ))}
           </div>
@@ -139,7 +139,7 @@ export default function AboutPage() {
               <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.03em] text-white mb-6 leading-tight">
                 Built to Deliver AI That Works
               </h2>
-              <div className="space-y-4 text-slate-400 leading-relaxed text-base">
+              <div className="space-y-4 text-slate-300 leading-relaxed text-base">
                 <p>Digital Tech Prosperity was founded in 2025 with a vision to help businesses grow through modern technology.</p>
                 <p>We are a passionate team focused on building scalable solutions in AI, web development, and data-driven systems. Our approach combines innovation, simplicity, and performance to deliver real business value.</p>
                 <p>As a growing company, we are committed to learning, evolving, and helping our clients succeed in the digital world.</p>
@@ -152,7 +152,7 @@ export default function AboutPage() {
                   style={{ background: 'linear-gradient(135deg, rgba(59,130,246,0.4), rgba(99,102,241,0.3))' }}>
                   <div className="bg-[#07071a] rounded-2xl p-7">
                     <h3 className="font-bold text-xl text-white mb-3">Our Mission</h3>
-                    <p className="text-slate-400 leading-relaxed text-sm">
+                    <p className="text-slate-300 leading-relaxed text-sm">
                       To empower organisations worldwide with intelligent, scalable digital solutions
                       that accelerate growth, improve efficiency, and create lasting value.
                     </p>
@@ -162,7 +162,7 @@ export default function AboutPage() {
                   style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04))' }}>
                   <div className="bg-[#07070e] rounded-2xl p-7">
                     <h3 className="font-bold text-xl text-white mb-3">Our Vision</h3>
-                    <p className="text-slate-400 leading-relaxed text-sm">
+                    <p className="text-slate-300 leading-relaxed text-sm">
                       To be the most trusted digital transformation partner for businesses across every
                       industry — known for integrity, innovation, and measurable impact.
                     </p>
@@ -180,7 +180,7 @@ export default function AboutPage() {
           <AnimatedSection className="text-center mb-14">
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-blue-400 mb-4 block">Our Values</span>
             <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.03em] text-white mb-4">What We Stand For</h2>
-            <p className="text-slate-500 text-lg max-w-md mx-auto">The principles that guide every decision, every line of code, and every client engagement.</p>
+            <p className="text-slate-300 text-lg max-w-md mx-auto">The principles that guide every decision, every line of code, and every client engagement.</p>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -195,7 +195,7 @@ export default function AboutPage() {
                     </div>
                     <div>
                       <h3 className="text-white font-bold mb-2 tracking-tight">{v.title}</h3>
-                      <p className="text-slate-500 text-sm leading-relaxed">{v.desc}</p>
+                      <p className="text-slate-300 text-sm leading-relaxed">{v.desc}</p>
                     </div>
                   </div>
                 </div>
@@ -216,7 +216,7 @@ export default function AboutPage() {
           <AnimatedSection className="text-center mb-20">
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-violet-400 mb-4 block">Journey</span>
             <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.03em] text-white mb-4">Our Milestones</h2>
-            <p className="text-slate-500 text-base max-w-sm mx-auto leading-relaxed">
+            <p className="text-slate-300 text-base max-w-sm mx-auto leading-relaxed">
               Every great journey starts with a single step. Here&apos;s ours.
             </p>
           </AnimatedSection>
@@ -258,7 +258,7 @@ export default function AboutPage() {
                             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03))' }}>
                             <div className="bg-[#07070e] group-hover:bg-[#09091a] rounded-2xl px-5 py-4 transition-colors duration-300">
                               <h4 className="font-semibold text-sm text-white mb-1 tracking-tight">{m.title}</h4>
-                              <p className="text-[13px] leading-relaxed text-slate-500">{m.event}</p>
+                              <p className="text-[13px] leading-relaxed text-slate-300">{m.event}</p>
                             </div>
                           </div>
                         </div>
@@ -281,7 +281,7 @@ export default function AboutPage() {
             <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.03em] text-white mb-5">
               Let&apos;s Build Something Great Together
             </h2>
-            <p className="text-slate-500 text-lg mb-10">
+            <p className="text-slate-300 text-lg mb-10">
               Join clients already partnering with Digital Tech Prosperity.
             </p>
             <Link href="/contact"

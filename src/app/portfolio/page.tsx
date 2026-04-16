@@ -104,7 +104,7 @@ export default function PortfolioPage() {
                 Drive Impact.
               </span>
             </h1>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed">
               A selection of solutions we&apos;ve built for clients across industries — from AI to cloud to custom software.
             </p>
           </AnimatedSection>
@@ -125,7 +125,7 @@ export default function PortfolioPage() {
                 style={
                   active === cat
                     ? { background: 'linear-gradient(135deg, #2563eb, #7c3aed)', color: '#fff', boxShadow: '0 0 20px rgba(99,102,241,0.35)' }
-                    : { background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: '#94a3b8' }
+                    : { background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: '#cbd5e1' }
                 }
               >
                 {cat}
@@ -143,17 +143,17 @@ export default function PortfolioPage() {
                     <div className="h-[2px]" style={{ background: `linear-gradient(to right, ${p.accent}, transparent)` }} />
                     <div className="p-6 flex flex-col flex-1">
                       <div className="flex items-center justify-between mb-4">
-                        <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">{p.industry}</span>
+                        <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{p.industry}</span>
                         <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${categoryColors[p.category]}`}>
                           {p.category}
                         </span>
                       </div>
                       <h3 className="text-white font-bold text-lg mb-2 tracking-tight">{p.title}</h3>
-                      <p className="text-slate-500 text-sm leading-relaxed flex-1">{p.desc}</p>
+                      <p className="text-slate-300 text-sm leading-relaxed flex-1">{p.desc}</p>
                       <div className="flex flex-wrap gap-1.5 mt-5">
                         {p.tags.map((tag) => (
-                          <span key={tag} className="text-[11px] font-semibold px-2.5 py-1 rounded-lg text-slate-400"
-                            style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                          <span key={tag} className="text-[11px] font-semibold px-2.5 py-1 rounded-lg text-slate-300"
+                            style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}>
                             {tag}
                           </span>
                         ))}
@@ -176,7 +176,7 @@ export default function PortfolioPage() {
             <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.03em] text-white mb-5">
               Your Project Could Be Next
             </h2>
-            <p className="text-slate-500 text-lg mb-10">
+            <p className="text-slate-300 text-lg mb-10">
               Let&apos;s discuss your challenge and build a solution that delivers real results.
             </p>
             <Link
