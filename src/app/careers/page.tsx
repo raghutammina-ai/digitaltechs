@@ -9,10 +9,10 @@ export const metadata: Metadata = {
 }
 
 const perks = [
-  { icon: Globe,  title: 'Remote-First',        desc: 'Work from anywhere. We hire globally and support flexible working arrangements.' },
-  { icon: Zap,    title: 'Cutting-Edge Tech',    desc: 'Work with the latest AI models, cloud platforms, and modern engineering tools every day.' },
-  { icon: Heart,  title: 'Great Culture',        desc: 'Collaborative, transparent, and supportive team. No politics — just great work.' },
-  { icon: Users,  title: 'Learning & Growth',    desc: 'Conference budgets, certifications, and a culture that encourages continuous learning.' },
+  { icon: Globe,  title: 'Remote-First',      desc: 'Work from anywhere. We hire globally and support flexible working arrangements.' },
+  { icon: Zap,    title: 'Cutting-Edge Tech',  desc: 'Work with the latest AI models, cloud platforms, and modern engineering tools every day.' },
+  { icon: Heart,  title: 'Great Culture',      desc: 'Collaborative, transparent, and supportive team. No politics — just great work.' },
+  { icon: Users,  title: 'Learning & Growth',  desc: 'Conference budgets, certifications, and a culture that encourages continuous learning.' },
 ]
 
 const openings = [
@@ -67,60 +67,83 @@ const openings = [
 ]
 
 const departmentColors: Record<string, string> = {
-  'Engineering':      'bg-blue-50 text-blue-600',
-  'Data & Analytics': 'bg-cyan-50 text-cyan-600',
-  'Infrastructure':   'bg-teal-50 text-teal-600',
-  'Product':          'bg-purple-50 text-purple-600',
-  'Sales':            'bg-orange-50 text-orange-600',
+  'Engineering':      'bg-blue-500/10 text-blue-300 border-blue-500/20',
+  'Data & Analytics': 'bg-cyan-500/10 text-cyan-300 border-cyan-500/20',
+  'Infrastructure':   'bg-emerald-500/10 text-emerald-300 border-emerald-500/20',
+  'Product':          'bg-violet-500/10 text-violet-300 border-violet-500/20',
+  'Sales':            'bg-orange-500/10 text-orange-300 border-orange-500/20',
 }
 
 export default function CareersPage() {
   return (
-    <>
-      {/* Hero */}
-      <section className="relative hero-gradient grid-overlay pt-32 pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div className="bg-[#04040a] text-white">
+
+      {/* ── HERO ── */}
+      <section className="relative pt-36 pb-24 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0"
+            style={{
+              backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
+              backgroundSize: '64px 64px',
+            }}
+          />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%)' }} />
+        </div>
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <span className="inline-block bg-white/15 text-white/90 text-sm font-medium px-4 py-1.5 rounded-full mb-4 backdrop-blur-sm border border-white/20">
-              Join Our Team
-            </span>
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              Build AI That Matters
+            <div className="inline-block p-[1px] rounded-full mb-6"
+              style={{ background: 'linear-gradient(135deg, rgba(59,130,246,0.5), rgba(139,92,246,0.4))' }}>
+              <span className="flex items-center gap-2 bg-[#04040a] text-blue-300 text-xs font-bold px-5 py-2 rounded-full uppercase tracking-widest">
+                Join Our Team
+              </span>
+            </div>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-[-0.03em] leading-[1.04] text-white mb-6">
+              Build AI That{' '}
+              <span style={{
+                background: 'linear-gradient(135deg, #60a5fa, #a78bfa, #38bdf8)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>
+                Matters.
+              </span>
             </h1>
-            <p className="text-blue-100 text-lg max-w-2xl mx-auto">
-              We&apos;re a team of engineers, data scientists, and problem solvers building intelligent solutions
-              across every industry. Come build the future with us.
+            <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed mb-8">
+              We&apos;re a team of engineers, data scientists, and problem solvers building intelligent
+              solutions across every industry. Come build the future with us.
             </p>
-            <div className="mt-8 flex items-center justify-center gap-6 text-white/80 text-sm">
-              <span>🌍 Remote-First</span>
-              <span>🚀 {openings.length} Open Roles</span>
-              <span>🤝 Collaborative Culture</span>
+            <div className="flex flex-wrap items-center justify-center gap-6 text-slate-500 text-sm">
+              <span className="flex items-center gap-1.5"><Globe size={14} className="text-blue-400" /> Remote-First</span>
+              <span className="flex items-center gap-1.5"><Zap size={14} className="text-violet-400" /> {openings.length} Open Roles</span>
+              <span className="flex items-center gap-1.5"><Users size={14} className="text-cyan-400" /> Collaborative Culture</span>
             </div>
           </AnimatedSection>
         </div>
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#f8fafc" />
-          </svg>
-        </div>
       </section>
 
-      {/* Perks */}
-      <section className="bg-slate-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-12">
-            <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">Why DTP</span>
-            <h2 className="text-3xl font-bold text-slate-900 mt-2">Why People Love Working Here</h2>
+      {/* ── PERKS ── */}
+      <section className="py-24 border-y border-white/[0.05]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection className="text-center mb-14">
+            <span className="text-xs font-bold uppercase tracking-[0.25em] text-blue-400 mb-4 block">Why DTP</span>
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.03em] text-white mb-4">Why People Love Working Here</h2>
+            <p className="text-slate-500 text-lg max-w-md mx-auto">The benefits, culture, and perks that make DTP a great place to grow.</p>
           </AnimatedSection>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {perks.map((p, i) => (
-              <AnimatedSection key={p.title} delay={i * 0.1}>
-                <div className="bg-white border border-slate-200 rounded-2xl p-6 text-center card-glow">
-                  <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <p.icon size={22} />
+              <AnimatedSection key={p.title} delay={i * 0.08}>
+                <div className="p-[1px] rounded-2xl h-full transition-all duration-300 hover:-translate-y-1"
+                  style={{ background: 'linear-gradient(135deg, rgba(59,130,246,0.15), rgba(139,92,246,0.1), rgba(255,255,255,0.05))' }}>
+                  <div className="bg-[#060612] hover:bg-[#08081a] rounded-2xl p-7 h-full text-center transition-colors duration-300">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-5"
+                      style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(99,102,241,0.25)' }}>
+                      <p.icon size={20} className="text-blue-400" />
+                    </div>
+                    <h3 className="font-bold text-white mb-2 tracking-tight">{p.title}</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed">{p.desc}</p>
                   </div>
-                  <h3 className="font-bold text-slate-900 mb-2">{p.title}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">{p.desc}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -128,60 +151,92 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* Open roles */}
-      <section className="bg-white py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-12">
-            <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">Open Positions</span>
-            <h2 className="text-3xl font-bold text-slate-900 mt-2">Current Openings</h2>
+      {/* ── OPEN ROLES ── */}
+      <section className="py-28">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection className="text-center mb-14">
+            <span className="text-xs font-bold uppercase tracking-[0.25em] text-violet-400 mb-4 block">Open Positions</span>
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.03em] text-white mb-4">Current Openings</h2>
+            <p className="text-slate-500 text-base max-w-sm mx-auto leading-relaxed">
+              All roles are remote-friendly and full-time.
+            </p>
           </AnimatedSection>
-          <div className="space-y-4">
+
+          <div className="space-y-3">
             {openings.map((job, i) => (
-              <AnimatedSection key={job.title} delay={i * 0.05}>
-                <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 card-glow">
-                  <div className="flex flex-col md:flex-row md:items-center gap-4">
-                    <div className="flex-1">
-                      <div className="flex flex-wrap items-center gap-2 mb-2">
-                        <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${departmentColors[job.department]}`}>
-                          {job.department}
-                        </span>
-                        <span className="flex items-center gap-1 text-xs text-slate-500">
-                          <MapPin size={11} />{job.location}
-                        </span>
-                        <span className="flex items-center gap-1 text-xs text-slate-500">
-                          <Clock size={11} />{job.type}
-                        </span>
-                      </div>
-                      <h3 className="text-lg font-bold text-slate-900 mb-1">{job.title}</h3>
-                      <p className="text-slate-500 text-sm mb-3">{job.desc}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {job.skills.map(s => (
-                          <span key={s} className="text-xs bg-white border border-slate-200 text-slate-600 px-2.5 py-1 rounded-full">
-                            {s}
+              <AnimatedSection key={job.title} delay={i * 0.06}>
+                <div className="p-[1px] rounded-2xl transition-all duration-300 hover:-translate-y-0.5 group"
+                  style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03))' }}>
+                  <div className="bg-[#07070e] group-hover:bg-[#09091a] rounded-2xl p-6 transition-colors duration-300">
+                    <div className="flex flex-col md:flex-row md:items-center gap-5">
+                      <div className="flex-1">
+                        <div className="flex flex-wrap items-center gap-2 mb-3">
+                          <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${departmentColors[job.department]}`}>
+                            {job.department}
                           </span>
-                        ))}
+                          <span className="flex items-center gap-1 text-xs text-slate-500">
+                            <MapPin size={11} />{job.location}
+                          </span>
+                          <span className="flex items-center gap-1 text-xs text-slate-500">
+                            <Clock size={11} />{job.type}
+                          </span>
+                        </div>
+                        <h3 className="text-lg font-bold text-white mb-1.5 tracking-tight">{job.title}</h3>
+                        <p className="text-slate-500 text-sm mb-4 leading-relaxed">{job.desc}</p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {job.skills.map(s => (
+                            <span key={s} className="text-[11px] font-semibold px-2.5 py-1 rounded-lg text-slate-400"
+                              style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                              {s}
+                            </span>
+                          ))}
+                        </div>
                       </div>
+                      <Link
+                        href="/contact"
+                        className="group/btn inline-flex items-center gap-2 font-bold px-6 py-3 rounded-xl text-white text-sm transition-all duration-200 whitespace-nowrap flex-shrink-0"
+                        style={{ background: 'linear-gradient(135deg, #2563eb, #7c3aed)', boxShadow: '0 0 20px rgba(99,102,241,0.25)' }}
+                      >
+                        Apply Now <ArrowRight size={14} className="group-hover/btn:translate-x-0.5 transition-transform" />
+                      </Link>
                     </div>
-                    <Link
-                      href="/contact"
-                      className="inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-blue-700 transition-colors whitespace-nowrap flex-shrink-0"
-                    >
-                      Apply Now <ArrowRight size={15} />
-                    </Link>
                   </div>
                 </div>
               </AnimatedSection>
             ))}
           </div>
 
-          <AnimatedSection className="mt-10 text-center">
+          <AnimatedSection className="mt-12 text-center">
             <p className="text-slate-500 mb-4">Don&apos;t see the right role? We&apos;re always open to exceptional talent.</p>
-            <Link href="/contact" className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all">
-              Send us your CV <ArrowRight size={18} />
+            <Link href="/contact"
+              className="inline-flex items-center gap-2 text-blue-400 font-semibold hover:text-blue-300 transition-colors group">
+              Send us your CV <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </AnimatedSection>
         </div>
       </section>
-    </>
+
+      {/* ── CTA ── */}
+      <section className="relative py-28 overflow-hidden border-t border-white/[0.06]">
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse at center, rgba(59,130,246,0.08) 0%, transparent 70%)' }} />
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <AnimatedSection>
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.03em] text-white mb-5">
+              Ready to Shape the Future?
+            </h2>
+            <p className="text-slate-500 text-lg mb-10">
+              Join a team that builds intelligent technology for the world&apos;s most important industries.
+            </p>
+            <Link href="/contact"
+              className="group inline-flex items-center gap-2 font-bold px-8 py-4 rounded-xl text-white transition-all duration-200"
+              style={{ background: 'linear-gradient(135deg, #2563eb, #7c3aed)', boxShadow: '0 0 40px rgba(99,102,241,0.4)' }}>
+              Get in Touch <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </AnimatedSection>
+        </div>
+      </section>
+
+    </div>
   )
 }

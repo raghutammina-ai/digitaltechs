@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Send, Bot, User, Sparkles } from 'lucide-react'
+import { X, Send, Bot, User, MessageCircle } from 'lucide-react'
 
 interface Message {
   role: 'bot' | 'user'
@@ -397,13 +397,10 @@ export default function ChatBot() {
             </motion.div>
           ) : (
             <motion.div key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
-              <Sparkles size={22} />
+              <MessageCircle size={22} />
             </motion.div>
           )}
         </AnimatePresence>
-        {!open && (
-          <span className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-400 rounded-full border-2 border-[#030712] animate-pulse" />
-        )}
       </motion.button>
 
     </div>
