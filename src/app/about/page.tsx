@@ -206,14 +206,14 @@ export default function AboutPage() {
       </section>
 
       {/* ── TIMELINE ── */}
-      <section className="py-28 relative overflow-hidden">
+      <section className="py-16 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] rounded-full"
             style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%)' }} />
         </div>
 
         <div className="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-20">
+          <AnimatedSection className="text-center mb-10">
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-violet-400 mb-4 block">Journey</span>
             <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.03em] text-white mb-4">Our Milestones</h2>
             <p className="text-slate-300 text-base max-w-sm mx-auto leading-relaxed">
@@ -221,11 +221,11 @@ export default function AboutPage() {
             </p>
           </AnimatedSection>
 
-          <div className="space-y-14">
+          <div className="space-y-8">
             {milestones.map((group, gi) => (
               <AnimatedSection key={group.year} delay={gi * 0.1}>
                 {/* Year header */}
-                <div className="flex items-center gap-4 mb-8">
+                <div className="flex items-center gap-4 mb-4">
                   <span className="text-3xl font-extrabold tracking-tight tabular-nums"
                     style={{
                       background: 'linear-gradient(135deg, #60a5fa, #a78bfa)',
