@@ -76,11 +76,11 @@ export default function PrivacyPolicyPage() {
       <section className="bg-slate-50 py-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white border border-slate-200 rounded-2xl p-8 md:p-12 shadow-sm">
-            <p className="text-slate-600 mb-10 leading-relaxed border-l-4 border-blue-600 pl-4 bg-blue-50 py-3 rounded-r-lg">
+            <div className="text-slate-600 mb-10 leading-relaxed border-l-4 border-blue-600 pl-4 bg-blue-50 py-4 pr-4 rounded-r-lg">
               Digital Tech Prosperity (&ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;) is committed to protecting your privacy.
               This policy explains how we collect, use, and safeguard your personal information when you visit
               our website or engage with our AI and digital services.
-            </p>
+            </div>
 
             <div className="space-y-10">
               {sections.map((s) => (
