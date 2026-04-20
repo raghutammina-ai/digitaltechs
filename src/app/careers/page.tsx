@@ -17,77 +17,31 @@ const perks = [
 
 const openings = [
   {
-    title: 'Senior AI/ML Engineer',
+    title: 'AI Intern',
     department: 'Engineering',
     location: 'Remote / India',
-    type: 'Full-time',
-    desc: 'Design and build production AI systems using LLMs, computer vision, and ML pipelines for clients across healthcare, finance, and retail.',
-    skills: ['Python', 'PyTorch', 'LangChain', 'MLOps', 'AWS'],
+    type: 'Internship',
+    desc: 'Work alongside our AI engineers to build and experiment with LLM-powered applications, ML models, and intelligent automation solutions for real clients.',
+    skills: ['Python', 'Machine Learning', 'LLMs', 'Data Analysis'],
   },
   {
-    title: 'Full Stack Developer',
-    department: 'Engineering',
-    location: 'Remote / India',
-    type: 'Full-time',
-    desc: 'Build scalable web and mobile applications using React, Next.js, and Node.js. Work directly with clients across multiple industries.',
-    skills: ['Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'AWS'],
-  },
-  {
-    title: 'Data Engineer',
-    department: 'Data & Analytics',
-    location: 'Remote / India',
-    type: 'Full-time',
-    desc: 'Design and implement robust data pipelines, warehouses, and real-time analytics platforms for enterprise clients.',
-    skills: ['Apache Spark', 'Kafka', 'dbt', 'Snowflake', 'Python'],
-  },
-  {
-    title: 'Cloud & DevOps Engineer',
+    title: 'DevOps & Cloud Intern',
     department: 'Infrastructure',
     location: 'Remote / India',
-    type: 'Full-time',
-    desc: 'Build and maintain cloud infrastructure, CI/CD pipelines, and Kubernetes environments for clients across industries.',
-    skills: ['AWS', 'Terraform', 'Kubernetes', 'Docker', 'GitHub Actions'],
-  },
-  {
-    title: 'AI Product Manager',
-    department: 'Product',
-    location: 'Remote / India',
-    type: 'Full-time',
-    desc: 'Bridge client needs and engineering teams. Own the product roadmap for AI solutions across our key industry verticals.',
-    skills: ['Product Strategy', 'AI/ML knowledge', 'Agile', 'Stakeholder Management'],
-  },
-  {
-    title: 'Business Development Manager',
-    department: 'Sales',
-    location: 'Remote / India',
-    type: 'Full-time',
-    desc: 'Drive new client relationships and revenue growth. Help companies across all industries discover how AI can transform their business.',
-    skills: ['B2B Sales', 'AI Knowledge', 'CRM', 'Proposal Writing'],
+    type: 'Internship',
+    desc: 'Assist in setting up and managing cloud infrastructure, CI/CD pipelines, and containerised environments across AWS and modern DevOps toolchains.',
+    skills: ['AWS', 'Docker', 'GitHub Actions', 'Linux', 'Terraform'],
   },
 ]
 
 const departmentColors: Record<string, string> = {
-  'Engineering':      'bg-blue-500/10 text-blue-300 border-blue-500/20',
-  'Data & Analytics': 'bg-cyan-500/10 text-cyan-300 border-cyan-500/20',
-  'Infrastructure':   'bg-emerald-500/10 text-emerald-300 border-emerald-500/20',
-  'Product':          'bg-violet-500/10 text-violet-300 border-violet-500/20',
-  'Sales':            'bg-orange-500/10 text-orange-300 border-orange-500/20',
+  'Engineering':    'bg-blue-500/10 text-blue-300 border-blue-500/20',
+  'Infrastructure': 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20',
 }
 
 const departmentAccent: Record<string, string> = {
-  'Engineering':      'rgba(59,130,246,0.6)',
-  'Data & Analytics': 'rgba(6,182,212,0.6)',
-  'Infrastructure':   'rgba(16,185,129,0.6)',
-  'Product':          'rgba(139,92,246,0.6)',
-  'Sales':            'rgba(251,146,60,0.6)',
-}
-
-const departmentIconColor: Record<string, string> = {
-  'Engineering':      '#60a5fa',
-  'Data & Analytics': '#22d3ee',
-  'Infrastructure':   '#34d399',
-  'Product':          '#a78bfa',
-  'Sales':            '#fb923c',
+  'Engineering':    'rgba(59,130,246,0.6)',
+  'Infrastructure': 'rgba(16,185,129,0.6)',
 }
 
 export default function CareersPage() {

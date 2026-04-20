@@ -117,7 +117,18 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-xs text-slate-500 font-bold uppercase tracking-widest mb-0.5">{item.label}</p>
-                    <p className="text-slate-200 font-medium text-sm leading-relaxed">{item.value}</p>
+                    {item.label === 'Hyderabad' ? (
+                      <a
+                        href="https://maps.google.com/?q=Flat+601+Kaakatiya+Golden+Crysta+Lanco+Hills+Road+Manikonda+Hyderabad+500089"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-slate-200 font-medium text-sm leading-relaxed hover:text-violet-400 transition-colors duration-200"
+                      >
+                        {item.value}
+                      </a>
+                    ) : (
+                      <p className="text-slate-200 font-medium text-sm leading-relaxed">{item.value}</p>
+                    )}
                   </div>
                 </div>
               </div>

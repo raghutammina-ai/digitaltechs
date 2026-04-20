@@ -19,11 +19,11 @@ const categories = [
       },
       {
         q: 'Where are you based and do you work with international clients?',
-        a: 'We are headquartered in India and operate globally with teams and clients across 15+ countries in Asia, Europe, North America, and the Middle East. We work fully remote and are timezone-flexible.',
+        a: 'We are headquartered in India and currently operate across 2 countries. We work fully remote and are timezone-flexible.',
       },
       {
         q: 'How long has Digital Tech Prosperity been operating?',
-        a: 'We have been delivering AI and digital solutions for 10+ years, with 200+ projects completed and 50+ enterprise clients worldwide.',
+        a: 'We have been delivering AI and digital solutions for 1+ years, with 10+ projects completed and 6+ clients worldwide.',
       },
     ],
   },
@@ -40,7 +40,7 @@ const categories = [
       },
       {
         q: 'How accurate are your AI models?',
-        a: 'Accuracy depends on the quality of your data, the complexity of the problem, and the domain. We benchmark every model rigorously during development and share performance metrics transparently. For example, our medical imaging models have achieved 94% accuracy. We always recommend human-in-the-loop review for high-stakes decisions.',
+        a: 'Accuracy depends on the quality of your data, the complexity of the problem, and the domain. We benchmark every model rigorously during development and share performance metrics transparently. For example, our medical imaging models have achieved 85% accuracy. We always recommend human-in-the-loop review for high-stakes decisions.',
       },
       {
         q: 'Do you handle AI ethics and responsible AI?',

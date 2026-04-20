@@ -69,13 +69,6 @@ const steps = [
 
 const results = [
   {
-    industry: 'Healthcare', icon: '🏥', metric: '94%', sub: 'Diagnostic accuracy',
-    desc: 'AI diagnostics platform processing 10,000+ scans daily. Radiologist review time cut by 40%.',
-    tags: ['Medical Imaging AI', 'HIPAA Compliant'],
-    accent: 'from-rose-500 to-pink-500', text: 'text-rose-400',
-    tagStyle: 'bg-rose-500/10 border-rose-500/20 text-rose-300', bar: 94,
-  },
-  {
     industry: 'Finance', icon: '🏦', metric: '3×', sub: 'Faster risk decisions',
     desc: 'Real-time trading intelligence handling 2M+ events/second with live portfolio risk visibility.',
     tags: ['Real-Time Analytics', 'Trading AI'],
@@ -88,13 +81,6 @@ const results = [
     tags: ['LLM Integration', 'Support AI'],
     accent: 'from-violet-500 to-purple-500', text: 'text-violet-400',
     tagStyle: 'bg-violet-500/10 border-violet-500/20 text-violet-300', bar: 72,
-  },
-  {
-    industry: 'Logistics', icon: '🚚', metric: '45%', sub: 'Cost reduction',
-    desc: 'Zero-downtime migration to AWS microservices. Route AI cut fuel costs 25% in first quarter.',
-    tags: ['Cloud Migration', 'Route Optimisation'],
-    accent: 'from-emerald-500 to-teal-500', text: 'text-emerald-400',
-    tagStyle: 'bg-emerald-500/10 border-emerald-500/20 text-emerald-300', bar: 45,
   },
 ]
 
