@@ -57,7 +57,7 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       {/* Hero */}
-      <section className="hero-gradient grid-overlay pt-32 pb-16">
+      <section className="hero-gradient grid-overlay pt-32 pb-16 relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-block bg-white/15 text-white/90 text-sm font-medium px-4 py-1.5 rounded-full mb-4 backdrop-blur-sm border border-white/20">
             Legal
