@@ -39,7 +39,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 flex-shrink-0">
             <Image
-              src="https://www.digitaltechs.in/assets/img/logo/white-logo.png"
+              src="/white-logo.png"
               alt="Digital Tech Prosperity"
               width={180}
               height={45}

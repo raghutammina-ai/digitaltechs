@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
+import { Plus_Jakarta_Sans } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CookieBanner from '@/components/CookieBanner'
@@ -9,8 +8,13 @@ import PageLoader from '@/components/PageLoader'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 import ChatBot from '@/components/ChatBot'
 import JsonLd from '@/components/JsonLd'
+import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-jakarta',
+  weight: ['400', '500', '600', '700', '800'],
+})
 
 const siteUrl = 'https://www.digitaltechs.in'
 
@@ -53,7 +57,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-[#030712] text-slate-100 antialiased`}>
+      <body className={`${jakarta.variable} font-sans bg-[#030712] text-slate-100 antialiased`}>
         <GoogleAnalytics />
         <JsonLd />
         <PageLoader />

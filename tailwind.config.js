@@ -8,6 +8,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans:    ['var(--font-jakarta)', 'ui-sans-serif', 'system-ui'],
+        display: ['var(--font-jakarta)', 'ui-sans-serif', 'system-ui'],
+      },
       colors: {
         brand: {
           50:  '#eff6ff',

@@ -1,18 +1,18 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { ArrowRight, Lightbulb, Zap, Users, Shield, Globe, Award } from 'lucide-react'
+import AnimatedSection from '@/components/AnimatedSection'
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Learn about Digital Tech Prosperity — 10+ years delivering AI and digital solutions across 15+ countries. Our mission, values, and team.',
+  description: 'Learn about Digital Tech Prosperity — delivering AI and digital solutions across multiple countries. Our mission, values, and team.',
 }
-import { ArrowRight, Lightbulb, Zap, Users, Shield, Globe, Award } from 'lucide-react'
-import AnimatedSection from '@/components/AnimatedSection'
 
 const values = [
   {
     icon: Lightbulb,
     title: 'Innovation with Purpose',
-    desc: 'We don\'t innovate for innovation\'s sake. Every technology choice is driven by the tangible value it creates for your business and customers.',
+    desc: 'We don\'t innovate for innovation\'s sake. Every technology choice is driven by the tangible value it creates for your business.',
   },
   {
     icon: Zap,
@@ -22,32 +22,34 @@ const values = [
   {
     icon: Users,
     title: 'Partnership for Growth',
-    desc: 'The best outcomes come from deep collaboration. We embed ourselves in your goals, challenges, and culture — not just your tech stack.',
+    desc: 'The best outcomes come from deep collaboration. We embed ourselves in your goals, challenges, and culture.',
   },
   {
     icon: Shield,
     title: 'Transformation with Integrity',
-    desc: 'Security, transparency, and ethical AI are non-negotiables. We build responsibly and hold ourselves accountable to the highest standards.',
+    desc: 'Security, transparency, and ethical AI are non-negotiables. We build responsibly and hold ourselves accountable.',
   },
 ]
 
 const milestones = [
   {
     year: '2025',
+    isCurrent: false,
     items: [
-      { title: 'Company Founded',    event: 'Founded with a mission to deliver modern AI and digital solutions.' },
-      { title: 'First Client Project', event: 'Successfully delivered our first client project.' },
-      { title: 'Service Expansion',  event: 'Expanded services to AI, Web Development, and Data Solutions.' },
-      { title: 'Growing Team',       event: 'Built a strong team of developers and designers.' },
+      { title: 'Company Founded',      event: 'Founded with a mission to deliver modern AI and digital solutions.' },
+      { title: 'First Client Project', event: 'Successfully delivered our first client project on time and on budget.' },
+      { title: 'Service Expansion',    event: 'Expanded our offering to AI, Web Development, and Data Solutions.' },
+      { title: 'Growing Team',         event: 'Built a strong team of engineers, designers, and strategists.' },
     ],
   },
   {
     year: '2026',
+    isCurrent: true,
     items: [
-      { title: 'Product Innovation',     event: 'Launched internal AI tools and automation solutions to improve efficiency.' },
-      { title: 'Scaling Operations',     event: 'Expanded operations and started serving clients across multiple regions.' },
-      { title: 'Strategic Partnerships', event: 'Partnered with startups and enterprises to deliver scalable digital solutions.' },
-      { title: 'Brand Growth',           event: 'Strengthened brand presence and built long-term client relationships.' },
+      { title: 'Product Innovation',      event: 'Launched internal AI tools and automation solutions to improve efficiency.' },
+      { title: 'Scaling Operations',      event: 'Expanded operations, serving clients across multiple regions.' },
+      { title: 'Strategic Partnerships',  event: 'Partnered with startups and enterprises for scalable digital solutions.' },
+      { title: 'Brand Growth',            event: 'Strengthened brand presence and built long-term client relationships.' },
     ],
   },
 ]
@@ -61,238 +63,242 @@ const stats = [
 
 export default function AboutPage() {
   return (
-    <>
-      {/* Hero */}
-      <section className="relative hero-gradient grid-overlay pt-32 pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div className="bg-[#04040a] text-white">
+
+      {/* ── HERO ── */}
+      <section className="relative pt-36 pb-24 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0"
+            style={{
+              backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
+              backgroundSize: '64px 64px',
+            }}
+          />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%)' }} />
+        </div>
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <span className="inline-block bg-white/15 text-white/90 text-sm font-medium px-4 py-1.5 rounded-full mb-4 backdrop-blur-sm border border-white/20">
-              About Us
-            </span>
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              Digital Innovation. Global Reach.
+            <div className="inline-block p-[1px] rounded-full mb-6"
+              style={{ background: 'linear-gradient(135deg, rgba(59,130,246,0.5), rgba(139,92,246,0.4))' }}>
+              <span className="flex items-center gap-2 bg-[#04040a] text-blue-300 text-xs font-bold px-5 py-2 rounded-full uppercase tracking-widest">
+                About Us
+              </span>
+            </div>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-[-0.03em] leading-[1.04] text-white mb-6">
+              Digital Innovation.{' '}
+              <span style={{
+                background: 'linear-gradient(135deg, #60a5fa, #a78bfa, #38bdf8)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>
+                Global Reach.
+              </span>
             </h1>
-            <p className="text-blue-100 text-lg max-w-2xl mx-auto">
+            <p className="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed">
               We are Digital Tech Prosperity — a team of engineers, data scientists, and strategists
               dedicated to building the intelligent technology of tomorrow, today.
             </p>
           </AnimatedSection>
         </div>
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#f8fafc" />
-          </svg>
-        </div>
       </section>
 
-      {/* Stats */}
-      <section className="bg-slate-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* ── STATS ── */}
+      <section className="py-16 border-y border-white/[0.06]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-white/[0.06]">
             {stats.map((s, i) => (
-              <AnimatedSection key={s.label} delay={i * 0.1}>
-                <div className="bg-white border border-slate-200 rounded-2xl p-6 text-center card-glow">
-                  <div className="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <s.icon size={20} />
-                  </div>
-                  <div className="text-3xl font-bold gradient-text">{s.value}</div>
-                  <div className="text-slate-500 text-sm mt-1">{s.label}</div>
+              <AnimatedSection key={s.label} delay={i * 0.08} className="p-8 text-center">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center mx-auto mb-4"
+                  style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.2)' }}>
+                  <s.icon size={18} className="text-blue-400" />
                 </div>
+                <div className="text-4xl font-extrabold text-white mb-1 tracking-tight"
+                  style={{
+                    background: 'linear-gradient(135deg, #60a5fa, #a78bfa)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}>
+                  {s.value}
+                </div>
+                <div className="text-slate-300 text-sm font-medium">{s.label}</div>
               </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Story */}
-      <section className="bg-white py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── STORY ── */}
+      <section className="py-28">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection direction="right">
-              <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">Our Story</span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-2 mb-6">
-                Our Story
+              <span className="text-xs font-bold uppercase tracking-[0.25em] text-blue-400 mb-4 block">Our Story</span>
+              <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.03em] text-white mb-6 leading-tight">
+                Built to Deliver AI That Works
               </h2>
-              <div className="space-y-4 text-slate-600 leading-relaxed">
-                <p>
-                  Digital Tech Prosperity was founded in 2025 with a vision to help businesses
-                  grow through modern technology.
-                </p>
-                <p>
-                  We are a passionate team focused on building scalable solutions in AI, web
-                  development, and data-driven systems. Our approach combines innovation,
-                  simplicity, and performance to deliver real business value.
-                </p>
-                <p>
-                  As a growing startup, we are committed to learning, evolving, and helping
-                  our clients succeed in the digital world.
-                </p>
+              <div className="space-y-4 text-slate-300 leading-relaxed text-base">
+                <p>Digital Tech Prosperity was founded in 2025 with a vision to help businesses grow through modern technology.</p>
+                <p>We are a passionate team focused on building scalable solutions in AI, web development, and data-driven systems. Our approach combines innovation, simplicity, and performance to deliver real business value.</p>
+                <p>As a growing company, we are committed to learning, evolving, and helping our clients succeed in the digital world.</p>
               </div>
             </AnimatedSection>
 
-            {/* Mission & Vision */}
             <AnimatedSection direction="left">
-              <div className="space-y-5">
-                <div className="bg-blue-600 text-white rounded-2xl p-6">
-                  <h3 className="font-bold text-xl mb-2">Our Mission</h3>
-                  <p className="text-blue-100">
-                    To empower organizations worldwide with intelligent, scalable digital solutions
-                    that accelerate growth, improve efficiency, and create lasting value.
-                  </p>
-                </div>
-                <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
-                  <h3 className="font-bold text-xl text-slate-900 mb-2">Our Vision</h3>
-                  <p className="text-slate-600">
-                    To be the most trusted digital transformation partner for businesses across every
-                    industry — known for integrity, innovation, and measurable impact.
-                  </p>
-                </div>
-              </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
-
-      {/* Values */}
-      <section className="bg-[#030712] py-28 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          {/* Heading */}
-          <AnimatedSection className="text-center mb-14">
-            <span className="text-xs font-semibold uppercase tracking-widest text-blue-400 mb-4 block">
-              Our Values
-            </span>
-            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
-              What We Stand For
-            </h2>
-            <p className="text-slate-400 text-lg max-w-xl mx-auto">
-              The principles that guide every decision, every line of code, and every client engagement.
-            </p>
-          </AnimatedSection>
-
-          {/* Cards grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {values.map((v, i) => (
-              <AnimatedSection key={v.title} delay={i * 0.1}>
-                <div className="group flex flex-col gap-4 rounded-2xl p-7 h-full bg-gradient-to-br from-[#0B1220] via-[#0F172A] to-black border border-blue-500/30 hover:border-blue-400 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:-translate-y-1 transition-all duration-300">
-
-                  {/* Icon */}
-                  <div className="w-11 h-11 bg-blue-500/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <v.icon size={22} className="text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />
-                  </div>
-
-                  {/* Text */}
-                  <div>
-                    <h3 className="text-white font-semibold text-lg mb-2 leading-snug group-hover:text-blue-400 transition-colors duration-300">
-                      {v.title}
-                    </h3>
-                    <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
-                      {v.desc}
+              <div className="space-y-4">
+                <div className="p-[1px] rounded-2xl"
+                  style={{ background: 'linear-gradient(135deg, rgba(59,130,246,0.4), rgba(99,102,241,0.3))' }}>
+                  <div className="bg-[#07071a] rounded-2xl p-7">
+                    <h3 className="font-bold text-xl text-white mb-3">Our Mission</h3>
+                    <p className="text-slate-300 leading-relaxed text-sm">
+                      To empower organisations worldwide with intelligent, scalable digital solutions
+                      that accelerate growth, improve efficiency, and create lasting value.
                     </p>
                   </div>
                 </div>
-              </AnimatedSection>
-            ))}
+                <div className="p-[1px] rounded-2xl"
+                  style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04))' }}>
+                  <div className="bg-[#07070e] rounded-2xl p-7">
+                    <h3 className="font-bold text-xl text-white mb-3">Our Vision</h3>
+                    <p className="text-slate-300 leading-relaxed text-sm">
+                      To be the most trusted digital transformation partner for businesses across every
+                      industry — known for integrity, innovation, and measurable impact.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
           </div>
-
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="relative bg-[#030712] py-28 overflow-hidden">
-        {/* Ambient glow */}
+      {/* ── VALUES ── */}
+      <section className="py-24 border-y border-white/[0.05]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection className="text-center mb-14">
+            <span className="text-xs font-bold uppercase tracking-[0.25em] text-blue-400 mb-4 block">Our Values</span>
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.03em] text-white mb-4">What We Stand For</h2>
+            <p className="text-slate-300 text-lg max-w-md mx-auto">The principles that guide every decision, every line of code, and every client engagement.</p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {values.map((v, i) => (
+              <AnimatedSection key={v.title} delay={i * 0.08}>
+                <div className="p-[1px] rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(59,130,246,0.1)]"
+                  style={{ background: 'linear-gradient(135deg, rgba(59,130,246,0.15), rgba(139,92,246,0.1), rgba(255,255,255,0.05))' }}>
+                  <div className="flex items-start gap-5 bg-[#060612] hover:bg-[#08081a] rounded-2xl p-7 h-full transition-colors duration-300">
+                    <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"
+                      style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(99,102,241,0.25)' }}>
+                      <v.icon size={18} className="text-blue-400" />
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold mb-2 tracking-tight">{v.title}</h3>
+                      <p className="text-slate-300 text-sm leading-relaxed">{v.desc}</p>
+                    </div>
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── TIMELINE ── */}
+      <section className="py-16 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-blue-500/10 rounded-full blur-[140px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%)' }} />
         </div>
 
         <div className="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          {/* Heading */}
-          <AnimatedSection className="text-center mb-20">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-4 block">
-              Journey
-            </span>
-            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
-              Our Milestones
-            </h2>
-            <p className="text-slate-500 text-base max-w-sm mx-auto leading-relaxed">
+          <AnimatedSection className="text-center mb-10">
+            <span className="text-xs font-bold uppercase tracking-[0.25em] text-violet-400 mb-4 block">Journey</span>
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.03em] text-white mb-4">Our Milestones</h2>
+            <p className="text-slate-300 text-base max-w-sm mx-auto leading-relaxed">
               Every great journey starts with a single step. Here&apos;s ours.
             </p>
           </AnimatedSection>
 
-          <div className="space-y-16">
-            {milestones.map((group, gi) => {
-              const isCurrent = gi === milestones.length - 1
-              return (
-                <AnimatedSection key={group.year} delay={gi * 0.1}>
-
-                  {/* Year row */}
-                  <div className="flex items-center gap-4 mb-10">
-                    <span className="text-2xl font-black tracking-tight tabular-nums bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-                      {group.year}
+          <div className="space-y-0">
+            {milestones.map((group, gi) => (
+              <div key={group.year}>
+              <AnimatedSection delay={gi * 0.1}>
+                {/* Year header */}
+                <div className="flex items-center gap-4 mb-4">
+                  <span className="text-3xl font-extrabold tracking-tight tabular-nums"
+                    style={{
+                      background: 'linear-gradient(135deg, #60a5fa, #a78bfa)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}>
+                    {group.year}
+                  </span>
+                  <div className="flex-1 h-px" style={{ background: 'linear-gradient(to right, rgba(99,102,241,0.4), transparent)' }} />
+                  {group.isCurrent && (
+                    <span className="text-[11px] font-semibold text-violet-400 px-3 py-1 rounded-full"
+                      style={{ background: 'rgba(139,92,246,0.1)', border: '1px solid rgba(139,92,246,0.25)' }}>
+                      Current
                     </span>
-                    <div className="flex-1 h-px bg-gradient-to-r from-blue-500/50 to-transparent" />
-                    {isCurrent && (
-                      <span className="text-[11px] font-medium tracking-wide text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-full">
-                        Current
-                      </span>
-                    )}
-                  </div>
+                  )}
+                </div>
 
-                  {/* Item list */}
-                  <div className="relative">
-                    {/* Vertical connector */}
-                    <div className="absolute left-[9px] top-3 bottom-3 w-px bg-gradient-to-b from-blue-500/70 via-blue-500/30 to-transparent" />
-
-                    <div className="space-y-3">
-                      {group.items.map((m, i) => (
-                        <AnimatedSection key={m.title} delay={gi * 0.1 + i * 0.06} direction="right">
-                          <div className="relative flex items-start gap-5 pl-8">
-
-                            {/* Node dot */}
-                            <div className="absolute left-[5px] top-[1.1rem] w-[9px] h-[9px] rounded-full flex-shrink-0 bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.6)]" />
-
-                            {/* Card */}
-                            <div
-                              className="group flex-1 rounded-2xl px-5 py-4 border border-blue-500/20 hover:border-blue-400/40 hover:shadow-[0_0_25px_rgba(59,130,246,0.2)] hover:-translate-y-1 transition-all duration-300 ease-out cursor-default"
-                              style={{ background: 'rgba(59,130,246,0.03)', backdropFilter: 'blur(8px)' }}
-                            >
-                              <h4 className="font-semibold text-sm mb-1 leading-snug tracking-[-0.01em] text-white/90 group-hover:text-white transition-colors duration-300">
-                                {m.title}
-                              </h4>
-                              <p className="text-[13px] leading-relaxed text-slate-400 group-hover:text-slate-300 transition-colors duration-300">
-                                {m.event}
-                              </p>
+                {/* Items */}
+                <div className="relative">
+                  <div className="absolute left-[9px] top-2 bottom-2 w-px"
+                    style={{ background: 'linear-gradient(to bottom, rgba(99,102,241,0.6), rgba(99,102,241,0.2), transparent)' }} />
+                  <div className="space-y-3">
+                    {group.items.map((m, i) => (
+                      <AnimatedSection key={m.title} delay={gi * 0.1 + i * 0.06} direction="right">
+                        <div className="relative flex items-start gap-5 pl-8">
+                          <div className="absolute left-[5px] top-[1.1rem] w-[9px] h-[9px] rounded-full bg-violet-500"
+                            style={{ boxShadow: '0 0 10px rgba(139,92,246,0.7)' }} />
+                          <div className="p-[1px] rounded-2xl flex-1 transition-all duration-300 hover:-translate-y-0.5 group"
+                            style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03))' }}>
+                            <div className="bg-[#07070e] group-hover:bg-[#09091a] rounded-2xl px-5 py-4 transition-colors duration-300">
+                              <h4 className="font-semibold text-sm text-white mb-1 tracking-tight">{m.title}</h4>
+                              <p className="text-[13px] leading-relaxed text-slate-300">{m.event}</p>
                             </div>
-
                           </div>
-                        </AnimatedSection>
-                      ))}
-                    </div>
+                        </div>
+                      </AnimatedSection>
+                    ))}
                   </div>
-
-                </AnimatedSection>
-              )
-            })}
+                </div>
+              </AnimatedSection>
+              {gi < milestones.length - 1 && (
+                <div className="my-8">
+                  <div className="h-px w-full" style={{ background: 'linear-gradient(to right, transparent, rgba(99,102,241,0.4), transparent)' }} />
+                </div>
+              )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="hero-gradient py-20">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* ── CTA ── */}
+      <section className="relative py-28 overflow-hidden border-t border-white/[0.06]">
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse at center, rgba(59,130,246,0.08) 0%, transparent 70%)' }} />
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h2 className="text-3xl font-bold text-white mb-4">Let&apos;s Build Something Great Together</h2>
-            <p className="text-blue-100 mb-8">Join 50+ companies already partnering with Digital Tech Prosperity.</p>
-            <Link
-              href="/contact"
-              className="btn-glow inline-flex items-center gap-2 bg-white text-blue-700 font-semibold px-8 py-3.5 rounded-xl hover:bg-blue-50 transition-colors shadow-lg"
-            >
-              Get in Touch <ArrowRight size={18} />
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.03em] text-white mb-5">
+              Let&apos;s Build Something Great Together
+            </h2>
+            <p className="text-slate-300 text-lg mb-10">
+              Join clients already partnering with Digital Tech Prosperity.
+            </p>
+            <Link href="/contact"
+              className="group inline-flex items-center gap-2 font-bold px-8 py-4 rounded-xl text-white transition-all duration-200"
+              style={{ background: 'linear-gradient(135deg, #2563eb, #7c3aed)', boxShadow: '0 0 40px rgba(99,102,241,0.4)' }}>
+              Get in Touch <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </AnimatedSection>
         </div>
       </section>
-    </>
+    </div>
   )
 }
