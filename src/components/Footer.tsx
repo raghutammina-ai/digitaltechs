@@ -39,7 +39,7 @@ export default function Footer() {
           {/* ── Col 1 — Brand ────────────────────────────────────── */}
           <div className="sm:col-span-2 lg:col-span-4 space-y-6">
             <Image
-              src="https://www.digitaltechs.in/assets/img/logo/white-logo.png"
+              src="/logo.svg"
               alt="Digital Tech Prosperity"
               width={160}
               height={40}
