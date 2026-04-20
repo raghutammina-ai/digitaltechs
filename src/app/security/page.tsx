@@ -9,12 +9,12 @@ export const metadata: Metadata = {
 }
 
 const certifications = [
-  { name: 'GDPR', status: 'compliant', desc: 'EU General Data Protection Regulation — full data processing agreements available.' },
-  { name: 'HIPAA', status: 'compliant', desc: 'Healthcare data handling compliant with US HIPAA requirements for all health projects.' },
+  { name: 'GDPR', status: 'aligned', desc: 'EU General Data Protection Regulation — full data processing agreements available.' },
+  { name: 'HIPAA', status: 'aligned', desc: 'Healthcare data handling aligned with US HIPAA requirements for all health projects.' },
   { name: 'ISO 27001', status: 'aligned', desc: 'Information security management aligned with ISO 27001 principles. Formal audit in progress.' },
-  { name: 'SOC 2 Type II', status: 'progress', desc: 'SOC 2 Type II audit currently underway. Available Q4 2026.' },
-  { name: 'PCI-DSS', status: 'compliant', desc: 'Payment data handled through PCI-DSS certified processors only. No raw card data stored.' },
-  { name: 'AI Ethics', status: 'compliant', desc: 'Compliant with EU AI Act risk classification framework and responsible AI principles.' },
+  { name: 'SOC 2 Type II', status: 'aligned', desc: 'SOC 2 Type II audit currently underway. Available Q4 2026.' },
+  { name: 'PCI-DSS', status: 'aligned', desc: 'Payment data handled through PCI-DSS certified processors only. No raw card data stored.' },
+  { name: 'AI Ethics', status: 'aligned', desc: 'Aligned with EU AI Act risk classification framework and responsible AI principles.' },
 ]
 
 const statusStyles: Record<string, { badge: string; label: string }> = {
@@ -127,8 +127,8 @@ export default function SecurityPage() {
               <Link href="/contact" className="btn-glow inline-flex items-center gap-2 bg-white text-blue-700 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors shadow-lg">
                 Request Security Documentation <ArrowRight size={18} />
               </Link>
-              <a href="mailto:security@digitaltechs.in" className="inline-flex items-center gap-2 border-2 border-white/50 text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/10 transition-colors">
-                <Mail size={18} /> security@digitaltechs.in
+              <a href="mailto:info@digitaltechs.in" className="inline-flex items-center gap-2 border-2 border-white/50 text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/10 transition-colors">
+                <Mail size={18} /> info@digitaltechs.in
               </a>
             </div>
           </AnimatedSection>
@@ -295,8 +295,8 @@ export default function SecurityPage() {
               <Link href="/contact" className="btn-glow inline-flex items-center gap-2 bg-white text-blue-700 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors shadow-lg">
                 Talk to Our Security Team <ArrowRight size={18} />
               </Link>
-              <a href="mailto:security@digitaltechs.in" className="inline-flex items-center gap-2 border-2 border-white/50 text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/10 transition-colors">
-                security@digitaltechs.in
+              <a href="mailto:info@digitaltechs.in" className="inline-flex items-center gap-2 border-2 border-white/50 text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/10 transition-colors">
+                info@digitaltechs.in
               </a>
             </div>
           </AnimatedSection>

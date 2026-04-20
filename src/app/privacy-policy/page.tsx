@@ -9,71 +9,38 @@ export const metadata: Metadata = {
 const sections = [
   {
     title: '1. Information We Collect',
-    content: `When you use our website or contact us, we may collect the following information:
-• Name, email address, phone number, and company name (via our contact form)
-• Usage data such as pages visited, time on site, and browser type (via analytics)
-• Any information you voluntarily provide when communicating with us`,
+    content: `When you use our website or contact us, we may collect the following information:\n• Name, email address, phone number, and company name (via our contact form)\n• Usage data such as pages visited, time on site, and browser type (via analytics)\n• Any information you voluntarily provide when communicating with us`,
   },
   {
     title: '2. How We Use Your Information',
-    content: `We use the information we collect to:
-• Respond to your enquiries and provide requested services
-• Send project updates and relevant communications (with your consent)
-• Improve our website and services based on usage patterns
-• Comply with legal obligations
-We do not sell, rent, or share your personal information with third parties for marketing purposes.`,
+    content: `We use the information we collect to:\n• Respond to your enquiries and provide requested services\n• Send project updates and relevant communications (with your consent)\n• Improve our website and services based on usage patterns\n• Comply with legal obligations\nWe do not sell, rent, or share your personal information with third parties for marketing purposes.`,
   },
   {
     title: '3. AI Services & Data',
-    content: `Digital Tech Prosperity provides AI application development, data analytics, and software services across all industries. Any data shared with us for the purpose of AI development or analytics engagements is:
-• Processed solely for the agreed project scope
-• Subject to a separate Data Processing Agreement (DPA) for enterprise clients
-• Handled in accordance with applicable data protection regulations (GDPR, PDPA, etc.)
-• Never used to train our own models without explicit written consent`,
+    content: `Digital Tech Prosperity provides AI application development, data analytics, and software services across all industries. Any data shared with us for the purpose of AI development or analytics engagements is:\n• Processed solely for the agreed project scope\n• Subject to a separate Data Processing Agreement (DPA) for enterprise clients\n• Handled in accordance with applicable data protection regulations (GDPR, PDPA, etc.)\n• Never used to train our own models without explicit written consent`,
   },
   {
     title: '4. Cookies',
-    content: `Our website uses cookies to enhance your browsing experience:
-• Essential cookies: required for the website to function correctly
-• Analytics cookies: help us understand how visitors use the site (e.g., Google Analytics)
-You can control cookie settings via the cookie banner on your first visit or through your browser settings.`,
+    content: `Our website uses cookies to enhance your browsing experience:\n• Essential cookies: required for the website to function correctly\n• Analytics cookies: help us understand how visitors use the site (e.g., Google Analytics)\nYou can control cookie settings via the cookie banner on your first visit or through your browser settings.`,
   },
   {
     title: '5. Data Storage & Security',
-    content: `Your data is stored securely on servers located in India and/or other regions depending on the service provider. We implement industry-standard security measures including:
-• SSL/TLS encryption for data in transit
-• Access controls and authentication for internal systems
-• Regular security reviews and audits
-While we take all reasonable steps to protect your data, no method of transmission over the internet is 100% secure.`,
+    content: `Your data is stored securely on servers located in India and/or other regions depending on the service provider. We implement industry-standard security measures including:\n• SSL/TLS encryption for data in transit\n• Access controls and authentication for internal systems\n• Regular security reviews and audits\nWhile we take all reasonable steps to protect your data, no method of transmission over the internet is 100% secure.`,
   },
   {
     title: '6. Data Retention',
-    content: `We retain personal data only as long as necessary:
-• Contact form data: up to 2 years from last interaction
-• Client project data: as specified in the service agreement
-• Analytics data: as per the retention settings of the analytics provider
-You may request deletion of your data at any time by contacting us.`,
+    content: `We retain personal data only as long as necessary:\n• Contact form data: up to 2 years from last interaction\n• Client project data: as specified in the service agreement\n• Analytics data: as per the retention settings of the analytics provider\nYou may request deletion of your data at any time by contacting us.`,
   },
   {
     title: '7. Your Rights',
-    content: `Depending on your location, you may have the right to:
-• Access the personal data we hold about you
-• Request correction of inaccurate data
-• Request deletion of your data ("right to be forgotten")
-• Object to processing of your data
-• Data portability — receive your data in a structured, machine-readable format
-To exercise any of these rights, please contact us at info@digitaltechs.in.`,
+    content: `Depending on your location, you may have the right to:\n• Access the personal data we hold about you\n• Request correction of inaccurate data\n• Request deletion of your data ("right to be forgotten")\n• Object to processing of your data\n• Data portability — receive your data in a structured, machine-readable format\nTo exercise any of these rights, please contact us at info@digitaltechs.in.`,
   },
   {
     title: '8. Third-Party Services',
-    content: `We may use third-party services that have their own privacy policies, including:
-• Google Analytics (website analytics)
-• Render (website hosting)
-• Email service providers for transactional emails
-We are not responsible for the privacy practices of these third parties.`,
+    content: `We may use third-party services that have their own privacy policies, including:\n• Google Analytics (website analytics)\n• Render (website hosting)\n• Email service providers for transactional emails\nWe are not responsible for the privacy practices of these third parties.`,
   },
   {
-    title: '9. Children\'s Privacy',
+    title: "9. Children's Privacy",
     content: `Our services are not directed to individuals under the age of 16. We do not knowingly collect personal data from children. If you believe a child has provided us with personal data, please contact us immediately.`,
   },
   {
@@ -82,11 +49,7 @@ We are not responsible for the privacy practices of these third parties.`,
   },
   {
     title: '11. Contact Us',
-    content: `If you have any questions about this Privacy Policy or how we handle your data, please contact us:
-
-Digital Tech Prosperity
-Email: info@digitaltechs.in
-Website: www.digitaltechs.in`,
+    content: `If you have any questions about this Privacy Policy or how we handle your data, please contact us:\n\nDigital Tech Prosperity\nEmail: info@digitaltechs.in\nWebsite: www.digitaltechs.in`,
   },
 ]
 

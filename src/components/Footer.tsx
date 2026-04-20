@@ -127,13 +127,18 @@ export default function Footer() {
               {/* Location */}
               <li className="flex items-start gap-3 text-sm text-slate-400">
                 <MapPin size={15} className="mt-1 text-blue-400 flex-shrink-0" />
-                <address className="not-italic leading-relaxed">
+                <a
+                  href="https://maps.google.com/?q=Flat+601+Kaakatiya+Golden+Crysta+Lanco+Hills+Road+Manikonda+Hyderabad+500089"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="not-italic leading-relaxed hover:text-blue-400 transition-colors duration-200"
+                >
                   <span className="text-slate-200 font-medium">Hyderabad, India</span><br />
                   Flat No: #601,<br />
                   Kaakatiya&apos;s Golden Crysta,<br />
                   Lanco Hills Road,<br />
                   Manikonda - 500089
-                </address>
+                </a>
               </li>
             </ul>
 
